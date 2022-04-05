@@ -1,0 +1,5 @@
+#anchorPane{
+    -fx-background-image: url("images/clouds_1280.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-position: center center;
+}

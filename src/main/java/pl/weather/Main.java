@@ -2,7 +2,11 @@ package pl.weather;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
+import pl.weather.controller.GeneralWindowController;
+
 
 public class Main extends Application {
     public static void main(String[] args) {
@@ -10,10 +14,23 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader();
-        primaryStage.setTitle("Pogoda");
-        primaryStage.show();
+    public void start(Stage stage) throws Exception {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/GeneralWindow.fxml"));
+
+            GeneralWindowController generalWindowController = new GeneralWindowController();
+            loader.setController(generalWindowController);
+
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
 
     }
 }
