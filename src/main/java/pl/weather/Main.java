@@ -17,14 +17,14 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
 
         try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/GeneralWindow.fxml"));
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/GeneralWindow.fxml"));
             GeneralWindowController generalWindowController = new GeneralWindowController();
             loader.setController(generalWindowController);
 
-            Parent parent = loader.load();
+            Parent parent =  loader.load();
             Scene scene = new Scene(parent);
             stage.setScene(scene);
+            stage.setResizable(false);
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();

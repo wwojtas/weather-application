@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="anchorPane" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.weather.controller.GeneralWindowController">
+<AnchorPane id="anchorPane" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextField layoutX="23.0" layoutY="51.0" prefHeight="25.0" prefWidth="343.0" AnchorPane.bottomAnchor="524.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="434.0" AnchorPane.topAnchor="51.0" />
       <TextField layoutX="434.0" layoutY="51.0" prefHeight="26.0" prefWidth="350.0" AnchorPane.bottomAnchor="524.0141845703125" AnchorPane.leftAnchor="434.41423950195315" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="51.0" />
@@ -26,7 +26,7 @@
             <Font size="23.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="94.0" prefHeight="40.0" prefWidth="116.0" text="12:34" textAlignment="CENTER" AnchorPane.bottomAnchor="460.4" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="646.0" AnchorPane.topAnchor="94.0">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="93.0" prefHeight="40.0" prefWidth="116.0" text="12:34" textAlignment="CENTER" AnchorPane.bottomAnchor="461.4" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="661.0" AnchorPane.topAnchor="93.0">
          <font>
             <Font size="30.0" />
          </font>
@@ -143,7 +143,7 @@
             <Image url="@../images/humidity.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="442.0" layoutY="93.0" prefHeight="40.0" prefWidth="116.0" text="12:34" textAlignment="CENTER" AnchorPane.bottomAnchor="461.4" AnchorPane.leftAnchor="442.0" AnchorPane.rightAnchor="242.0" AnchorPane.topAnchor="93.0">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="429.0" layoutY="93.0" prefHeight="40.0" prefWidth="116.0" text="12:34" textAlignment="CENTER" AnchorPane.bottomAnchor="461.4" AnchorPane.leftAnchor="429.0" AnchorPane.rightAnchor="255.0" AnchorPane.topAnchor="93.0">
          <font>
             <Font size="30.0" />
          </font>
@@ -289,5 +289,7 @@
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
          </padding>
       </HBox>
+      <Line endX="100.0" layoutX="194.0" layoutY="332.0" startX="-100.0" />
+      <Line endX="100.0" layoutX="605.0" layoutY="332.0" startX="-100.0" />
    </children>
 </AnchorPane>

@@ -5,7 +5,5 @@ module weather {
     requires javafx.web;
     requires java.desktop;
 
-    opens pl.weather to javafx.fxml;
     exports pl.weather;
-
 }
