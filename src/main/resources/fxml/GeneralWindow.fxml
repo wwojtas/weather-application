@@ -14,116 +14,37 @@
 
 <AnchorPane id="anchorPane" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField layoutX="23.0" layoutY="51.0" prefHeight="25.0" prefWidth="343.0" AnchorPane.bottomAnchor="524.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="434.0" AnchorPane.topAnchor="51.0" />
-      <TextField layoutX="434.0" layoutY="51.0" prefHeight="26.0" prefWidth="350.0" AnchorPane.bottomAnchor="524.0141845703125" AnchorPane.leftAnchor="434.41423950195315" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="51.0" />
-      <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="136.0" layoutY="99.0" prefHeight="34.0" prefWidth="224.0" text="Lubaczów, PL" AnchorPane.bottomAnchor="467.0" AnchorPane.leftAnchor="136.0" AnchorPane.rightAnchor="437.0" AnchorPane.topAnchor="99.0">
+      <TextField fx:id="leftLocationField" layoutX="23.0" layoutY="51.0" prefHeight="25.0" prefWidth="343.0" AnchorPane.bottomAnchor="524.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="434.0" AnchorPane.topAnchor="51.0" />
+      <TextField fx:id="rightLocationField" layoutX="434.0" layoutY="51.0" prefHeight="26.0" prefWidth="350.0" AnchorPane.bottomAnchor="524.0141845703125" AnchorPane.leftAnchor="434.41423950195315" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="51.0" />
+      <Label fx:id="leftCityLabel" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="136.0" layoutY="99.0" prefHeight="34.0" prefWidth="224.0" text="Lubaczów, PL" AnchorPane.bottomAnchor="467.0" AnchorPane.leftAnchor="136.0" AnchorPane.rightAnchor="437.0" AnchorPane.topAnchor="99.0">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="549.0" layoutY="99.0" prefHeight="34.0" prefWidth="227.0" text="Floryda, USA" AnchorPane.bottomAnchor="467.0" AnchorPane.leftAnchor="549.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="99.0">
+      <Label fx:id="rightCityLabel" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="549.0" layoutY="99.0" prefHeight="34.0" prefWidth="227.0" text="Floryda, USA" AnchorPane.bottomAnchor="467.0" AnchorPane.leftAnchor="549.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="99.0">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="93.0" prefHeight="40.0" prefWidth="116.0" text="12:34" textAlignment="CENTER" AnchorPane.bottomAnchor="461.4" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="661.0" AnchorPane.topAnchor="93.0">
+      <Label fx:id="leftTimeField" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="93.0" prefHeight="40.0" prefWidth="116.0" text="12:34" textAlignment="CENTER" AnchorPane.bottomAnchor="461.4" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="661.0" AnchorPane.topAnchor="93.0">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
       <Line endX="-86.79998779296875" endY="173.0" layoutX="478.0" layoutY="427.0" startX="-93.20001220703125" startY="-427.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="155.0" prefHeight="30.0" prefWidth="116.0" text="9 ℃" textAlignment="CENTER" AnchorPane.bottomAnchor="415.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="646.0" AnchorPane.topAnchor="155.0">
+      <Label fx:id="leftTemperatureLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="155.0" prefHeight="30.0" prefWidth="116.0" text="9 ℃" textAlignment="CENTER" AnchorPane.bottomAnchor="415.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="646.0" AnchorPane.topAnchor="155.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <VBox layoutX="10.0" layoutY="345.0" prefHeight="255.0" prefWidth="401.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="345.0">
-         <children>
-            <HBox prefHeight="46.0" prefWidth="402.0">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="50.0" prefWidth="143.0" text="01.02.2022">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="194.0" text="9 ℃ / 3 ℃" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="46.0" prefWidth="402.0">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="50.0" prefWidth="143.0" text="02.02.2022">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="194.0" text="9 ℃ / 3 ℃" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="46.0" prefWidth="402.0">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="50.0" prefWidth="143.0" text="03.02.2022">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="194.0" text="9 ℃ / 3 ℃" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="46.0" prefWidth="402.0">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="50.0" prefWidth="143.0" text="04.02.2022">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="194.0" text="9 ℃ / 3 ℃" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="46.0" prefWidth="402.0">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="50.0" prefWidth="143.0" text="05.02.2022">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="194.0" text="9 ℃ / 3 ℃" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-         </children>
-      </VBox>
       <ImageView fitHeight="97.0" fitWidth="116.0" layoutX="250.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="345.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="434.0" AnchorPane.topAnchor="158.0" />
       <ImageView fitHeight="97.0" fitWidth="116.0" layoutX="660.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="345.0" AnchorPane.leftAnchor="660.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="158.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="191.0" prefHeight="30.0" prefWidth="103.0" text="1012 hPa" textAlignment="CENTER" AnchorPane.bottomAnchor="378.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="646.0" AnchorPane.topAnchor="191.0">
+      <Label fx:id="leftPressureLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="191.0" prefHeight="30.0" prefWidth="103.0" text="1012 hPa" textAlignment="CENTER" AnchorPane.bottomAnchor="378.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="646.0" AnchorPane.topAnchor="191.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="44.0" layoutY="228.0" prefHeight="30.0" prefWidth="103.0" text="50%" textAlignment="CENTER" AnchorPane.bottomAnchor="341.6" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="646.0" AnchorPane.topAnchor="227.0">
+      <Label fx:id="leftHumidityLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="44.0" layoutY="228.0" prefHeight="30.0" prefWidth="103.0" text="50%" textAlignment="CENTER" AnchorPane.bottomAnchor="341.6" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="646.0" AnchorPane.topAnchor="227.0">
          <font>
             <Font size="20.0" />
          </font>
@@ -143,22 +64,22 @@
             <Image url="@../images/humidity.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="429.0" layoutY="93.0" prefHeight="40.0" prefWidth="116.0" text="12:34" textAlignment="CENTER" AnchorPane.bottomAnchor="461.4" AnchorPane.leftAnchor="429.0" AnchorPane.rightAnchor="255.0" AnchorPane.topAnchor="93.0">
+      <Label fx:id="rightTimeField" alignment="CENTER" contentDisplay="CENTER" layoutX="429.0" layoutY="93.0" prefHeight="40.0" prefWidth="116.0" text="12:34" textAlignment="CENTER" AnchorPane.bottomAnchor="461.4" AnchorPane.leftAnchor="429.0" AnchorPane.rightAnchor="255.0" AnchorPane.topAnchor="93.0">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="448.0" layoutY="155.0" prefHeight="30.0" prefWidth="103.0" snapToPixel="false" text="9 ℃" textAlignment="CENTER" AnchorPane.bottomAnchor="415.0" AnchorPane.leftAnchor="448.0" AnchorPane.rightAnchor="248.79999999999995" AnchorPane.topAnchor="155.0">
+      <Label fx:id="rightTemperatureLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="448.0" layoutY="155.0" prefHeight="30.0" prefWidth="103.0" snapToPixel="false" text="9 ℃" textAlignment="CENTER" AnchorPane.bottomAnchor="415.0" AnchorPane.leftAnchor="448.0" AnchorPane.rightAnchor="248.79999999999995" AnchorPane.topAnchor="155.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="448.0" layoutY="188.0" prefHeight="34.0" prefWidth="103.0" text="1012 hPa" textAlignment="CENTER" AnchorPane.bottomAnchor="378.0" AnchorPane.leftAnchor="448.0" AnchorPane.rightAnchor="249.0" AnchorPane.topAnchor="188.0">
+      <Label fx:id="rightPressureLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="448.0" layoutY="188.0" prefHeight="34.0" prefWidth="103.0" text="1012 hPa" textAlignment="CENTER" AnchorPane.bottomAnchor="378.0" AnchorPane.leftAnchor="448.0" AnchorPane.rightAnchor="249.0" AnchorPane.topAnchor="188.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="454.0" layoutY="228.0" prefHeight="26.0" prefWidth="103.0" text="50%" textAlignment="CENTER" AnchorPane.bottomAnchor="341.6" AnchorPane.leftAnchor="448.0" AnchorPane.rightAnchor="242.79999999999995" AnchorPane.topAnchor="227.0">
+      <Label fx:id="rightHumidityLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="454.0" layoutY="228.0" prefHeight="26.0" prefWidth="103.0" text="50%" textAlignment="CENTER" AnchorPane.bottomAnchor="341.6" AnchorPane.leftAnchor="448.0" AnchorPane.rightAnchor="242.79999999999995" AnchorPane.topAnchor="227.0">
          <font>
             <Font size="20.0" />
          </font>
@@ -183,85 +104,6 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <VBox layoutX="405.0" layoutY="344.0" prefHeight="255.0" prefWidth="401.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="345.0">
-         <children>
-            <HBox prefHeight="46.0" prefWidth="402.0">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="50.0" prefWidth="143.0" text="01.02.2022">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="194.0" text="9 ℃ / 3 ℃" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="46.0" prefWidth="402.0">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="50.0" prefWidth="143.0" text="02.02.2022">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="194.0" text="9 ℃ / 3 ℃" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="46.0" prefWidth="402.0">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="50.0" prefWidth="143.0" text="03.02.2022">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="194.0" text="9 ℃ / 3 ℃" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="46.0" prefWidth="402.0">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="50.0" prefWidth="143.0" text="04.02.2022">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="194.0" text="9 ℃ / 3 ℃" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="46.0" prefWidth="402.0">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="50.0" prefWidth="143.0" text="05.02.2022">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="194.0" text="9 ℃ / 3 ℃" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-         </children>
-      </VBox>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="511.0" layoutY="286.0" prefHeight="27.0" prefWidth="190.0" text="Prognoza 5-dniowa" AnchorPane.bottomAnchor="287.0" AnchorPane.leftAnchor="511.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="286.0">
          <font>
             <Font size="18.0" />
@@ -269,17 +111,17 @@
       </Label>
       <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
          <children>
-            <Button mnemonicParsing="false" text="    Zamknij     ">
+            <Button fx:id="closeAppButton" mnemonicParsing="false" onAction="#closeApplication" text="    Zamknij     ">
                <font>
                   <Font size="13.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="     O aplikacji     ">
+            <Button fx:id="aboutAppButton" mnemonicParsing="false" onAction="#openAboutApplication" text="     O aplikacji     ">
                <font>
                   <Font size="13.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="      Aktualizuj pogodę      ">
+            <Button fx:id="updateWeatherButton" mnemonicParsing="false" onAction="#updateWeather" text="      Aktualizuj pogodę      ">
                <font>
                   <Font size="13.0" />
                </font>
@@ -291,5 +133,15 @@
       </HBox>
       <Line endX="100.0" layoutX="194.0" layoutY="332.0" startX="-100.0" />
       <Line endX="100.0" layoutX="605.0" layoutY="332.0" startX="-100.0" />
+      <VBox layoutY="344.0" prefHeight="255.0" prefWidth="401.0">
+         <children>
+            <fx:include source="FiveDaysLeft.fxml" />
+         </children>
+      </VBox>
+      <VBox layoutX="400.0" layoutY="344.0" prefHeight="255.0" prefWidth="400.0">
+         <children>
+            <fx:include source="FiveDaysRight.fxml" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

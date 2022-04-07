@@ -6,4 +6,6 @@ module weather {
     requires java.desktop;
 
     exports pl.weather;
+
+    opens pl.weather.controller to javafx.fxml;
 }
