@@ -4,8 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import pl.weather.WeatherManager;
+import pl.weather.view.ViewFactory;
 
-public class GeneralWindowController {
+public class GeneralWindowController extends BaseController {
 
     @FXML
     public FiveDaysLeftController fiveDaysLeftController;
@@ -57,6 +59,10 @@ public class GeneralWindowController {
 
     @FXML
     private Button updateWeatherButton;
+
+    public GeneralWindowController(WeatherManager weatherManager, ViewFactory viewFactory, String fxml) {
+        super(weatherManager, viewFactory, fxml);
+    }
 
     @FXML
     void closeApplication() {
