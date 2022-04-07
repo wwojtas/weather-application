@@ -7,11 +7,15 @@ public abstract class BaseController {
 
     private WeatherManager weatherManager;
     private ViewFactory viewFactory;
-    private String fxml;
+    private String fxmlName;
 
-    public BaseController(WeatherManager weatherManager, ViewFactory viewFactory, String fxml) {
+    public BaseController(WeatherManager weatherManager, ViewFactory viewFactory, String fxmlName) {
         this.weatherManager = weatherManager;
         this.viewFactory = viewFactory;
-        this.fxml = fxml;
+        this.fxmlName = fxmlName;
+    }
+
+    public String getFxmlName() {
+        return fxmlName;
     }
 }
