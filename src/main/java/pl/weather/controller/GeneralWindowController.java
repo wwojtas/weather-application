@@ -71,7 +71,7 @@ public class GeneralWindowController extends BaseController {
 
     @FXML
     void openAboutApplication() {
-
+        viewFactory.showAboutApplication();
     }
 
     @FXML

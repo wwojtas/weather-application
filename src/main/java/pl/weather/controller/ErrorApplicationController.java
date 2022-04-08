@@ -9,4 +9,9 @@ public class ErrorApplicationController extends BaseController {
         super(weatherManager, viewFactory, fxmlName);
     }
 
+    @FXML
+    void confirmOKErrorApplication() {
+
+    }
+
 }

@@ -6,7 +6,7 @@ import pl.weather.view.ViewFactory;
 public abstract class BaseController {
 
     private WeatherManager weatherManager;
-    private ViewFactory viewFactory;
+    protected ViewFactory viewFactory;
     private String fxmlName;
 
     public BaseController(WeatherManager weatherManager, ViewFactory viewFactory, String fxmlName) {

@@ -16,6 +16,5 @@ public class Main extends Application {
             ViewFactory viewFactory = new ViewFactory(new WeatherManager());
             viewFactory.showGeneralWindow();
 
-
     }
 }
