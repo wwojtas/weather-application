@@ -3,3 +3,9 @@
     -fx-background-repeat: stretch;
     -fx-background-position: center center;
 }
+
+.oneDayHboxField:hover {
+    -fx-background-color: rgb(229,229,229);
+    -fx-border-color : grey;
+    -fx-border-width : 0 0 1 0;
+}

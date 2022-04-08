@@ -46,8 +46,11 @@ public class ViewFactory {
             return;
         }
         Scene scene = new Scene(parent);
+        scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
         Stage stage = new Stage();
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
+
 }

@@ -52,5 +52,4 @@ public class FiveDaysLeftController {
         private Label temperature5Left;
 
 
-
 }
