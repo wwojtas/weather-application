@@ -60,8 +60,8 @@ public class GeneralWindowController extends BaseController {
     @FXML
     private Button updateWeatherButton;
 
-    public GeneralWindowController(WeatherManager weatherManager, ViewFactory viewFactory, String fxml) {
-        super(weatherManager, viewFactory, fxml);
+    public GeneralWindowController(WeatherManager weatherManager, ViewFactory viewFactory, String fxmlName) {
+        super(weatherManager, viewFactory, fxmlName);
     }
 
     @FXML
