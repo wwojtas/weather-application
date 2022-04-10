@@ -12,116 +12,105 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="anchorPane" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" styleClass="anchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="anchorPane" maxHeight="630.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="630.0" prefWidth="800.0" styleClass="anchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField fx:id="leftLocationField" layoutX="23.0" layoutY="51.0" prefHeight="25.0" prefWidth="343.0" AnchorPane.bottomAnchor="524.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="434.0" AnchorPane.topAnchor="51.0" />
-      <TextField fx:id="rightLocationField" layoutX="434.0" layoutY="51.0" prefHeight="26.0" prefWidth="350.0" AnchorPane.bottomAnchor="524.0141845703125" AnchorPane.leftAnchor="434.41423950195315" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="51.0" />
-      <Label fx:id="leftCityLabel" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="136.0" layoutY="99.0" prefHeight="34.0" prefWidth="224.0" text="Lubaczów, PL" AnchorPane.bottomAnchor="467.0" AnchorPane.leftAnchor="136.0" AnchorPane.rightAnchor="437.0" AnchorPane.topAnchor="99.0">
+      <TextField fx:id="leftLocationField" layoutX="23.0" layoutY="74.0" prefHeight="32.0" prefWidth="343.0" AnchorPane.bottomAnchor="524.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="434.0" AnchorPane.topAnchor="74.0" />
+      <TextField fx:id="rightLocationField" layoutX="434.0" layoutY="74.0" prefHeight="32.0" prefWidth="343.0" AnchorPane.bottomAnchor="524.0" AnchorPane.leftAnchor="434.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="74.0" />
+      <Label fx:id="leftCityLabel" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="137.0" layoutY="119.0" prefHeight="34.0" prefWidth="224.0" text="Lubaczów, PL" AnchorPane.bottomAnchor="447.0" AnchorPane.leftAnchor="137.0" AnchorPane.rightAnchor="436.0" AnchorPane.topAnchor="119.0">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
-      <Label fx:id="rightCityLabel" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="549.0" layoutY="99.0" prefHeight="34.0" prefWidth="227.0" text="Floryda, USA" AnchorPane.bottomAnchor="467.0" AnchorPane.leftAnchor="549.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="99.0">
+      <Label fx:id="rightCityLabel" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="547.0" layoutY="119.0" prefHeight="34.0" prefWidth="227.0" text="Floryda, USA" AnchorPane.bottomAnchor="447.0" AnchorPane.leftAnchor="547.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="119.0">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
-      <Label fx:id="leftTimeField" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="93.0" prefHeight="40.0" prefWidth="116.0" text="12:34" textAlignment="CENTER" AnchorPane.bottomAnchor="461.4" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="661.0" AnchorPane.topAnchor="93.0">
+      <Label fx:id="leftTimeField" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="119.0" prefHeight="64.0" prefWidth="116.0" textAlignment="CENTER" AnchorPane.bottomAnchor="447.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="661.0" AnchorPane.topAnchor="119.0">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <Line endX="-86.79998779296875" endY="173.0" layoutX="478.0" layoutY="427.0" rotate="-0.005" startX="-93.20001220703125" startY="-427.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="0.0" />
-      <Label fx:id="leftTemperatureLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="155.0" prefHeight="30.0" prefWidth="116.0" text="9 ℃" textAlignment="CENTER" AnchorPane.bottomAnchor="415.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="646.0" AnchorPane.topAnchor="155.0">
+      <Label fx:id="leftTemperatureLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="169.0" prefHeight="30.0" prefWidth="116.0" text="9 ℃" textAlignment="CENTER" AnchorPane.bottomAnchor="401.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="646.0" AnchorPane.topAnchor="169.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <ImageView fx:id="leftImageView" fitHeight="97.0" fitWidth="116.0" layoutX="250.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="345.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="434.0" AnchorPane.topAnchor="158.0" />
-      <ImageView fx:id="rightImageView" fitHeight="97.0" fitWidth="116.0" layoutX="660.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="345.0" AnchorPane.leftAnchor="660.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="158.0" />
-      <Label fx:id="leftPressureLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="191.0" prefHeight="30.0" prefWidth="103.0" text="1012 hPa" textAlignment="CENTER" AnchorPane.bottomAnchor="378.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="646.0" AnchorPane.topAnchor="191.0">
+      <ImageView fx:id="leftImageView" fitHeight="97.0" fitWidth="116.0" layoutX="237.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="343.0" AnchorPane.leftAnchor="237.0" AnchorPane.rightAnchor="447.0" AnchorPane.topAnchor="190.0" />
+      <ImageView fx:id="rightImageView" fitHeight="97.0" fitWidth="116.0" layoutX="661.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="343.0" AnchorPane.leftAnchor="661.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="190.0" />
+      <Label fx:id="leftPressureLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="208.0" prefHeight="30.0" prefWidth="103.0" text="1012 hPa" textAlignment="CENTER" AnchorPane.bottomAnchor="361.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="646.0" AnchorPane.topAnchor="208.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="leftHumidityLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="44.0" layoutY="228.0" prefHeight="30.0" prefWidth="103.0" text="50%" textAlignment="CENTER" AnchorPane.bottomAnchor="341.6" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="646.0" AnchorPane.topAnchor="227.0">
+      <Label fx:id="leftHumidityLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="257.0" prefHeight="30.0" prefWidth="103.0" text="50%" textAlignment="CENTER" AnchorPane.bottomAnchor="311.6" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="646.0" AnchorPane.topAnchor="257.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <ImageView fitHeight="26.0" fitWidth="28.0" layoutX="10.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="346.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="764.0" AnchorPane.topAnchor="157.0">
+      <ImageView fitHeight="26.0" fitWidth="28.0" layoutX="10.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="418.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="764.0" AnchorPane.topAnchor="186.0">
          <image>
             <Image url="@../images/thermometer.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="26.0" fitWidth="28.0" layoutX="10.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="417.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="764.0" AnchorPane.topAnchor="193.0">
+      <ImageView fitHeight="26.0" fitWidth="28.0" layoutX="10.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="379.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="764.0" AnchorPane.topAnchor="225.0">
          <image>
             <Image url="@../images/gauge.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="26.0" fitWidth="28.0" layoutX="10.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="346.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="764.0" AnchorPane.topAnchor="228.0">
+      <ImageView fitHeight="26.0" fitWidth="28.0" layoutX="10.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="329.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="764.0" AnchorPane.topAnchor="275.0">
          <image>
             <Image url="@../images/humidity.png" />
          </image>
       </ImageView>
-      <Label fx:id="rightTimeField" alignment="CENTER" contentDisplay="CENTER" layoutX="429.0" layoutY="93.0" prefHeight="40.0" prefWidth="116.0" text="12:34" textAlignment="CENTER" AnchorPane.bottomAnchor="461.4" AnchorPane.leftAnchor="429.0" AnchorPane.rightAnchor="255.0" AnchorPane.topAnchor="93.0">
+      <Label fx:id="rightTimeField" alignment="CENTER" contentDisplay="CENTER" layoutX="434.0" layoutY="122.0" prefHeight="57.0" prefWidth="116.0" text="12:34" textAlignment="CENTER" AnchorPane.bottomAnchor="451.0" AnchorPane.leftAnchor="434.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="122.0">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <Label fx:id="rightTemperatureLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="448.0" layoutY="155.0" prefHeight="30.0" prefWidth="103.0" snapToPixel="false" text="9 ℃" textAlignment="CENTER" AnchorPane.bottomAnchor="415.0" AnchorPane.leftAnchor="448.0" AnchorPane.rightAnchor="248.79999999999995" AnchorPane.topAnchor="155.0">
+      <Label fx:id="rightTemperatureLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="453.0" layoutY="169.0" prefHeight="30.0" prefWidth="103.0" snapToPixel="false" text="9 ℃" textAlignment="CENTER" AnchorPane.bottomAnchor="401.0" AnchorPane.leftAnchor="453.0" AnchorPane.rightAnchor="243.79999999999995" AnchorPane.topAnchor="169.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="rightPressureLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="448.0" layoutY="188.0" prefHeight="34.0" prefWidth="103.0" text="1012 hPa" textAlignment="CENTER" AnchorPane.bottomAnchor="378.0" AnchorPane.leftAnchor="448.0" AnchorPane.rightAnchor="249.0" AnchorPane.topAnchor="188.0">
+      <Label fx:id="rightPressureLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="448.0" layoutY="206.0" prefHeight="34.0" prefWidth="103.0" text="1012 hPa" textAlignment="CENTER" AnchorPane.bottomAnchor="360.0" AnchorPane.leftAnchor="448.0" AnchorPane.rightAnchor="249.0" AnchorPane.topAnchor="206.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="rightHumidityLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="454.0" layoutY="228.0" prefHeight="26.0" prefWidth="103.0" text="50%" textAlignment="CENTER" AnchorPane.bottomAnchor="341.6" AnchorPane.leftAnchor="448.0" AnchorPane.rightAnchor="242.79999999999995" AnchorPane.topAnchor="227.0">
+      <Label fx:id="rightHumidityLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="445.0" layoutY="257.0" prefHeight="26.0" prefWidth="103.0" text="50%" textAlignment="CENTER" AnchorPane.bottomAnchor="311.6" AnchorPane.leftAnchor="445.0" AnchorPane.rightAnchor="245.79999999999995" AnchorPane.topAnchor="257.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <ImageView fitHeight="26.0" fitWidth="28.0" layoutX="416.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="417.0" AnchorPane.leftAnchor="415.6" AnchorPane.rightAnchor="358.0" AnchorPane.topAnchor="157.0">
+      <ImageView fitHeight="26.0" fitWidth="28.0" layoutX="416.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="418.0" AnchorPane.leftAnchor="416.0" AnchorPane.rightAnchor="358.0" AnchorPane.topAnchor="186.0">
          <image>
             <Image url="@../images/thermometer.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="26.0" fitWidth="28.0" layoutX="416.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="417.0" AnchorPane.leftAnchor="416.0" AnchorPane.rightAnchor="358.0" AnchorPane.topAnchor="193.0">
+      <ImageView fitHeight="26.0" fitWidth="28.0" layoutX="416.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="379.0" AnchorPane.leftAnchor="416.0" AnchorPane.rightAnchor="358.0" AnchorPane.topAnchor="225.0">
          <image>
             <Image url="@../images/gauge.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="26.0" fitWidth="28.0" layoutX="416.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="417.0" AnchorPane.leftAnchor="416.0" AnchorPane.rightAnchor="358.0" AnchorPane.topAnchor="230.0">
+      <ImageView fitHeight="26.0" fitWidth="28.0" layoutX="416.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="346.0" AnchorPane.leftAnchor="416.0" AnchorPane.rightAnchor="358.0" AnchorPane.topAnchor="258.0">
          <image>
             <Image url="@../images/humidity.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="116.0" layoutY="286.0" text="Prognoza 5-dniowa" AnchorPane.bottomAnchor="286.8" AnchorPane.leftAnchor="116.0" AnchorPane.rightAnchor="528.0" AnchorPane.topAnchor="286.0">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="116.0" layoutY="305.0" text="Prognoza 5-dniowa" AnchorPane.bottomAnchor="267.8" AnchorPane.leftAnchor="116.0" AnchorPane.rightAnchor="528.0" AnchorPane.topAnchor="305.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="511.0" layoutY="286.0" prefHeight="27.0" prefWidth="190.0" text="Prognoza 5-dniowa" AnchorPane.bottomAnchor="287.0" AnchorPane.leftAnchor="511.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="286.0">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="511.0" layoutY="305.0" prefHeight="27.0" prefWidth="190.0" text="Prognoza 5-dniowa" AnchorPane.bottomAnchor="268.0" AnchorPane.leftAnchor="511.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="305.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
       <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
          <children>
-            <Button fx:id="closeAppButton" mnemonicParsing="false" onAction="#closeApplication" text="    Zamknij     ">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Button>
             <Button fx:id="aboutAppButton" mnemonicParsing="false" onAction="#openAboutApplication" text="     O aplikacji     ">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Button>
-            <Button fx:id="updateWeatherButton" mnemonicParsing="false" onAction="#updateWeather" text="      Aktualizuj pogodę      ">
                <font>
                   <Font size="13.0" />
                </font>
@@ -131,8 +120,8 @@
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
          </padding>
       </HBox>
-      <Line endX="100.0" layoutX="194.0" layoutY="332.0" startX="-100.0" />
-      <Line endX="100.0" layoutX="605.0" layoutY="332.0" startX="-100.0" />
+      <Line endX="100.0" layoutX="194.0" layoutY="362.0" startX="-100.0" />
+      <Line endX="100.0" layoutX="605.0" layoutY="362.0" startX="-100.0" />
       <VBox layoutY="344.0" prefHeight="255.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="394.0">
          <children>
             <fx:include source="FiveDaysLeft.fxml" />
@@ -143,10 +132,20 @@
             <fx:include source="FiveDaysRight.fxml" />
          </children>
       </VBox>
-      <Label fx:id="currentDayLabel" layoutX="554.0" layoutY="14.0" text="01.02.2022">
+      <Label fx:id="currentDayLabel" layoutX="352.0" layoutY="32.0" text="01.02.2022">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
+      <Button fx:id="closeAppButton" layoutX="701.0" layoutY="2.0" mnemonicParsing="false" onAction="#closeApplication" text="    Zamknij     ">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="updateWeatherButton" layoutX="317.0" layoutY="2.0" mnemonicParsing="false" onAction="#updateWeather" text="      Aktualizuj pogodę      ">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

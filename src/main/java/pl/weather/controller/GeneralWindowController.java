@@ -1,17 +1,21 @@
 package pl.weather.controller;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import pl.weather.WeatherManager;
-import pl.weather.model.TimeData;
 import pl.weather.view.ViewFactory;
 
-public class GeneralWindowController extends BaseController {
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.ResourceBundle;
 
-    private TimeData timeData;
+public class GeneralWindowController extends BaseController implements Initializable {
 
     @FXML
     public FiveDaysLeftController fiveDaysLeftController;
@@ -69,27 +73,30 @@ public class GeneralWindowController extends BaseController {
 
     @FXML
     private Button updateWeatherButton;
+    private boolean flag = false;
 
     public GeneralWindowController(WeatherManager weatherManager, ViewFactory viewFactory, String fxmlName) {
         super(weatherManager, viewFactory, fxmlName);
     }
 
     @FXML
-    void closeApplication() {
-
+    public void closeApplication() {
+        javafx.application.Platform.exit();
     }
 
     @FXML
-    void openAboutApplication() {
+    public void openAboutApplication() {
         viewFactory.showAboutApplication();
     }
 
     @FXML
-    void updateWeather() {
-//        if(fieldIsValid(leftLocationField)){
-//
-//        }
-
+    public void updateWeather() {
+        if(fieldIsValid(leftLocationField)){
+            System.out.println("pole lewe");
+        }
+       if (fieldIsValid(rightLocationField)){
+           System.out.println("pole prawe");
+       }
 
     }
 
@@ -102,22 +109,32 @@ public class GeneralWindowController extends BaseController {
         return true;
     }
 
-    public void setDefaultValue(){
-        while(true){
-            Thread thread = new Thread(()->{
-                leftTimeField.setText(timeData.getCurrentTime());
-                try{
-                    Thread.sleep(60000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            });
-            thread.start();
-        }
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        fieldIsValid(leftLocationField);
+        fieldIsValid(rightLocationField);
+        updateClockNow(leftTimeField);
+        updateClockNow(rightTimeField);
 
     }
 
+    private void updateClockNow(Label timeField) {
+        Thread thread = new Thread(()->{
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+            while(!flag){
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                final String timeNow = simpleDateFormat.format(new Date());
+                Platform.runLater(()->{
+                    timeField.setText(timeNow);
+                });
+
+            }
+        }); thread.start();
+    }
 
 
 }

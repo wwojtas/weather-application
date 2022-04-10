@@ -7,5 +7,6 @@ module weather {
 
     exports pl.weather;
 
-    opens pl.weather.controller to javafx.fxml;
+    opens pl.weather.controller to javafx.fxml, javafx.controls;
+    opens pl.weather.model to javafx.fxml, javafx.controls;
 }
