@@ -23,6 +23,7 @@ public class ViewFactory {
     public void showGeneralWindow(){
         BaseController controller = new GeneralWindowController(weatherManager, this, "/fxml/GeneralWindow.fxml");
         initializeStage(controller);
+
     }
 
     public void showAboutApplication(){
