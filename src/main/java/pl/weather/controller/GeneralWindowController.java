@@ -8,10 +8,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import pl.weather.WeatherManager;
+import pl.weather.controller.services.Klasa;
 import pl.weather.view.ViewFactory;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -24,13 +27,16 @@ public class GeneralWindowController extends BaseController implements Initializ
     public FiveDaysRightController fiveDaysRightController;
 
     @FXML
+    private Label currentDayLabel;
+
+    @FXML
     private Button aboutAppButton;
 
     @FXML
     private Button closeAppButton;
 
     @FXML
-    private Label currentDayLabel;
+    private Button updateWeatherButton;
 
     @FXML
     private Label leftCityLabel;
@@ -71,9 +77,9 @@ public class GeneralWindowController extends BaseController implements Initializ
     @FXML
     private Label rightTimeField;
 
-    @FXML
-    private Button updateWeatherButton;
+
     private boolean flag = false;
+    Klasa klasa = new Klasa();
 
     public GeneralWindowController(WeatherManager weatherManager, ViewFactory viewFactory, String fxmlName) {
         super(weatherManager, viewFactory, fxmlName);
@@ -82,6 +88,7 @@ public class GeneralWindowController extends BaseController implements Initializ
     @FXML
     public void closeApplication() {
         javafx.application.Platform.exit();
+        System.exit(0);
     }
 
     @FXML
@@ -97,7 +104,6 @@ public class GeneralWindowController extends BaseController implements Initializ
        if (fieldIsValid(rightLocationField)){
            System.out.println("pole prawe");
        }
-
     }
 
     private boolean fieldIsValid(TextField field){
@@ -111,29 +117,20 @@ public class GeneralWindowController extends BaseController implements Initializ
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         fieldIsValid(leftLocationField);
         fieldIsValid(rightLocationField);
-        updateClockNow(leftTimeField);
-        updateClockNow(rightTimeField);
-
+        klasa.updateClockNow(leftTimeField, flag);
+        klasa.updateClockNow(rightTimeField, flag);
+        updateMainDay();
     }
 
-    private void updateClockNow(Label timeField) {
-        Thread thread = new Thread(()->{
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
-            while(!flag){
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                final String timeNow = simpleDateFormat.format(new Date());
-                Platform.runLater(()->{
-                    timeField.setText(timeNow);
-                });
+    private void updateMainDay() {
+        LocalTime localTime = LocalTime.now();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.Y");
+        final String currentDay = simpleDateFormat.format(new Date());
+        currentDayLabel.setText(currentDay);
 
-            }
-        }); thread.start();
     }
 
 
