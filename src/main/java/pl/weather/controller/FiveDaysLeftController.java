@@ -1,10 +1,15 @@
 package pl.weather.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import pl.weather.controller.services.DateAndTimeMethods;
 
-public class FiveDaysLeftController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class FiveDaysLeftController implements Initializable {
 
         @FXML
         private Label day1Left;
@@ -52,4 +57,17 @@ public class FiveDaysLeftController {
         private Label temperature5Left;
 
 
+        @Override
+        public void initialize(URL url, ResourceBundle resourceBundle) {
+            setDays();
+        }
+
+
+        public void setDays(){
+            DateAndTimeMethods.setDayByLocalDate(day1Left, 1);
+            DateAndTimeMethods.setDayByLocalDate(day2Left, 2);
+            DateAndTimeMethods.setDayByLocalDate(day3Left, 3);
+            DateAndTimeMethods.setDayByLocalDate(day4Left, 4);
+            DateAndTimeMethods.setDayByLocalDate(day5Left, 5);
+        }
 }

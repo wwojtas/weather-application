@@ -1,6 +1,5 @@
 package pl.weather.controller;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -8,14 +7,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import pl.weather.WeatherManager;
-import pl.weather.controller.services.Klasa;
+import pl.weather.controller.services.DateAndTimeMethods;
 import pl.weather.view.ViewFactory;
 
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
+
 import java.util.ResourceBundle;
 
 public class GeneralWindowController extends BaseController implements Initializable {
@@ -77,9 +73,7 @@ public class GeneralWindowController extends BaseController implements Initializ
     @FXML
     private Label rightTimeField;
 
-
     private boolean flag = false;
-    Klasa klasa = new Klasa();
 
     public GeneralWindowController(WeatherManager weatherManager, ViewFactory viewFactory, String fxmlName) {
         super(weatherManager, viewFactory, fxmlName);
@@ -117,21 +111,21 @@ public class GeneralWindowController extends BaseController implements Initializ
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         fieldIsValid(leftLocationField);
         fieldIsValid(rightLocationField);
-        klasa.updateClockNow(leftTimeField, flag);
-        klasa.updateClockNow(rightTimeField, flag);
-        updateMainDay();
-    }
+        DateAndTimeMethods.updateClockNow(leftTimeField, flag);
+        DateAndTimeMethods.updateClockNow(rightTimeField, flag);
 
-    private void updateMainDay() {
-        LocalTime localTime = LocalTime.now();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.Y");
-        final String currentDay = simpleDateFormat.format(new Date());
-        currentDayLabel.setText(currentDay);
+        DateAndTimeMethods.setDayByLocalDate(currentDayLabel, 0);
+
 
     }
+
+
+    private void setDays(){
+
+    }
+
 
 
 }
