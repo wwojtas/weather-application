@@ -19,6 +19,7 @@ public class Main extends Application {
 
         ViewFactory viewFactory = new ViewFactory(new WeatherManager());
         viewFactory.showGeneralWindow();
+
 //            viewFactory.showErrorApplication();
         Locale defLoc = Locale.getDefault();
         System.out.println("Domyślna lokalizacja : " + defLoc);

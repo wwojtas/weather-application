@@ -10,17 +10,19 @@ import java.util.Date;
 
 public class DateAndTimeMethods {
 
+    private static SimpleDateFormat setSimpleTimeFormat(){
+        return new SimpleDateFormat("HH:mm:ss");
+    }
 
     public static void updateClockNow(Label label, boolean flag) {
         Thread thread = new Thread(() -> {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
             while (!flag) {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                final String timeNow = simpleDateFormat.format(new Date());
+                final String timeNow = setSimpleTimeFormat().format(new Date());
                 Platform.runLater(() -> {
                     label.setText(timeNow);
                 });
@@ -34,13 +36,15 @@ public class DateAndTimeMethods {
     }
 
     private static LocalDate setNextLocalDate(long value){
-        LocalDate localDate = LocalDate.now();
-        return localDate.plusDays(value);
+        return setLocalDate().plusDays(value);
     }
 
-    public static void setDayByLocalDate(Label label, long value) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        String text = DateAndTimeMethods.setNextLocalDate(value).format(formatter);
+    private static DateTimeFormatter setDateFormat(){
+        return DateTimeFormatter.ofPattern("dd.MM.yyyy");
+    }
+
+    public static void setTextDayByLocalDate(Label label, long value) {
+        String text = DateAndTimeMethods.setNextLocalDate(value).format(setDateFormat());
         label.setText(text);
     }
 

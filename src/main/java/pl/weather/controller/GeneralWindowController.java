@@ -116,7 +116,7 @@ public class GeneralWindowController extends BaseController implements Initializ
         DateAndTimeMethods.updateClockNow(leftTimeField, flag);
         DateAndTimeMethods.updateClockNow(rightTimeField, flag);
 
-        DateAndTimeMethods.setDayByLocalDate(currentDayLabel, 0);
+        DateAndTimeMethods.setTextDayByLocalDate(currentDayLabel, 0);
 
 
     }
