@@ -4,6 +4,7 @@ module weather {
     requires javafx.graphics;
     requires javafx.web;
     requires java.desktop;
+    requires geoip2;
 
     exports pl.weather;
 

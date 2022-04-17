@@ -1,7 +1,9 @@
 package pl.weather;
 
+import com.maxmind.geoip2.exception.GeoIp2Exception;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import pl.weather.model.LocationUserData;
 import pl.weather.view.ViewFactory;
 
 import java.time.LocalTime;
@@ -10,7 +12,7 @@ import java.util.Locale;
 
 
 public class Main extends Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws GeoIp2Exception {
         launch(args);
     }
 
@@ -27,6 +29,8 @@ public class Main extends Application {
         LocalTime localTime = LocalTime.now();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
         System.out.println(dtf.format(localTime));
+
+
     }
 
 }

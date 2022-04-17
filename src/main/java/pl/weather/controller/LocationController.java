@@ -1,6 +1,10 @@
 package pl.weather.controller;
 
-public class LocationController {
+import pl.weather.model.LocationUserData;
+
+public class LocationController  {
+
+    private LocationUserData locationUserData;
 
 
 }

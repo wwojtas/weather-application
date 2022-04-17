@@ -7,7 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import pl.weather.WeatherManager;
-import pl.weather.controller.services.DateAndTimeMethods;
+import pl.weather.model.LocationUserData;
+import pl.weather.model.auxiliaryMethods.DateAndTimeMethods;
 import pl.weather.view.ViewFactory;
 
 import java.net.URL;
@@ -15,6 +16,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GeneralWindowController extends BaseController implements Initializable {
+
+//    LocationUserData locationUserData = new LocationUserData(new LocationCityAndCountry("Lublin", "Poland"));
 
     @FXML
     public FiveDaysLeftController fiveDaysLeftController;
@@ -92,16 +95,16 @@ public class GeneralWindowController extends BaseController implements Initializ
 
     @FXML
     public void updateWeather() {
-        if(fieldIsValid(leftLocationField)){
+        if (fieldIsValid(leftLocationField)) {
             System.out.println("pole lewe");
         }
-       if (fieldIsValid(rightLocationField)){
-           System.out.println("pole prawe");
-       }
+        if (fieldIsValid(rightLocationField)) {
+            System.out.println("pole prawe");
+        }
     }
 
-    private boolean fieldIsValid(TextField field){
-        if( field.getText().isEmpty()) {
+    private boolean fieldIsValid(TextField field) {
+        if (field.getText().isEmpty()) {
             field.setPromptText("lokalizacja, np.: Londyn");
             field.getParent().requestFocus();
             return false;
@@ -117,15 +120,14 @@ public class GeneralWindowController extends BaseController implements Initializ
         DateAndTimeMethods.updateClockNow(rightTimeField, flag);
 
         DateAndTimeMethods.setTextDayByLocalDate(currentDayLabel, 0);
-
-
-    }
-
-
-    private void setDays(){
+        setLeftCityLabel();
 
     }
 
+    private void setLeftCityLabel() {
+        String cityName = new LocationUserData().getCityName();
+        leftCityLabel.setText(cityName);
+    }
 
 
 }
