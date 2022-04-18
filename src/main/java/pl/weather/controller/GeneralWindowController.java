@@ -1,5 +1,6 @@
 package pl.weather.controller;
 
+import com.maxmind.geoip2.exception.GeoIp2Exception;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -8,16 +9,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import pl.weather.WeatherManager;
 import pl.weather.model.LocationUserData;
+import pl.weather.model.WebServiceLocation;
 import pl.weather.model.auxiliaryMethods.DateAndTimeMethods;
 import pl.weather.view.ViewFactory;
 
+import java.io.IOException;
 import java.net.URL;
-
 import java.util.ResourceBundle;
 
 public class GeneralWindowController extends BaseController implements Initializable {
 
-//    LocationUserData locationUserData = new LocationUserData(new LocationCityAndCountry("Lublin", "Poland"));
 
     @FXML
     public FiveDaysLeftController fiveDaysLeftController;
@@ -120,14 +121,39 @@ public class GeneralWindowController extends BaseController implements Initializ
         DateAndTimeMethods.updateClockNow(rightTimeField, flag);
 
         DateAndTimeMethods.setTextDayByLocalDate(currentDayLabel, 0);
-        setLeftCityLabel();
+        leftCityLabel.setText(getUserCityLocation() + "," + getUserCountryCodeLocation());
 
     }
 
-    private void setLeftCityLabel() {
-        String cityName = new LocationUserData().getCityName();
-        leftCityLabel.setText(cityName);
+    private String getUserCityLocation(){
+        try {
+            return new LocationUserData().getLocation().getCity();
+        } catch (IOException | GeoIp2Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
+    private String getUserCountryCodeLocation(){
+        try {
+            return new LocationUserData().getLocation().getCountry();
+        } catch (IOException | GeoIp2Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

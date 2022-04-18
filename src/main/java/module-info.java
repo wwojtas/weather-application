@@ -2,12 +2,12 @@ module weather {
     requires javafx.fxml;
     requires javafx.controls;
     requires javafx.graphics;
-    requires javafx.web;
-    requires java.desktop;
     requires geoip2;
+    requires maxmind.db;
 
     exports pl.weather;
 
+    opens pl.weather.view;
     opens pl.weather.controller to javafx.fxml, javafx.controls;
     opens pl.weather.model to javafx.fxml, javafx.controls;
 }

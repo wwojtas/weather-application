@@ -20,7 +20,7 @@ public class ViewFactory {
         this.weatherManager = weatherManager;
     }
 
-    public void showGeneralWindow(){
+    public void showGeneralWindow() {
         BaseController controller = new GeneralWindowController(weatherManager, this, "/fxml/GeneralWindow.fxml");
         initializeStage(controller);
 
@@ -32,7 +32,8 @@ public class ViewFactory {
     }
 
     public void showErrorApplication(){
-        BaseController controller = new ErrorApplicationController(weatherManager, this, "/fxml/ErrorApplication.fxml");
+        BaseController controller = new ErrorApplicationController(weatherManager, this,
+                "/fxml/ErrorApplication.fxml");
         initializeStage(controller);
     }
 

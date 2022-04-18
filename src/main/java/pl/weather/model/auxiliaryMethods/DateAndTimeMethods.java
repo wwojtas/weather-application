@@ -40,7 +40,7 @@ public class DateAndTimeMethods {
     }
 
     private static DateTimeFormatter setDateFormat(){
-        return DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        return DateTimeFormatter.ofPattern("E dd.MM.yyyy");
     }
 
     public static void setTextDayByLocalDate(Label label, long value) {
