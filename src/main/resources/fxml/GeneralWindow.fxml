@@ -26,7 +26,7 @@
             <Font size="23.0" />
          </font>
       </Label>
-      <Label fx:id="leftTimeField" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="119.0" prefHeight="64.0" prefWidth="116.0" textAlignment="CENTER" AnchorPane.bottomAnchor="447.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="661.0" AnchorPane.topAnchor="119.0">
+      <Label fx:id="leftTimeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="119.0" prefHeight="64.0" prefWidth="116.0" textAlignment="CENTER" AnchorPane.bottomAnchor="447.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="661.0" AnchorPane.topAnchor="119.0">
          <font>
             <Font size="30.0" />
          </font>
@@ -63,7 +63,7 @@
             <Image url="@../images/humidity.png" />
          </image>
       </ImageView>
-      <Label fx:id="rightTimeField" alignment="CENTER" contentDisplay="CENTER" layoutX="434.0" layoutY="122.0" prefHeight="57.0" prefWidth="116.0" text="12:34" textAlignment="CENTER" AnchorPane.bottomAnchor="451.0" AnchorPane.leftAnchor="434.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="122.0">
+      <Label fx:id="rightTimeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="434.0" layoutY="122.0" prefHeight="57.0" prefWidth="116.0" text="12:34" textAlignment="CENTER" AnchorPane.bottomAnchor="451.0" AnchorPane.leftAnchor="434.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="122.0">
          <font>
             <Font size="30.0" />
          </font>

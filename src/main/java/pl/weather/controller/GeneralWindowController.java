@@ -9,7 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import pl.weather.WeatherManager;
 import pl.weather.model.LocationUserData;
-import pl.weather.model.WebServiceLocation;
 import pl.weather.model.auxiliaryMethods.DateAndTimeMethods;
 import pl.weather.view.ViewFactory;
 
@@ -57,7 +56,7 @@ public class GeneralWindowController extends BaseController implements Initializ
     private Label leftTemperatureLabel;
 
     @FXML
-    private Label leftTimeField;
+    private Label leftTimeLabel;
 
     @FXML
     private Label rightCityLabel;
@@ -75,7 +74,8 @@ public class GeneralWindowController extends BaseController implements Initializ
     private Label rightTemperatureLabel;
 
     @FXML
-    private Label rightTimeField;
+    private Label rightTimeLabel;
+
 
     private boolean flag = false;
 
@@ -104,6 +104,18 @@ public class GeneralWindowController extends BaseController implements Initializ
         }
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        updatePromptTextInFields();
+        updateTimeFields();
+
+        DateAndTimeMethods.setTextDayByLocalDate(currentDayLabel, 0);
+        leftCityLabel.setText(getUserCityLocation() + "," + getUserCountryCodeLocation());
+        rightCityLabel.setText(getUserCityLocation() + "," + getUserCountryCodeLocation());
+
+    }
+
+
     private boolean fieldIsValid(TextField field) {
         if (field.getText().isEmpty()) {
             field.setPromptText("lokalizacja, np.: Londyn");
@@ -113,17 +125,16 @@ public class GeneralWindowController extends BaseController implements Initializ
         return true;
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    private void updatePromptTextInFields(){
         fieldIsValid(leftLocationField);
         fieldIsValid(rightLocationField);
-        DateAndTimeMethods.updateClockNow(leftTimeField, flag);
-        DateAndTimeMethods.updateClockNow(rightTimeField, flag);
-
-        DateAndTimeMethods.setTextDayByLocalDate(currentDayLabel, 0);
-        leftCityLabel.setText(getUserCityLocation() + "," + getUserCountryCodeLocation());
-
     }
+
+    private void updateTimeFields(){
+        DateAndTimeMethods.updateClockNow(leftTimeLabel, flag);
+        DateAndTimeMethods.updateClockNow(rightTimeLabel, flag);
+    }
+
 
     private String getUserCityLocation(){
         try {

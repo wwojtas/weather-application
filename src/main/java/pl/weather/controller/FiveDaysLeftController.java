@@ -64,10 +64,10 @@ public class FiveDaysLeftController implements Initializable {
 
 
         public void setDays(){
-            DateAndTimeMethods.setTextDayByLocalDate(day1Left, 1);
-            DateAndTimeMethods.setTextDayByLocalDate(day2Left, 2);
-            DateAndTimeMethods.setTextDayByLocalDate(day3Left, 3);
-            DateAndTimeMethods.setTextDayByLocalDate(day4Left, 4);
-            DateAndTimeMethods.setTextDayByLocalDate(day5Left, 5);
+            DateAndTimeMethods.setTextNextDayByLocalDate(day1Left, 1);
+            DateAndTimeMethods.setTextNextDayByLocalDate(day2Left, 2);
+            DateAndTimeMethods.setTextNextDayByLocalDate(day3Left, 3);
+            DateAndTimeMethods.setTextNextDayByLocalDate(day4Left, 4);
+            DateAndTimeMethods.setTextNextDayByLocalDate(day5Left, 5);
         }
 }
