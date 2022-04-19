@@ -132,7 +132,7 @@
             <fx:include source="FiveDaysRight.fxml" />
          </children>
       </VBox>
-      <Label fx:id="currentDayLabel" layoutX="307.0" layoutY="32.0" text="niedz. 01.02.2022">
+      <Label fx:id="currentDayLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="272.0" layoutY="32.0" prefHeight="35.0" prefWidth="262.0" text="niedz. 01.02.2022" textAlignment="CENTER" AnchorPane.leftAnchor="272.0" AnchorPane.rightAnchor="272.0">
          <font>
             <Font size="24.0" />
          </font>

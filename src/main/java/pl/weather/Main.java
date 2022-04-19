@@ -3,6 +3,7 @@ package pl.weather;
 import com.maxmind.geoip2.exception.GeoIp2Exception;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import pl.weather.model.InternetConnection;
 import pl.weather.model.LocationUserData;
 import pl.weather.view.ViewFactory;
 
@@ -30,10 +31,9 @@ public class Main extends Application {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
         System.out.println(dtf.format(localTime));
 
-//        URL whatismyip = new URL("http://checkip.amazonaws.com");
-//        BufferedReader in = new BufferedReader(new InputStreamReader(whatismyip.openStream()));
-//        String ip = in.readLine();
+
         System.out.println( new LocationUserData().getLocation().getCity());
+//        System.out.println(InternetConnection.isInternetConnection());
 
 
 

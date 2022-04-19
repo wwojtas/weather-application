@@ -2,9 +2,11 @@ package pl.weather.model;
 
 import pl.weather.model.config.Config;
 
+import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -27,11 +29,18 @@ public class InternetConnection {
         }
     }
 
-    protected boolean isInternetConnection(){
+    public static boolean isInternetConnection(){
         try {
             URLConnection urlConnection = getUrlConnection().openConnection();
-            urlConnection.connect();
-            return true;
+            HttpsURLConnection httpsURLConnection = (HttpsURLConnection) urlConnection;
+            httpsURLConnection.setRequestMethod("GET");
+            httpsURLConnection.connect();
+            int responseCode = httpsURLConnection.getResponseCode();
+            if ( responseCode != 200 ) {
+                throw new RuntimeException("HttpsResponseCode: " + responseCode);
+            } else {
+                return true;
+            }
         } catch (IOException e) {
             return false;
         }
