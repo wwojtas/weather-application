@@ -7,13 +7,15 @@ public class GeoIP {
     private String country;
     private String latitude;
     private String longitude;
+    private String timeZone;
 
-    public GeoIP(String ipAddress, String city, String country, String latitude, String longitude) {
+    public GeoIP(String ipAddress, String city, String country, String latitude, String longitude, String timeZone) {
         this.ipAddress = ipAddress;
         this.city = city;
         this.country = country;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.timeZone = timeZone;
     }
 
     public String getIpAddress() {
@@ -36,14 +38,7 @@ public class GeoIP {
         return longitude;
     }
 
-    @Override
-    public String toString() {
-        return "GeoIP{" +
-                "ipAddress='" + ipAddress + '\'' +
-                ", city='" + city + '\'' +
-                ", country='" + country + '\'' +
-                ", latitude='" + latitude + '\'' +
-                ", longitude='" + longitude + '\'' +
-                '}';
+    public String getTimeZone() {
+        return timeZone;
     }
 }

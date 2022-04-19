@@ -32,7 +32,7 @@ public class Main extends Application {
         System.out.println(dtf.format(localTime));
 
 
-        System.out.println( new LocationUserData().getLocation().getCity());
+        System.out.println( new LocationUserData().getLocation().getTimeZone());
 //        System.out.println(InternetConnection.isInternetConnection());
 
 
