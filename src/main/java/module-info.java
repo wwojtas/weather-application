@@ -4,6 +4,7 @@ module weather {
     requires javafx.graphics;
     requires geoip2;
     requires maxmind.db;
+    requires json.simple;
 
     exports pl.weather;
 

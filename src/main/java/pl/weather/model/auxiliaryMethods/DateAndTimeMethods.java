@@ -2,7 +2,7 @@ package pl.weather.model.auxiliaryMethods;
 
 import javafx.application.Platform;
 import javafx.scene.control.Label;
-import pl.weather.model.config.Config;
+import pl.weather.model.config.ConfigMainSettings;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -12,7 +12,7 @@ import java.util.Date;
 public class DateAndTimeMethods {
 
     private static SimpleDateFormat setSimpleTimeFormat(){
-        return new SimpleDateFormat(Config.CURRENT_TIME_PATTERN);
+        return new SimpleDateFormat(ConfigMainSettings.CURRENT_TIME_PATTERN);
     }
 
     public static void updateClockNow(Label label, boolean flag) {
@@ -41,11 +41,11 @@ public class DateAndTimeMethods {
     }
 
     private static DateTimeFormatter setDateFormat(){
-        return DateTimeFormatter.ofPattern(Config.CURRENT_DATE_PATTERN);
+        return DateTimeFormatter.ofPattern(ConfigMainSettings.CURRENT_DATE_PATTERN);
     }
 
     private static DateTimeFormatter setNextDateFormat(){
-        return DateTimeFormatter.ofPattern(Config.NEXT_DATE_PATTERN);
+        return DateTimeFormatter.ofPattern(ConfigMainSettings.NEXT_DATE_PATTERN);
     }
 
     public static void setTextDayByLocalDate(Label label, long value) {

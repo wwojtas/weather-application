@@ -1,20 +1,23 @@
 package pl.weather.model;
 
-import pl.weather.model.config.Config;
+import pl.weather.model.config.ConfigMainSettings;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
 public class InternetConnection {
 
+    private String setURLPath(String path){
+        return path;
+    }
+
     private static URL getUrlConnection(){
         try {
-            return new URL(Config.CHECK_IP_URL_PATH);
+            return new URL(ConfigMainSettings.CHECK_IP_URL_PATH);
         } catch (IOException e) {
             return null;
         }
