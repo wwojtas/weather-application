@@ -96,12 +96,17 @@ public class GeneralWindowController extends BaseController implements Initializ
 
     @FXML
     public void updateWeather() {
+        setWeatherLabels();
+
         if (fieldIsValid(leftLocationField)) {
             System.out.println("pole lewe");
         }
         if (fieldIsValid(rightLocationField)) {
             System.out.println("pole prawe");
         }
+    }
+
+    private void setWeatherLabels() {
     }
 
     @Override

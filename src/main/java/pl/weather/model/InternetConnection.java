@@ -11,10 +11,6 @@ import java.net.URLConnection;
 
 public class InternetConnection {
 
-    private String setURLPath(String path){
-        return path;
-    }
-
     private static URL getUrlConnection(){
         try {
             return new URL(ConfigMainSettings.CHECK_IP_URL_PATH);
