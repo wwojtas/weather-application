@@ -41,7 +41,7 @@ public class OpenWeatherAPIController {
         JSONObject weatherJSONObject = apiConnectorWeather.getJSONObject(woeid + "/");
         JSONArray weatherArray = (JSONArray) weatherJSONObject.get("consolidated_weather");
 
-        return  (JSONObject) weatherArray.get(0);
+        return (JSONObject) weatherArray.get(0);
     }
 
 }
