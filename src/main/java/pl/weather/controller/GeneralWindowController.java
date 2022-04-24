@@ -13,6 +13,7 @@ import pl.weather.model.auxiliaryMethods.DateAndTimeMethods;
 import pl.weather.view.ViewFactory;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -96,8 +97,6 @@ public class GeneralWindowController extends BaseController implements Initializ
 
     @FXML
     public void updateWeather() {
-        setWeatherLabels();
-
         if (fieldIsValid(leftLocationField)) {
             System.out.println("pole lewe");
         }
@@ -106,11 +105,12 @@ public class GeneralWindowController extends BaseController implements Initializ
         }
     }
 
-    private void setWeatherLabels() {
-    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+//        getWeatherInformation();
+
         updatePromptTextInFields();
         updateTimeFields();
 
@@ -120,19 +120,32 @@ public class GeneralWindowController extends BaseController implements Initializ
 
     }
 
+//    private void getWeatherInformation()  {
+//        if( fieldIsValid(leftLocationField) ) {
+//            OpenWeatherAPIController openWeatherAPIController = null;
+//            String currentWeather = null;
+//            try {
+//                openWeatherAPIController = new OpenWeatherAPIController("Toronto");
+//                openWeatherAPIController.getInformationAboutCity();
+//                currentWeather = String.valueOf(openWeatherAPIController.getCurrentWeatherInformation());
+//            } catch (MalformedURLException e) {
+//                e.printStackTrace();
+//            }
+//            System.out.println(currentWeather);
+//        }
+//    }
 
+    private void updatePromptTextInFields(){
+
+        fieldIsValid(leftLocationField);
+        fieldIsValid(rightLocationField);
+    }
     private boolean fieldIsValid(TextField field) {
         if (field.getText().isEmpty()) {
             field.setPromptText("lokalizacja, np.: Londyn");
-            field.getParent().requestFocus();
             return false;
         }
         return true;
-    }
-
-    private void updatePromptTextInFields(){
-        fieldIsValid(leftLocationField);
-        fieldIsValid(rightLocationField);
     }
 
     private void updateTimeFields(){

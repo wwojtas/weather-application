@@ -2,31 +2,31 @@ package pl.weather.model;
 
 public class WeatherData {
 
-    private int temperatureDay;
-    private int temperatureNight;
-    private int pressure;
-    private int humidity;
+    private String temperatureDay;
+    private String temperatureNight;
+    private String pressure;
+    private String humidity;
 
-    public WeatherData(int temperatureDay, int temperatureNight, int pressure, int humidity) {
+    public WeatherData(String temperatureDay, String temperatureNight, String pressure, String humidity) {
         this.temperatureDay = temperatureDay;
         this.temperatureNight = temperatureNight;
         this.pressure = pressure;
         this.humidity = humidity;
     }
 
-    public int getTemperatureDay() {
+    public String getTemperatureDay() {
         return temperatureDay;
     }
 
-    public int getTemperatureNight() {
+    public String getTemperatureNight() {
         return temperatureNight;
     }
 
-    public int getPressure() {
+    public String getPressure() {
         return pressure;
     }
 
-    public int getHumidity() {
+    public String getHumidity() {
         return humidity;
     }
 }

@@ -5,6 +5,9 @@ module weather {
     requires geoip2;
     requires maxmind.db;
     requires json.simple;
+    requires com.google.gson;
+
+
 
     exports pl.weather;
 
