@@ -39,10 +39,11 @@ public class Main extends Application {
 //        System.out.println(new OpenWeatherAPIController("Lublin").getFiveDaysWeatherInformation().toJSONString());
 //        System.out.println(new OpenWeatherAPIController("Lublin").getInformationAboutCity().getLocationName());
 //        System.out.println(new OpenWeatherAPIController("Lublin").getInformationAboutCity().getCountryName());
-//        System.out.println(new OpenWeatherAPIController("Lublin").getInformationAboutCity().getLongitude());
-        System.out.println(new OpenWeatherAPIController("Toronto").getCityInput());
+        System.out.println(new OpenWeatherAPIController("Warsaw").getInformationAboutCity().getLocationName());
+//        System.out.println(new OpenWeatherAPIController("Toronto").getCityInput());
 //        System.out.println(new OpenWeatherAPIController("Toronto").getCurrentWeatherInformation());
-        System.out.println(new OpenWeatherAPIController("Toronto").getCurrentWeather());
+//        System.out.println(new OpenWeatherAPIController("Toronto").getCurrentWeather());
+
 
 
 

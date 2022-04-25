@@ -9,6 +9,7 @@ import pl.weather.model.WeatherData;
 import pl.weather.model.auxiliaryMethods.StringMethods;
 import pl.weather.model.config.ConfigAPIOpenWeather;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Map;
 
@@ -34,13 +35,13 @@ public class OpenWeatherAPIController {
             + ConfigAPIOpenWeather.BEFORE_API_KEY
             + ConfigAPIOpenWeather.API_KEY;
 
-    private String currentWeather = "https://api.openweathermap.org/data/2.5/weather?q=Toronto&units=metric&lang=pl&appid=6023e1e73e703b8a2e0035f150fb8a9e";
-//    private String currentWeather = ConfigAPIOpenWeather.OPEN_WEATHER_MAIN_QUERY
-//            + getInformationAboutCity().getLocationName()
-//            + ConfigAPIOpenWeather.UNITS_METRIC_PARAMETER
-//            + ConfigAPIOpenWeather.LANGUAGE_CODE
-//            + ConfigAPIOpenWeather.BEFORE_API_KEY
-//            + ConfigAPIOpenWeather.API_KEY;
+
+    private String currentWeather = ConfigAPIOpenWeather.OPEN_WEATHER_MAIN_QUERY
+            + getInformationAboutCity().getLocationName()
+            + ConfigAPIOpenWeather.UNITS_METRIC_PARAMETER
+            + ConfigAPIOpenWeather.LANGUAGE_CODE
+            + ConfigAPIOpenWeather.BEFORE_API_KEY
+            + ConfigAPIOpenWeather.API_KEY;
 
     private String fiveDaysWeather = ConfigAPIOpenWeather.OPEN_WEATHER_FIVE_DAYS_MAIN_QUERY
             + getInformationAboutCity().getLocationName()
@@ -62,7 +63,7 @@ public class OpenWeatherAPIController {
         return location;
     }
 
-    public WeatherData getCurrentWeather() throws MalformedURLException {
+    public WeatherData getCurrentWeather() throws IOException {
         String json = StringMethods.readUrlAPI(currentWeather);
         return gson.fromJson(json, WeatherData.class);
 
@@ -70,7 +71,7 @@ public class OpenWeatherAPIController {
 
     public JSONObject getCurrentWeatherInformation() throws MalformedURLException {
         OpenWeatherAPIConnector apiConnectorWeather = new OpenWeatherAPIConnector();
-        JSONObject currentWeatherJSONObject = (JSONObject) apiConnectorWeather.getJSONObject(currentWeather);
+        JSONObject currentWeatherJSONObject = (JSONObject) apiConnectorWeather.getJSONObject(currentWeather).get("r");
 
         return currentWeatherJSONObject;
     }
