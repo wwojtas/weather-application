@@ -29,10 +29,9 @@ public class InternetConnection {
         }
     }
 
-    public static boolean isInternetConnection(){
+    public static boolean isHttpsURLConnection(URL url){
         try {
-            URLConnection urlConnection = getUrlConnection().openConnection();
-            HttpsURLConnection httpsURLConnection = (HttpsURLConnection) urlConnection;
+            HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
             httpsURLConnection.setRequestMethod("GET");
             httpsURLConnection.connect();
             int responseCode = httpsURLConnection.getResponseCode();

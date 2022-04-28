@@ -6,7 +6,8 @@ module weather {
     requires maxmind.db;
     requires json.simple;
     requires com.google.gson;
-
+    requires com.fasterxml.jackson.annotation;
+    requires java.annotation;
 
 
     exports pl.weather;

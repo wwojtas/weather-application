@@ -4,7 +4,6 @@ import com.maxmind.geoip2.exception.GeoIp2Exception;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import pl.weather.controller.OpenWeatherAPIController;
-import pl.weather.model.InternetConnection;
 import pl.weather.model.LocationUserData;
 import pl.weather.view.ViewFactory;
 
@@ -25,29 +24,24 @@ public class Main extends Application {
         viewFactory.showGeneralWindow();
 
 //            viewFactory.showErrorApplication();
-        Locale defLoc = Locale.getDefault();
-        System.out.println("Domyślna lokalizacja : " + defLoc);
+//        Locale defLoc = Locale.getDefault();
+//        System.out.println("Domyślna lokalizacja : " + defLoc);
+//
+//        LocalTime localTime = LocalTime.now();
+//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
+//        System.out.println(dtf.format(localTime));
+//
+//        System.out.println( new LocationUserData().getLocation().getLongitude());
+//        System.out.println( new LocationUserData().getLocation().getLatitude());
 
-        LocalTime localTime = LocalTime.now();
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
-        System.out.println(dtf.format(localTime));
-
-
-        System.out.println( new LocationUserData().getLocation().getTimeZone());
-//        System.out.println(InternetConnection.isInternetConnection());
-
-//        System.out.println(new OpenWeatherAPIController("Lublin").getFiveDaysWeatherInformation().toJSONString());
-//        System.out.println(new OpenWeatherAPIController("Lublin").getInformationAboutCity().getLocationName());
-//        System.out.println(new OpenWeatherAPIController("Lublin").getInformationAboutCity().getCountryName());
-        System.out.println(new OpenWeatherAPIController("Warsaw").getInformationAboutCity().getLocationName());
-//        System.out.println(new OpenWeatherAPIController("Toronto").getCityInput());
-//        System.out.println(new OpenWeatherAPIController("Toronto").getCurrentWeatherInformation());
-//        System.out.println(new OpenWeatherAPIController("Toronto").getCurrentWeather());
+//        String lat =  new LocationUserData().getLocation().getLatitude();
+//        String lon =  new LocationUserData().getLocation().getLongitude();
+//        String current = "current";
+//        String daily = "daily";
+//
+//        System.out.println(new OpenWeatherAPIController("London").getStringResponseToQueryWeather());
 
 
-
-
-//        System.out.println(new OpenWeatherAPIController("London").getCurrentWeatherInformation().toJSONString());
 
 
 

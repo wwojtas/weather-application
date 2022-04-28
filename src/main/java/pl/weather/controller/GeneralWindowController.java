@@ -20,11 +20,11 @@ import java.util.ResourceBundle;
 public class GeneralWindowController extends BaseController implements Initializable {
 
 
-    @FXML
-    public FiveDaysLeftController fiveDaysLeftController;
+//    @FXML
+//    public FiveDaysLeftController fiveDaysLeftController;
 
-    @FXML
-    public FiveDaysRightController fiveDaysRightController;
+//    @FXML
+//    public FiveDaysRightController fiveDaysRightController;
 
     @FXML
     private Label currentDayLabel;
@@ -136,10 +136,10 @@ public class GeneralWindowController extends BaseController implements Initializ
 //    }
 
     private void updatePromptTextInFields(){
-
         fieldIsValid(leftLocationField);
         fieldIsValid(rightLocationField);
     }
+
     private boolean fieldIsValid(TextField field) {
         if (field.getText().isEmpty()) {
             field.setPromptText("lokalizacja, np.: Londyn");
