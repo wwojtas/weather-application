@@ -1,6 +1,9 @@
 package pl.weather.controller;
 
 import pl.weather.WeatherManager;
+import pl.weather.model.GeoIP;
+import pl.weather.model.LocationUserData;
+import pl.weather.model.config.ConfigMainSettings;
 import pl.weather.view.ViewFactory;
 
 public abstract class BaseController {
@@ -18,4 +21,6 @@ public abstract class BaseController {
     public String getFxmlName() {
         return fxmlName;
     }
+
+
 }

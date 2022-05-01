@@ -4,7 +4,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import pl.weather.model.GeoIP;
+import pl.weather.model.LocationUserData;
 import pl.weather.model.auxiliaryMethods.DateAndTimeMethods;
+import pl.weather.model.config.ConfigMainSettings;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -63,11 +66,14 @@ public class FiveDaysRightController implements Initializable {
     }
 
 
-    public void setDays(){
-        DateAndTimeMethods.setTextNextDayByLocalDate(day1Right, 1);
-        DateAndTimeMethods.setTextNextDayByLocalDate(day2Right, 2);
-        DateAndTimeMethods.setTextNextDayByLocalDate(day3Right, 3);
-        DateAndTimeMethods.setTextNextDayByLocalDate(day4Right, 4);
-        DateAndTimeMethods.setTextNextDayByLocalDate(day5Right, 5);
+    public void setDays() {
+        GeoIP geoIP = new LocationUserData()
+                .getLocation(ConfigMainSettings.CHECK_IP_URL_PATH);
+        String timeZone = geoIP.getTimeZone();
+        DateAndTimeMethods.setTextNextDay(day1Right, timeZone, 1);
+        DateAndTimeMethods.setTextNextDay(day2Right, timeZone, 2);
+        DateAndTimeMethods.setTextNextDay(day3Right, timeZone, 3);
+        DateAndTimeMethods.setTextNextDay(day4Right, timeZone, 4);
+        DateAndTimeMethods.setTextNextDay(day5Right, timeZone, 5);
     }
 }

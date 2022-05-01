@@ -1,6 +1,7 @@
 package pl.weather.controller;
 
-import com.maxmind.geoip2.exception.GeoIp2Exception;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -8,23 +9,19 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import pl.weather.WeatherManager;
-import pl.weather.model.LocationUserData;
+import pl.weather.model.*;
 import pl.weather.model.auxiliaryMethods.DateAndTimeMethods;
+import pl.weather.model.config.ConfigMainSettings;
 import pl.weather.view.ViewFactory;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GeneralWindowController extends BaseController implements Initializable {
 
-
-//    @FXML
-//    public FiveDaysLeftController fiveDaysLeftController;
-
-//    @FXML
-//    public FiveDaysRightController fiveDaysRightController;
+    @FXML
+    public FiveDaysRightController fiveDaysRightController;
 
     @FXML
     private Label currentDayLabel;
@@ -77,7 +74,6 @@ public class GeneralWindowController extends BaseController implements Initializ
     @FXML
     private Label rightTimeLabel;
 
-
     private boolean flag = false;
 
     public GeneralWindowController(WeatherManager weatherManager, ViewFactory viewFactory, String fxmlName) {
@@ -106,79 +102,76 @@ public class GeneralWindowController extends BaseController implements Initializ
     }
 
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        getWeatherInformation();
+        getDefaultWeatherInformation();
 
-        updatePromptTextInFields();
-        updateTimeFields();
 
-        DateAndTimeMethods.setTextDayByLocalDate(currentDayLabel, 0);
-        leftCityLabel.setText(getUserCityLocation() + "," + getUserCountryCodeLocation());
-        rightCityLabel.setText(getUserCityLocation() + "," + getUserCountryCodeLocation());
 
     }
 
-//    private void getWeatherInformation()  {
-//        if( fieldIsValid(leftLocationField) ) {
-//            OpenWeatherAPIController openWeatherAPIController = null;
-//            String currentWeather = null;
-//            try {
-//                openWeatherAPIController = new OpenWeatherAPIController("Toronto");
-//                openWeatherAPIController.getInformationAboutCity();
-//                currentWeather = String.valueOf(openWeatherAPIController.getCurrentWeatherInformation());
-//            } catch (MalformedURLException e) {
-//                e.printStackTrace();
-//            }
-//            System.out.println(currentWeather);
-//        }
-//    }
+    private void getDefaultWeatherInformation() {
+        GeoIP geoIP = new LocationUserData()
+                .getLocation(ConfigMainSettings.CHECK_IP_URL_PATH);
+        String currentUserLocationName = geoIP.getCity();
+        String country = geoIP.getCountry();
+        String latitude = geoIP.getLatitude();
+        String longitude = geoIP.getLongitude();
+        String timeZone = geoIP.getTimeZone();
 
-    private void updatePromptTextInFields(){
+        leftCityLabel.setText(currentUserLocationName + "," + country);
+        rightCityLabel.setText(currentUserLocationName + "," + country);
+        DateAndTimeMethods.updateClockNow(leftTimeLabel, flag, timeZone);
+        DateAndTimeMethods.updateClockNow(rightTimeLabel, flag, timeZone);
+        DateAndTimeMethods.setTextDay(currentDayLabel, timeZone, 0);
+        String response = new OpenWeatherAPIController().getStringResponseToQueryWeather(latitude, longitude);
+        Gson gson = new Gson();
+        WeatherOneCall weatherOneCall = gson.fromJson(response, WeatherOneCall.class);
+
+        leftTemperatureLabel.setText(weatherOneCall
+                .getCurrent()
+                .getTemp().toString());
+        System.out.println(weatherOneCall.getCurrent().getHumidity());
+        leftPressureLabel.setText(weatherOneCall
+                .getCurrent()
+                .getPressure()
+                .toString());
+        leftHumidityLabel.setText(weatherOneCall
+                .getCurrent()
+                .getHumidity()
+                .toString());
+
+        rightTemperatureLabel.setText(weatherOneCall
+                .getCurrent()
+                .getTemp().toString());
+        System.out.println(weatherOneCall.getCurrent().getHumidity());
+        rightPressureLabel.setText(weatherOneCall
+                .getCurrent()
+                .getPressure()
+                .toString());
+        rightHumidityLabel.setText(weatherOneCall
+                .getCurrent()
+                .getHumidity()
+                .toString());
+
+
+
+    }
+
+
+
+    private void updatePromptTextInFields() {
         fieldIsValid(leftLocationField);
         fieldIsValid(rightLocationField);
     }
 
     private boolean fieldIsValid(TextField field) {
         if (field.getText().isEmpty()) {
-            field.setPromptText("lokalizacja, np.: Londyn");
+            field.setPromptText("Lokalizacja");
             return false;
         }
         return true;
     }
-
-    private void updateTimeFields(){
-        DateAndTimeMethods.updateClockNow(leftTimeLabel, flag);
-        DateAndTimeMethods.updateClockNow(rightTimeLabel, flag);
-    }
-
-
-    private String getUserCityLocation(){
-        try {
-            return new LocationUserData().getLocation().getCity();
-        } catch (IOException | GeoIp2Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    private String getUserCountryCodeLocation(){
-        try {
-            return new LocationUserData().getLocation().getCountry();
-        } catch (IOException | GeoIp2Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-
-
-
-
-
-
-
-
 
 
 

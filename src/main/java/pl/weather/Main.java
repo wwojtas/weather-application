@@ -4,10 +4,15 @@ import com.maxmind.geoip2.exception.GeoIp2Exception;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import pl.weather.controller.OpenWeatherAPIController;
+import pl.weather.model.GeoIP;
 import pl.weather.model.LocationUserData;
+import pl.weather.model.WeatherOneCall;
+import pl.weather.model.config.ConfigMainSettings;
 import pl.weather.view.ViewFactory;
 
 import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
@@ -31,8 +36,6 @@ public class Main extends Application {
 //        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
 //        System.out.println(dtf.format(localTime));
 //
-//        System.out.println( new LocationUserData().getLocation().getLongitude());
-//        System.out.println( new LocationUserData().getLocation().getLatitude());
 
 //        String lat =  new LocationUserData().getLocation().getLatitude();
 //        String lon =  new LocationUserData().getLocation().getLongitude();
@@ -40,6 +43,11 @@ public class Main extends Application {
 //        String daily = "daily";
 //
 //        System.out.println(new OpenWeatherAPIController("London").getStringResponseToQueryWeather());
+        System.out.println(ZonedDateTime.now(ZoneId.of("Europe/Madrid")));
+        GeoIP geoIP = new LocationUserData()
+                .getLocation(ConfigMainSettings.CHECK_IP_URL_PATH);
+        System.out.println(geoIP.getTimeZone());
+
 
 
 

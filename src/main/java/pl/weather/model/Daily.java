@@ -73,7 +73,7 @@ public class Daily {
     @JsonProperty("rain")
     private Double rain;
     @JsonProperty("uvi")
-    private Integer uvi;
+    private Double uvi;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -258,12 +258,12 @@ public class Daily {
     }
 
     @JsonProperty("uvi")
-    public Integer getUvi() {
+    public Double getUvi() {
         return uvi;
     }
 
     @JsonProperty("uvi")
-    public void setUvi(Integer uvi) {
+    public void setUvi(Double uvi) {
         this.uvi = uvi;
     }
 

@@ -12,17 +12,10 @@ import java.net.URLConnection;
 
 public class InternetConnection {
 
-    private static URL getUrlConnection(){
+    protected String getIpAddress(String path) {
         try {
-            return new URL(ConfigMainSettings.CHECK_IP_URL_PATH);
-        } catch (IOException e) {
-            return null;
-        }
-    }
-
-    protected String getIpAddress() {
-        try {
-            BufferedReader bufferedIP = new BufferedReader(new InputStreamReader(getUrlConnection().openStream()));
+            URL url = new URL(path);
+            BufferedReader bufferedIP = new BufferedReader(new InputStreamReader(url.openStream()));
             return bufferedIP.readLine();
         } catch (IOException e) {
            return null;
