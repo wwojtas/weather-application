@@ -25,7 +25,7 @@ public class FeelsLike {
     @JsonProperty("night")
     private Double night;
     @JsonProperty("eve")
-    private Integer eve;
+    private Double eve;
     @JsonProperty("morn")
     private Double morn;
     @JsonIgnore
@@ -52,12 +52,12 @@ public class FeelsLike {
     }
 
     @JsonProperty("eve")
-    public Integer getEve() {
+    public Double getEve() {
         return eve;
     }
 
     @JsonProperty("eve")
-    public void setEve(Integer eve) {
+    public void setEve(Double eve) {
         this.eve = eve;
     }
 

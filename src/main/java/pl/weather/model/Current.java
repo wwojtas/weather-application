@@ -32,63 +32,63 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class Current {
 
     @JsonProperty("dt")
-    private Integer dt;
+    private Double dt;
     @JsonProperty("sunrise")
-    private Integer sunrise;
+    private Double sunrise;
     @JsonProperty("sunset")
-    private Integer sunset;
+    private Double sunset;
     @JsonProperty("temp")
     private Double temp;
     @JsonProperty("feels_like")
     private Double feelsLike;
     @JsonProperty("pressure")
-    private Integer pressure;
+    private Double pressure;
     @JsonProperty("humidity")
-    private Integer humidity;
+    private Double humidity;
     @JsonProperty("dew_point")
     private Double dewPoint;
     @JsonProperty("uvi")
-    private Integer uvi;
+    private Double uvi;
     @JsonProperty("clouds")
-    private Integer clouds;
+    private Double clouds;
     @JsonProperty("visibility")
-    private Integer visibility;
+    private Double visibility;
     @JsonProperty("wind_speed")
     private Double windSpeed;
     @JsonProperty("wind_deg")
-    private Integer windDeg;
+    private Double windDeg;
     @JsonProperty("weather")
     private List<Weather> weather = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("dt")
-    public Integer getDt() {
+    public Double getDt() {
         return dt;
     }
 
     @JsonProperty("dt")
-    public void setDt(Integer dt) {
+    public void setDt(Double dt) {
         this.dt = dt;
     }
 
     @JsonProperty("sunrise")
-    public Integer getSunrise() {
+    public Double getSunrise() {
         return sunrise;
     }
 
     @JsonProperty("sunrise")
-    public void setSunrise(Integer sunrise) {
+    public void setSunrise(Double sunrise) {
         this.sunrise = sunrise;
     }
 
     @JsonProperty("sunset")
-    public Integer getSunset() {
+    public Double getSunset() {
         return sunset;
     }
 
     @JsonProperty("sunset")
-    public void setSunset(Integer sunset) {
+    public void setSunset(Double sunset) {
         this.sunset = sunset;
     }
 
@@ -113,22 +113,22 @@ public class Current {
     }
 
     @JsonProperty("pressure")
-    public Integer getPressure() {
+    public Double getPressure() {
         return pressure;
     }
 
     @JsonProperty("pressure")
-    public void setPressure(Integer pressure) {
+    public void setPressure(Double pressure) {
         this.pressure = pressure;
     }
 
     @JsonProperty("humidity")
-    public Integer getHumidity() {
+    public Double getHumidity() {
         return humidity;
     }
 
     @JsonProperty("humidity")
-    public void setHumidity(Integer humidity) {
+    public void setHumidity(Double humidity) {
         this.humidity = humidity;
     }
 
@@ -143,32 +143,32 @@ public class Current {
     }
 
     @JsonProperty("uvi")
-    public Integer getUvi() {
+    public Double getUvi() {
         return uvi;
     }
 
     @JsonProperty("uvi")
-    public void setUvi(Integer uvi) {
+    public void setUvi(Double uvi) {
         this.uvi = uvi;
     }
 
     @JsonProperty("clouds")
-    public Integer getClouds() {
+    public Double getClouds() {
         return clouds;
     }
 
     @JsonProperty("clouds")
-    public void setClouds(Integer clouds) {
+    public void setClouds(Double clouds) {
         this.clouds = clouds;
     }
 
     @JsonProperty("visibility")
-    public Integer getVisibility() {
+    public Double getVisibility() {
         return visibility;
     }
 
     @JsonProperty("visibility")
-    public void setVisibility(Integer visibility) {
+    public void setVisibility(Double visibility) {
         this.visibility = visibility;
     }
 
@@ -183,12 +183,12 @@ public class Current {
     }
 
     @JsonProperty("wind_deg")
-    public Integer getWindDeg() {
+    public Double getWindDeg() {
         return windDeg;
     }
 
     @JsonProperty("wind_deg")
-    public void setWindDeg(Integer windDeg) {
+    public void setWindDeg(Double windDeg) {
         this.windDeg = windDeg;
     }
 

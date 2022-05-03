@@ -93,7 +93,7 @@
             <Image url="@../images/gauge.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="26.0" fitWidth="28.0" layoutX="416.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="346.0" AnchorPane.leftAnchor="416.0" AnchorPane.rightAnchor="358.0" AnchorPane.topAnchor="258.0">
+      <ImageView fitHeight="26.0" fitWidth="28.0" layoutX="416.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="330.0" AnchorPane.leftAnchor="416.0" AnchorPane.rightAnchor="358.0" AnchorPane.topAnchor="274.0">
          <image>
             <Image url="@../images/humidity.png" />
          </image>

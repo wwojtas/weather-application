@@ -1,16 +1,19 @@
 package pl.weather.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import pl.weather.WeatherManager;
-import pl.weather.model.*;
+import pl.weather.model.GeoIP;
+import pl.weather.model.LocationUserData;
+import pl.weather.model.WeatherOneCall;
 import pl.weather.model.auxiliaryMethods.DateAndTimeMethods;
+import pl.weather.model.config.ConfigAPIOpenWeather;
 import pl.weather.model.config.ConfigMainSettings;
 import pl.weather.view.ViewFactory;
 
@@ -43,6 +46,9 @@ public class GeneralWindowController extends BaseController implements Initializ
 
     @FXML
     private ImageView leftImageView;
+
+    @FXML
+    private ImageView rightImageView;
 
     @FXML
     private TextField leftLocationField;
@@ -104,9 +110,8 @@ public class GeneralWindowController extends BaseController implements Initializ
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        updatePromptTextInFields();
         getDefaultWeatherInformation();
-
-
 
     }
 
@@ -119,40 +124,37 @@ public class GeneralWindowController extends BaseController implements Initializ
         String longitude = geoIP.getLongitude();
         String timeZone = geoIP.getTimeZone();
 
-        leftCityLabel.setText(currentUserLocationName + "," + country);
-        rightCityLabel.setText(currentUserLocationName + "," + country);
+        OpenWeatherAPIController openWeatherAPIController = new OpenWeatherAPIController(latitude, longitude);
+
+        DateAndTimeMethods.setTextDay(currentDayLabel, timeZone, 0);
         DateAndTimeMethods.updateClockNow(leftTimeLabel, flag, timeZone);
         DateAndTimeMethods.updateClockNow(rightTimeLabel, flag, timeZone);
-        DateAndTimeMethods.setTextDay(currentDayLabel, timeZone, 0);
-        String response = new OpenWeatherAPIController().getStringResponseToQueryWeather(latitude, longitude);
-        Gson gson = new Gson();
-        WeatherOneCall weatherOneCall = gson.fromJson(response, WeatherOneCall.class);
 
-        leftTemperatureLabel.setText(weatherOneCall
-                .getCurrent()
-                .getTemp().toString());
-        System.out.println(weatherOneCall.getCurrent().getHumidity());
-        leftPressureLabel.setText(weatherOneCall
-                .getCurrent()
-                .getPressure()
-                .toString());
-        leftHumidityLabel.setText(weatherOneCall
-                .getCurrent()
-                .getHumidity()
-                .toString());
+        leftCityLabel.setText(currentUserLocationName + "," + country);
+        rightCityLabel.setText(currentUserLocationName + "," + country);
 
-        rightTemperatureLabel.setText(weatherOneCall
-                .getCurrent()
-                .getTemp().toString());
-        System.out.println(weatherOneCall.getCurrent().getHumidity());
-        rightPressureLabel.setText(weatherOneCall
-                .getCurrent()
-                .getPressure()
-                .toString());
-        rightHumidityLabel.setText(weatherOneCall
-                .getCurrent()
-                .getHumidity()
-                .toString());
+        leftTemperatureLabel.setText(openWeatherAPIController.getCurrentTemperature());
+        leftPressureLabel.setText(openWeatherAPIController.getCurrentPressure());
+        leftHumidityLabel.setText(openWeatherAPIController.getCurrentHumidity());
+
+        rightTemperatureLabel.setText(openWeatherAPIController.getCurrentTemperature());
+        rightPressureLabel.setText(openWeatherAPIController.getCurrentPressure());
+        rightHumidityLabel.setText(openWeatherAPIController.getCurrentHumidity());
+
+        leftImageView.setImage(openWeatherAPIController.getCurrentIcon());
+        rightImageView.setImage(openWeatherAPIController.getCurrentIcon());
+
+
+        // weather icons
+//        String iconIDCurrentDay = weatherOneCall.getCurrent().getWeather().get(0).getIcon();
+//        String iconID1day = weatherOneCall.getDaily().get(0).getWeather().get(0).getIcon();
+//        String iconID2day = weatherOneCall.getDaily().get(1).getWeather().get(0).getIcon();
+//        String iconID3day = weatherOneCall.getDaily().get(2).getWeather().get(0).getIcon();
+//        String iconID4day = weatherOneCall.getDaily().get(3).getWeather().get(0).getIcon();
+//        String iconID5day = weatherOneCall.getDaily().get(4).getWeather().get(0).getIcon();
+
+
+
 
 
 

@@ -30,7 +30,7 @@ public class WeatherOneCall {
     @JsonProperty("timezone")
     private String timezone;
     @JsonProperty("timezone_offset")
-    private Integer timezoneOffset;
+    private Double timezoneOffset;
     @JsonProperty("current")
     private Current current;
     @JsonProperty("daily")
@@ -69,12 +69,12 @@ public class WeatherOneCall {
     }
 
     @JsonProperty("timezone_offset")
-    public Integer getTimezoneOffset() {
+    public Double getTimezoneOffset() {
         return timezoneOffset;
     }
 
     @JsonProperty("timezone_offset")
-    public void setTimezoneOffset(Integer timezoneOffset) {
+    public void setTimezoneOffset(Double timezoneOffset) {
         this.timezoneOffset = timezoneOffset;
     }
 

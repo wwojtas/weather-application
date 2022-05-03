@@ -3,12 +3,14 @@ package pl.weather.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import pl.weather.model.GeoIP;
 import pl.weather.model.LocationUserData;
 import pl.weather.model.auxiliaryMethods.DateAndTimeMethods;
 import pl.weather.model.config.ConfigMainSettings;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -61,11 +63,11 @@ public class FiveDaysLeftController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setDays();
+        setDaysData();
     }
 
 
-    public void setDays() {
+    public void setDaysData() {
         GeoIP geoIP = new LocationUserData()
                 .getLocation(ConfigMainSettings.CHECK_IP_URL_PATH);
         String timeZone = geoIP.getTimeZone();
@@ -74,6 +76,5 @@ public class FiveDaysLeftController implements Initializable {
         DateAndTimeMethods.setTextNextDay(day3Left, timeZone, 3);
         DateAndTimeMethods.setTextNextDay(day4Left, timeZone, 4);
         DateAndTimeMethods.setTextNextDay(day5Left, timeZone, 5);
-
     }
 }

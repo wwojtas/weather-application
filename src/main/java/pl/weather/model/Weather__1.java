@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class Weather__1 {
 
     @JsonProperty("id")
-    private Integer id;
+    private Double id;
     @JsonProperty("main")
     private String main;
     @JsonProperty("description")
@@ -32,12 +32,12 @@ public class Weather__1 {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("id")
-    public Integer getId() {
+    public Double getId() {
         return id;
     }
 
     @JsonProperty("id")
-    public void setId(Integer id) {
+    public void setId(Double id) {
         this.id = id;
     }
 
