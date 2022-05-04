@@ -1,5 +1,7 @@
 package pl.weather.model.auxiliaryMethods;
 
+import pl.weather.model.config.ConfigMainSettings;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.Scanner;
@@ -20,5 +22,19 @@ public class StringMethods {
         scanner.close();
         return builder;
     }
+
+    public static String addTempUnit(){
+        return ConfigMainSettings.TEMPERATURE_UNIT;
+    }
+
+    public static String addPressureUnit(){
+        return ConfigMainSettings.PRESSURE_UNIT;
+    }
+
+    public static String addHumidityUnit(){
+        return ConfigMainSettings.HUMIDITY_UNIT;
+    }
+
+
 
 }

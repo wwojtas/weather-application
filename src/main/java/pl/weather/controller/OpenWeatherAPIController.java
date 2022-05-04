@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 import org.json.simple.JSONObject;
 import pl.weather.model.*;
 import pl.weather.model.config.ConfigAPIOpenWeather;
+import pl.weather.model.config.ConfigMainSettings;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -42,7 +43,7 @@ public class OpenWeatherAPIController  {
             + ConfigAPIOpenWeather.BEFORE_API_KEY
             + ConfigAPIOpenWeather.API_KEY;
 
-    public Location getInformationAboutLocation() throws MalformedURLException {
+    private Location getInformationAboutLocation() throws MalformedURLException {
         Connector apiConnectorCity = new Connector();
         JSONObject jsonData = (JSONObject) (apiConnectorCity.getJSONArray(queryLocation)).get(0);
         String locationName = jsonData.get("name").toString();
@@ -54,7 +55,7 @@ public class OpenWeatherAPIController  {
         return location;
     }
 
-    public String getStringResponseToQueryWeather(){
+    private String getStringResponseToQueryWeather(){
         String queryWeather = ConfigAPIOpenWeather.OPEN_WEATHER_ONE_CALL_MAIN_QUERY
                 + ConfigAPIOpenWeather.LATITUDE_PREFIX
                 + getLatitude()
@@ -69,47 +70,69 @@ public class OpenWeatherAPIController  {
         return downloadedJSON;
     }
 
-    private WeatherOneCall getCurrentWeather(){
+    private WeatherOneCall getWeatherOneCall(){
         String response = getStringResponseToQueryWeather();
         WeatherOneCall weatherOneCall = gson.fromJson(response, WeatherOneCall.class);
         return weatherOneCall;
     }
 
     public String getCurrentTemperature(){
-        String temp = getCurrentWeather().getCurrent().getTemp().toString();
+        String temp = String.format("%.0f", getWeatherOneCall().getCurrent().getTemp());
         return temp;
     }
 
     public String getCurrentPressure(){
-        String pressure = getCurrentWeather().getCurrent().getPressure().toString();
+        String pressure = String.format("%.0f", getWeatherOneCall().getCurrent().getPressure());
         return pressure;
     }
 
     public String getCurrentHumidity() {
-        String humidity = getCurrentWeather().getCurrent().getHumidity().toString();
+        String humidity = String.format("%.0f", getWeatherOneCall().getCurrent().getHumidity());
         return humidity;
     }
 
-    public String getCurrentIconIdCode(){
-        String imageId = getCurrentWeather().getCurrent().getWeather().get(0).getIcon();
-        return imageId;
-    }
-
-    private String getQueryToIconApi(){
+    private String getQueryToApiIcons(String imageIdCode) {
         String queryToApi = ConfigAPIOpenWeather.OPEN_WEATHER_ICON_CALL
-                + getCurrentIconIdCode()
+                + imageIdCode
                 + ConfigAPIOpenWeather.ICON_CALL_LAST_PARAMETER;
         return queryToApi;
     }
 
-    public Image getCurrentIcon() {
+    private Image getImage(String imageIdCode) {
+        String queryToApi = getQueryToApiIcons(imageIdCode);
         URL url = null;
         try {
-            url = new URL(getQueryToIconApi());
+            url = new URL(queryToApi);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
         return new Image(String.valueOf(url));
     }
+
+    public Image getCurrentDayIcon() {
+        String imageIdCode = getWeatherOneCall().getCurrent().getWeather().get(0).getIcon();
+        return getImage(imageIdCode);
+    }
+
+    public Image getNextDayIcon(int numberOfDay){
+        String imageIdCode = getWeatherOneCall().getDaily().get(numberOfDay).getWeather().get(0).getIcon();
+        return getImage(imageIdCode);
+    }
+
+    public String getNightTemperatureNextDay(int numberOfDay){
+        String temp = String.format( "%.0f", getWeatherOneCall().getDaily().get(numberOfDay).getTemp().getNight() );
+        return temp;
+    }
+
+    public String getDailyTemperatureNextDay(int numberOfDay){
+        String temp = String.format("%.0f", getWeatherOneCall().getDaily().get(numberOfDay).getTemp().getDay());
+        return temp;
+    }
+
+
+
+
+
+
 }
 

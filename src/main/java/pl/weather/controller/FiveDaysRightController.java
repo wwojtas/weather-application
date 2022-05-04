@@ -68,7 +68,7 @@ public class FiveDaysRightController implements Initializable {
 
     public void setDays() {
         GeoIP geoIP = new LocationUserData()
-                .getLocation(ConfigMainSettings.CHECK_IP_URL_PATH);
+                .getUserLocation(ConfigMainSettings.CHECK_IP_URL_PATH);
         String timeZone = geoIP.getTimeZone();
         DateAndTimeMethods.setTextNextDay(day1Right, timeZone, 1);
         DateAndTimeMethods.setTextNextDay(day2Right, timeZone, 2);

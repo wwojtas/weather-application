@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -10,13 +11,16 @@
    <children>
       <HBox prefHeight="46.0" prefWidth="401.0" styleClass="oneDayHboxField">
          <children>
-            <Label fx:id="day1Left" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="50.0" prefWidth="143.0" text="01.02.2022">
+            <Label fx:id="day1Left" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="50.0" prefWidth="143.0" text="01.02.2022">
                <font>
                   <Font size="18.0" />
                </font>
+               <HBox.margin>
+                  <Insets left="25.0" />
+               </HBox.margin>
             </Label>
             <ImageView fx:id="icon1weatherLeft" fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="temperature1Left" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="194.0" text="9 ℃ / 3 ℃" textAlignment="CENTER">
+            <Label fx:id="temperature1Left" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="194.0" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
@@ -25,13 +29,16 @@
       </HBox>
       <HBox prefHeight="46.0" prefWidth="401.0" styleClass="oneDayHboxField">
          <children>
-            <Label fx:id="day2Left" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="50.0" prefWidth="143.0" text="01.02.2022">
+            <Label fx:id="day2Left" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="50.0" prefWidth="143.0" text="01.02.2022">
                <font>
                   <Font size="18.0" />
                </font>
+               <HBox.margin>
+                  <Insets left="25.0" />
+               </HBox.margin>
             </Label>
             <ImageView fx:id="icon2weatherLeft" fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="temperature2Left" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="194.0" text="9 ℃ / 3 ℃" textAlignment="CENTER">
+            <Label fx:id="temperature2Left" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="194.0" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
@@ -40,13 +47,16 @@
       </HBox>
       <HBox prefHeight="46.0" prefWidth="401.0" styleClass="oneDayHboxField">
          <children>
-            <Label fx:id="day3Left" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="50.0" prefWidth="143.0" text="01.02.2022">
+            <Label fx:id="day3Left" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="50.0" prefWidth="143.0" text="01.02.2022">
                <font>
                   <Font size="18.0" />
                </font>
+               <HBox.margin>
+                  <Insets left="25.0" />
+               </HBox.margin>
             </Label>
             <ImageView fx:id="icon3weatherLeft" fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="temperature3Left" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="194.0" text="9 ℃ / 3 ℃" textAlignment="CENTER">
+            <Label fx:id="temperature3Left" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="194.0" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
@@ -55,13 +65,16 @@
       </HBox>
       <HBox prefHeight="46.0" prefWidth="401.0" styleClass="oneDayHboxField">
          <children>
-            <Label fx:id="day4Left" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="50.0" prefWidth="143.0" text="01.02.2022">
+            <Label fx:id="day4Left" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="50.0" prefWidth="143.0" text="01.02.2022">
                <font>
                   <Font size="18.0" />
                </font>
+               <HBox.margin>
+                  <Insets left="25.0" />
+               </HBox.margin>
             </Label>
             <ImageView fx:id="icon4weatherLeft" fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="temperature4Left" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="194.0" text="9 ℃ / 3 ℃" textAlignment="CENTER">
+            <Label fx:id="temperature4Left" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="194.0" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
@@ -70,13 +83,16 @@
       </HBox>
       <HBox prefHeight="46.0" prefWidth="401.0" styleClass="oneDayHboxField">
          <children>
-            <Label fx:id="day5Left" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="50.0" prefWidth="143.0" text="01.02.2022">
+            <Label fx:id="day5Left" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="50.0" prefWidth="143.0" text="01.02.2022">
                <font>
                   <Font size="18.0" />
                </font>
+               <HBox.margin>
+                  <Insets left="25.0" />
+               </HBox.margin>
             </Label>
             <ImageView fx:id="icon5weatherLeft" fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="temperature5Left" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="194.0" text="9 ℃ / 3 ℃" textAlignment="CENTER">
+            <Label fx:id="temperature5Left" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="194.0" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
