@@ -1,4 +1,4 @@
-package pl.weather.model;
+package pl.weather.model.weather;
 
 import java.util.HashMap;
 import java.util.Map;

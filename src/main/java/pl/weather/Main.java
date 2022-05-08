@@ -3,9 +3,12 @@ package pl.weather;
 import com.maxmind.geoip2.exception.GeoIp2Exception;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import pl.weather.controller.GeneralWindowController;
 import pl.weather.controller.OpenWeatherAPIController;
+import pl.weather.model.Connector;
 import pl.weather.model.GeoIP;
 import pl.weather.model.LocationUserData;
+import pl.weather.model.auxiliaryMethods.StringMethods;
 import pl.weather.model.config.ConfigMainSettings;
 import pl.weather.view.ViewFactory;
 
@@ -33,16 +36,15 @@ public class Main extends Application {
 //        System.out.println(dtf.format(localTime));
 //
 
-//        String lat =  new LocationUserData().getLocation().getLatitude();
-//        String lon =  new LocationUserData().getLocation().getLongitude();
-//        String current = "current";
-//        String daily = "daily";
 //
 //        System.out.println(new OpenWeatherAPIController("London").getStringResponseToQueryWeather());
         System.out.println(ZonedDateTime.now(ZoneId.of("Europe/Madrid")));
-        GeoIP geoIP = new LocationUserData()
-                .getUserLocation(ConfigMainSettings.CHECK_IP_URL_PATH);
-        System.out.println(geoIP.getTimeZone());
+//        GeoIP geoIP = new LocationUserData()
+//                .getUserLocation(ConfigMainSettings.CHECK_IP_URL_PATH);
+//        System.out.println(geoIP.getTimeZone());
+//        String query = "http://api.openweathermap.org/geo/1.0/direct?q=Londyn&limit=3&appid=6023e1e73e703b8a2e0035f150fb8a9e";
+//        String response = new Connector().getResponseFromQueryToAPI(query);
+//        System.out.println(response);
 
 
 

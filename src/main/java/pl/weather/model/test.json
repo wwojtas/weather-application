@@ -1,348 +1,110 @@
-{
-  "lat": 51.2526,
-  "lon": 22.5574,
-  "timezone": "Europe/Warsaw",
-  "timezone_offset": 7200,
-  "current": {
-    "dt": 1651001767,
-    "sunrise": 1650942732,
-    "sunset": 1650994962,
-    "temp": 8.11,
-    "feels_like": 6.94,
-    "pressure": 1017,
-    "humidity": 100,
-    "dew_point": 8.11,
-    "uvi": 0,
-    "clouds": 20,
-    "visibility": 10000,
-    "wind_speed": 2.06,
-    "wind_deg": 310,
-    "weather": [
-      {
-        "id": 801,
-        "main": "Clouds",
-        "description": "few clouds",
-        "icon": "02n"
-      }
-    ]
-  },
-  "daily": [
-    {
-      "dt": 1650967200,
-      "sunrise": 1650942732,
-      "sunset": 1650994962,
-      "moonrise": 1650939000,
-      "moonset": 1650976080,
-      "moon_phase": 0.85,
-      "temp": {
-        "day": 10.21,
-        "min": 5.97,
-        "max": 11.86,
-        "night": 7.88,
-        "eve": 9.96,
-        "morn": 7.41
-      },
-      "feels_like": {
-        "day": 9.19,
-        "night": 6.74,
-        "eve": 8.26,
-        "morn": 5.34
-      },
-      "pressure": 1015,
-      "humidity": 73,
-      "dew_point": 5.53,
-      "wind_speed": 5.03,
-      "wind_deg": 306,
-      "wind_gust": 6.94,
-      "weather": [
-        {
-          "id": 500,
-          "main": "Rain",
-          "description": "light rain",
-          "icon": "10d"
-        }
-      ],
-      "clouds": 100,
-      "pop": 0.75,
-      "rain": 0.65,
-      "uvi": 1.52
+[
+  {
+    "name": "London",
+    "local_names": {
+      "os": "Лондон",
+      "en": "London",
+      "ab": "Лондан",
+      "ko": "런던",
+      "oc": "Londres",
+      "eu": "Londres",
+      "mt": "Londra",
+      "kw": "Loundres",
+      "hu": "London",
+      "uk": "Лондон",
+      "feature_name": "London",
+      "sk": "Londýn",
+      "ar": "لندن",
+      "ml": "ലണ്ടൻ",
+      "he": "לונדון",
+      "cu": "Лондонъ",
+      "ascii": "London",
+      "ku": "London",
+      "no": "London",
+      "kk": "Лондон",
+      "bo": "ལོན་ཊོན།",
+      "es": "Londres",
+      "mn": "Лондон",
+      "tt": "Лондон",
+      "ja": "ロンドン",
+      "co": "Londra",
+      "lt": "Londonas",
+      "mi": "Rānana",
+      "rm": "Londra",
+      "gl": "Londres",
+      "mr": "लंडन",
+      "eo": "Londono",
+      "ur": "لندن",
+      "fi": "Lontoo",
+      "sc": "Londra",
+      "pl": "Londyn",
+      "my": "လန်ဒန်မြို့",
+      "si": "ලන්ඩන්",
+      "cs": "Londýn",
+      "nl": "Londen",
+      "sr": "Лондон",
+      "sa": "लन्डन्",
+      "an": "Londres",
+      "ca": "Londres",
+      "tr": "Londra",
+      "li": "Londe",
+      "fy": "Londen",
+      "ro": "Londra",
+      "af": "Londen",
+      "yo": "Lọndọnu",
+      "fr": "Londres",
+      "sq": "Londra",
+      "el": "Λονδίνο",
+      "am": "ለንደን",
+      "th": "ลอนดอน",
+      "wo": "Londar",
+      "mk": "Лондон",
+      "zu": "ILondon",
+      "bg": "Лондон",
+      "ta": "இலண்டன்",
+      "sl": "London",
+      "be": "Лондан",
+      "lv": "Londona",
+      "gu": "લંડન",
+      "it": "Londra",
+      "tl": "Londres",
+      "ne": "लण्डन",
+      "ba": "Лондон",
+      "kn": "ಲಂಡನ್",
+      "gn": "Londye",
+      "br": "Londrez",
+      "ky": "Лондон",
+      "is": "Lundúnir",
+      "te": "లండన్",
+      "ka": "ლონდონი",
+      "yi": "לאנדאן",
+      "cy": "Llundain",
+      "ht": "Lonn",
+      "gv": "Lunnin",
+      "ps": "لندن",
+      "or": "ଲଣ୍ଡନ",
+      "ln": "Londoni",
+      "lo": "ລອນດອນ",
+      "ga": "Londain",
+      "pt": "Londres",
+      "vi": "Luân Đôn",
+      "hy": "Լոնդոն",
+      "sv": "London",
+      "fa": "لندن",
+      "ru": "Лондон",
+      "et": "London",
+      "kv": "Лондон",
+      "tg": "Лондон",
+      "zh": "伦敦",
+      "gd": "Lunnainn",
+      "de": "London",
+      "cv": "Лондон",
+      "hi": "लंदन",
+      "bn": "লন্ডন"
     },
-    {
-      "dt": 1651053600,
-      "sunrise": 1651029015,
-      "sunset": 1651081461,
-      "moonrise": 1651026360,
-      "moonset": 1651067220,
-      "moon_phase": 0.89,
-      "temp": {
-        "day": 11.98,
-        "min": 4.54,
-        "max": 13.95,
-        "night": 7.78,
-        "eve": 13.13,
-        "morn": 6.23
-      },
-      "feels_like": {
-        "day": 10.85,
-        "night": 5.62,
-        "eve": 12.07,
-        "morn": 4.98
-      },
-      "pressure": 1022,
-      "humidity": 62,
-      "dew_point": 4.86,
-      "wind_speed": 3.47,
-      "wind_deg": 48,
-      "wind_gust": 9.67,
-      "weather": [
-        {
-          "id": 500,
-          "main": "Rain",
-          "description": "light rain",
-          "icon": "10d"
-        }
-      ],
-      "clouds": 100,
-      "pop": 0.43,
-      "rain": 0.41,
-      "uvi": 3.76
-    },
-    {
-      "dt": 1651140000,
-      "sunrise": 1651115299,
-      "sunset": 1651167960,
-      "moonrise": 1651113540,
-      "moonset": 1651158120,
-      "moon_phase": 0.92,
-      "temp": {
-        "day": 12.57,
-        "min": 6.14,
-        "max": 13.49,
-        "night": 6.9,
-        "eve": 12.68,
-        "morn": 6.41
-      },
-      "feels_like": {
-        "day": 11.19,
-        "night": 4.96,
-        "eve": 11.36,
-        "morn": 4.48
-      },
-      "pressure": 1027,
-      "humidity": 50,
-      "dew_point": 2.28,
-      "wind_speed": 4.32,
-      "wind_deg": 47,
-      "wind_gust": 8.7,
-      "weather": [
-        {
-          "id": 802,
-          "main": "Clouds",
-          "description": "scattered clouds",
-          "icon": "03d"
-        }
-      ],
-      "clouds": 48,
-      "pop": 0.03,
-      "uvi": 4.81
-    },
-    {
-      "dt": 1651226400,
-      "sunrise": 1651201585,
-      "sunset": 1651254458,
-      "moonrise": 1651200780,
-      "moonset": 1651248960,
-      "moon_phase": 0.95,
-      "temp": {
-        "day": 14.07,
-        "min": 7.4,
-        "max": 14.45,
-        "night": 8.19,
-        "eve": 13.71,
-        "morn": 7.69
-      },
-      "feels_like": {
-        "day": 12.73,
-        "night": 8.19,
-        "eve": 12.44,
-        "morn": 6.25
-      },
-      "pressure": 1026,
-      "humidity": 46,
-      "dew_point": 2.53,
-      "wind_speed": 3.82,
-      "wind_deg": 329,
-      "wind_gust": 4.48,
-      "weather": [
-        {
-          "id": 801,
-          "main": "Clouds",
-          "description": "few clouds",
-          "icon": "02d"
-        }
-      ],
-      "clouds": 16,
-      "pop": 0.31,
-      "uvi": 4.07
-    },
-    {
-      "dt": 1651312800,
-      "sunrise": 1651287872,
-      "sunset": 1651340957,
-      "moonrise": 1651288020,
-      "moonset": 1651339860,
-      "moon_phase": 0,
-      "temp": {
-        "day": 13.78,
-        "min": 6.4,
-        "max": 14.5,
-        "night": 7.74,
-        "eve": 14.05,
-        "morn": 6.48
-      },
-      "feels_like": {
-        "day": 12.55,
-        "night": 6.5,
-        "eve": 12.82,
-        "morn": 5.62
-      },
-      "pressure": 1024,
-      "humidity": 51,
-      "dew_point": 3.85,
-      "wind_speed": 2.07,
-      "wind_deg": 159,
-      "wind_gust": 2.07,
-      "weather": [
-        {
-          "id": 500,
-          "main": "Rain",
-          "description": "light rain",
-          "icon": "10d"
-        }
-      ],
-      "clouds": 96,
-      "pop": 0.83,
-      "rain": 0.75,
-      "uvi": 3.86
-    },
-    {
-      "dt": 1651399200,
-      "sunrise": 1651374160,
-      "sunset": 1651427455,
-      "moonrise": 1651375320,
-      "moonset": 1651430640,
-      "moon_phase": 0.02,
-      "temp": {
-        "day": 15.58,
-        "min": 7.03,
-        "max": 15.77,
-        "night": 9.11,
-        "eve": 14.76,
-        "morn": 8.19
-      },
-      "feels_like": {
-        "day": 14.45,
-        "night": 7.78,
-        "eve": 13.75,
-        "morn": 8.19
-      },
-      "pressure": 1020,
-      "humidity": 48,
-      "dew_point": 4.41,
-      "wind_speed": 2.55,
-      "wind_deg": 340,
-      "wind_gust": 2.99,
-      "weather": [
-        {
-          "id": 500,
-          "main": "Rain",
-          "description": "light rain",
-          "icon": "10d"
-        }
-      ],
-      "clouds": 49,
-      "pop": 0.39,
-      "rain": 0.8,
-      "uvi": 4.19
-    },
-    {
-      "dt": 1651485600,
-      "sunrise": 1651460450,
-      "sunset": 1651513953,
-      "moonrise": 1651462860,
-      "moonset": 1651521420,
-      "moon_phase": 0.05,
-      "temp": {
-        "day": 10.44,
-        "min": 7.21,
-        "max": 13.47,
-        "night": 7.6,
-        "eve": 12.61,
-        "morn": 7.21
-      },
-      "feels_like": {
-        "day": 9.63,
-        "night": 5.5,
-        "eve": 11.57,
-        "morn": 5.21
-      },
-      "pressure": 1017,
-      "humidity": 80,
-      "dew_point": 7.01,
-      "wind_speed": 4.46,
-      "wind_deg": 303,
-      "wind_gust": 6.53,
-      "weather": [
-        {
-          "id": 804,
-          "main": "Clouds",
-          "description": "overcast clouds",
-          "icon": "04d"
-        }
-      ],
-      "clouds": 100,
-      "pop": 0.22,
-      "uvi": 5
-    },
-    {
-      "dt": 1651572000,
-      "sunrise": 1651546741,
-      "sunset": 1651600451,
-      "moonrise": 1651550640,
-      "moonset": 1651612020,
-      "moon_phase": 0.08,
-      "temp": {
-        "day": 12.06,
-        "min": 6.46,
-        "max": 13.33,
-        "night": 7.02,
-        "eve": 13.33,
-        "morn": 8.13
-      },
-      "feels_like": {
-        "day": 11.23,
-        "night": 5.64,
-        "eve": 12,
-        "morn": 5.86
-      },
-      "pressure": 1015,
-      "humidity": 73,
-      "dew_point": 7.24,
-      "wind_speed": 6.53,
-      "wind_deg": 288,
-      "wind_gust": 8.39,
-      "weather": [
-        {
-          "id": 500,
-          "main": "Rain",
-          "description": "light rain",
-          "icon": "10d"
-        }
-      ],
-      "clouds": 90,
-      "pop": 0.57,
-      "rain": 0.4,
-      "uvi": 5
-    }
-  ]
-}
+    "lat": 51.5073219,
+    "lon": -0.1276474,
+    "country": "GB",
+    "state": "England"
+  }
+]

@@ -5,10 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import pl.weather.WeatherManager;
-import pl.weather.controller.AboutApplicationController;
-import pl.weather.controller.BaseController;
-import pl.weather.controller.ErrorApplicationController;
-import pl.weather.controller.GeneralWindowController;
+import pl.weather.controller.*;
 
 import java.io.IOException;
 
@@ -21,12 +18,14 @@ public class ViewFactory {
     }
 
     public void showGeneralWindow() {
-        BaseController controller = new GeneralWindowController(weatherManager, this, "/fxml/GeneralWindow.fxml");
+        BaseController controller = new GeneralWindowController(weatherManager, this,
+                "/fxml/GeneralWindow.fxml");
         initializeStage(controller);
     }
 
     public void showAboutApplication(){
-        BaseController controller = new AboutApplicationController(weatherManager, this, "/fxml/AboutApplication.fxml");
+        BaseController controller = new AboutApplicationController(weatherManager, this,
+                "/fxml/AboutApplication.fxml");
         initializeStage(controller);
     }
 

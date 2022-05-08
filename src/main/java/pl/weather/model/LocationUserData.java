@@ -8,7 +8,6 @@ import java.net.InetAddress;
 
 public class LocationUserData {
 
-
     public GeoIP getUserLocation(String userIpAdress)  {
         String ipAddress = new InternetConnection().getIpAddress(userIpAdress);
         CityResponse cityResponse = null;

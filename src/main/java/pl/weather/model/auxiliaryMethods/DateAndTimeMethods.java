@@ -9,9 +9,9 @@ import java.time.format.DateTimeFormatter;
 
 public class DateAndTimeMethods {
 
-    public static void updateClockNow(Label label, boolean flag, String timezone) {
+    public static void updateClockNow(Label label, String timezone) {
         Thread thread = new Thread(() -> {
-            while (!flag) {
+            while (true) {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {

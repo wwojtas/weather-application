@@ -1,4 +1,4 @@
-package pl.weather.model;
+package pl.weather.model.weather;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,20 +16,25 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "dt",
         "sunrise",
         "sunset",
+        "moonrise",
+        "moonset",
+        "moon_phase",
         "temp",
         "feels_like",
         "pressure",
         "humidity",
         "dew_point",
-        "uvi",
-        "clouds",
-        "visibility",
         "wind_speed",
         "wind_deg",
-        "weather"
+        "wind_gust",
+        "weather",
+        "clouds",
+        "pop",
+        "rain",
+        "uvi"
 })
 @Generated("jsonschema2pojo")
-public class Current {
+public class Daily {
 
     @JsonProperty("dt")
     private Double dt;
@@ -37,28 +42,38 @@ public class Current {
     private Double sunrise;
     @JsonProperty("sunset")
     private Double sunset;
+    @JsonProperty("moonrise")
+    private Double moonrise;
+    @JsonProperty("moonset")
+    private Double moonset;
+    @JsonProperty("moon_phase")
+    private Double moonPhase;
     @JsonProperty("temp")
-    private Double temp;
+    private Temp temp;
     @JsonProperty("feels_like")
-    private Double feelsLike;
+    private FeelsLike feelsLike;
     @JsonProperty("pressure")
     private Double pressure;
     @JsonProperty("humidity")
     private Double humidity;
     @JsonProperty("dew_point")
     private Double dewPoint;
-    @JsonProperty("uvi")
-    private Double uvi;
-    @JsonProperty("clouds")
-    private Double clouds;
-    @JsonProperty("visibility")
-    private Double visibility;
     @JsonProperty("wind_speed")
     private Double windSpeed;
     @JsonProperty("wind_deg")
     private Double windDeg;
+    @JsonProperty("wind_gust")
+    private Double windGust;
     @JsonProperty("weather")
-    private List<Weather> weather = null;
+    private List<Weather__1> weather = null;
+    @JsonProperty("clouds")
+    private Double clouds;
+    @JsonProperty("pop")
+    private Double pop;
+    @JsonProperty("rain")
+    private Double rain;
+    @JsonProperty("uvi")
+    private Double uvi;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -92,23 +107,53 @@ public class Current {
         this.sunset = sunset;
     }
 
+    @JsonProperty("moonrise")
+    public Double getMoonrise() {
+        return moonrise;
+    }
+
+    @JsonProperty("moonrise")
+    public void setMoonrise(Double moonrise) {
+        this.moonrise = moonrise;
+    }
+
+    @JsonProperty("moonset")
+    public Double getMoonset() {
+        return moonset;
+    }
+
+    @JsonProperty("moonset")
+    public void setMoonset(Double moonset) {
+        this.moonset = moonset;
+    }
+
+    @JsonProperty("moon_phase")
+    public Double getMoonPhase() {
+        return moonPhase;
+    }
+
+    @JsonProperty("moon_phase")
+    public void setMoonPhase(Double moonPhase) {
+        this.moonPhase = moonPhase;
+    }
+
     @JsonProperty("temp")
-    public Double getTemp() {
+    public Temp getTemp() {
         return temp;
     }
 
     @JsonProperty("temp")
-    public void setTemp(Double temp) {
+    public void setTemp(Temp temp) {
         this.temp = temp;
     }
 
     @JsonProperty("feels_like")
-    public Double getFeelsLike() {
+    public FeelsLike getFeelsLike() {
         return feelsLike;
     }
 
     @JsonProperty("feels_like")
-    public void setFeelsLike(Double feelsLike) {
+    public void setFeelsLike(FeelsLike feelsLike) {
         this.feelsLike = feelsLike;
     }
 
@@ -142,36 +187,6 @@ public class Current {
         this.dewPoint = dewPoint;
     }
 
-    @JsonProperty("uvi")
-    public Double getUvi() {
-        return uvi;
-    }
-
-    @JsonProperty("uvi")
-    public void setUvi(Double uvi) {
-        this.uvi = uvi;
-    }
-
-    @JsonProperty("clouds")
-    public Double getClouds() {
-        return clouds;
-    }
-
-    @JsonProperty("clouds")
-    public void setClouds(Double clouds) {
-        this.clouds = clouds;
-    }
-
-    @JsonProperty("visibility")
-    public Double getVisibility() {
-        return visibility;
-    }
-
-    @JsonProperty("visibility")
-    public void setVisibility(Double visibility) {
-        this.visibility = visibility;
-    }
-
     @JsonProperty("wind_speed")
     public Double getWindSpeed() {
         return windSpeed;
@@ -192,14 +207,64 @@ public class Current {
         this.windDeg = windDeg;
     }
 
+    @JsonProperty("wind_gust")
+    public Double getWindGust() {
+        return windGust;
+    }
+
+    @JsonProperty("wind_gust")
+    public void setWindGust(Double windGust) {
+        this.windGust = windGust;
+    }
+
     @JsonProperty("weather")
-    public List<Weather> getWeather() {
+    public List<Weather__1> getWeather() {
         return weather;
     }
 
     @JsonProperty("weather")
-    public void setWeather(List<Weather> weather) {
+    public void setWeather(List<Weather__1> weather) {
         this.weather = weather;
+    }
+
+    @JsonProperty("clouds")
+    public Double getClouds() {
+        return clouds;
+    }
+
+    @JsonProperty("clouds")
+    public void setClouds(Double clouds) {
+        this.clouds = clouds;
+    }
+
+    @JsonProperty("pop")
+    public Double getPop() {
+        return pop;
+    }
+
+    @JsonProperty("pop")
+    public void setPop(Double pop) {
+        this.pop = pop;
+    }
+
+    @JsonProperty("rain")
+    public Double getRain() {
+        return rain;
+    }
+
+    @JsonProperty("rain")
+    public void setRain(Double rain) {
+        this.rain = rain;
+    }
+
+    @JsonProperty("uvi")
+    public Double getUvi() {
+        return uvi;
+    }
+
+    @JsonProperty("uvi")
+    public void setUvi(Double uvi) {
+        this.uvi = uvi;
     }
 
     @JsonAnyGetter

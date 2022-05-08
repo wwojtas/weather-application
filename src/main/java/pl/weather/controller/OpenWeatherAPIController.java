@@ -2,10 +2,9 @@ package pl.weather.controller;
 
 import com.google.gson.Gson;
 import javafx.scene.image.Image;
-import org.json.simple.JSONObject;
-import pl.weather.model.*;
+import pl.weather.model.Connector;
 import pl.weather.model.config.ConfigAPIOpenWeather;
-import pl.weather.model.config.ConfigMainSettings;
+import pl.weather.model.weather.WeatherOneCall;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -14,18 +13,12 @@ public class OpenWeatherAPIController  {
 
     Gson gson = new Gson();
 
-    private String cityInput;
     private String latitude;
     private String longitude;
-
 
     public OpenWeatherAPIController(String latitude, String longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
-    }
-
-    public String getCityInput() {
-        return cityInput;
     }
 
     public String getLatitude() {
@@ -36,26 +29,7 @@ public class OpenWeatherAPIController  {
         return longitude;
     }
 
-    private final String queryLocation = ConfigAPIOpenWeather.CITY_API_MAIN_QUERY
-            + getCityInput()
-            + ConfigAPIOpenWeather.LOCAL_NAMES
-            + ConfigAPIOpenWeather.LIMIT_OF_LOCATIONS
-            + ConfigAPIOpenWeather.BEFORE_API_KEY
-            + ConfigAPIOpenWeather.API_KEY;
-
-    private Location getInformationAboutLocation() throws MalformedURLException {
-        Connector apiConnectorCity = new Connector();
-        JSONObject jsonData = (JSONObject) (apiConnectorCity.getJSONArray(queryLocation)).get(0);
-        String locationName = jsonData.get("name").toString();
-        String countryName = jsonData.get("country").toString();
-        double longitude = (double) jsonData.get("lon");
-        double latitude = (double) jsonData.get("lat");
-        Location location = new Location(locationName, countryName, longitude, latitude);
-
-        return location;
-    }
-
-    private String getStringResponseToQueryWeather(){
+    private WeatherOneCall getWeatherOneCall(){
         String queryWeather = ConfigAPIOpenWeather.OPEN_WEATHER_ONE_CALL_MAIN_QUERY
                 + ConfigAPIOpenWeather.LATITUDE_PREFIX
                 + getLatitude()
@@ -66,14 +40,14 @@ public class OpenWeatherAPIController  {
                 + ConfigAPIOpenWeather.LANGUAGE_CODE
                 + ConfigAPIOpenWeather.BEFORE_API_KEY
                 + ConfigAPIOpenWeather.API_KEY;
-        String downloadedJSON = new Connector().getResponseFromQueryToAPI(queryWeather);
-        return downloadedJSON;
-    }
-
-    private WeatherOneCall getWeatherOneCall(){
-        String response = getStringResponseToQueryWeather();
+        String response = new Connector().getResponseFromQueryToAPI(queryWeather);
         WeatherOneCall weatherOneCall = gson.fromJson(response, WeatherOneCall.class);
         return weatherOneCall;
+    }
+
+    public String getTimezone(){
+        String timezone = getWeatherOneCall().getTimezone();
+        return timezone;
     }
 
     public String getCurrentTemperature(){
