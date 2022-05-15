@@ -4,77 +4,67 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import pl.weather.WeatherManager;
-import pl.weather.model.GeoIP;
-import pl.weather.model.LocationUserData;
 import pl.weather.model.auxiliaryMethods.DateAndTimeMethods;
 import pl.weather.model.auxiliaryMethods.StringMethods;
-import pl.weather.model.config.ConfigMainSettings;
-import pl.weather.view.ViewFactory;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class FiveDaysLeftController implements Initializable {
-
-
-//    private final OpenWeatherAPIController openWeatherAPIController;
-    @FXML
-    private Label day1Left;
+public class FiveDaysLeftController {
 
     @FXML
-    private Label day2Left;
+    Label day1Left;
 
     @FXML
-    private Label day3Left;
+    Label day2Left;
 
     @FXML
-    private Label day4Left;
+    Label day3Left;
 
     @FXML
-    private Label day5Left;
+    Label day4Left;
 
     @FXML
-    private ImageView icon1weatherLeft;
+    Label day5Left;
 
     @FXML
-    private ImageView icon2weatherLeft;
+    ImageView icon1weatherLeft;
 
     @FXML
-    private ImageView icon3weatherLeft;
+    ImageView icon2weatherLeft;
 
     @FXML
-    private ImageView icon4weatherLeft;
+    ImageView icon3weatherLeft;
 
     @FXML
-    private ImageView icon5weatherLeft;
+    ImageView icon4weatherLeft;
 
     @FXML
-    private Label temperature1Left;
+    ImageView icon5weatherLeft;
 
     @FXML
-    private Label temperature2Left;
+    Label temperature1Left;
 
     @FXML
-    private Label temperature3Left;
+    Label temperature2Left;
 
     @FXML
-    private Label temperature4Left;
+    Label temperature3Left;
 
     @FXML
-    private Label temperature5Left;
+    Label temperature4Left;
 
-//    public FiveDaysLeftController(WeatherManager weatherManager, ViewFactory viewFactory, String fxmlName, OpenWeatherAPIController openWeatherAPIController) {
-//        super(weatherManager, viewFactory, fxmlName);
-//        this.openWeatherAPIController = openWeatherAPIController;
+    @FXML
+    Label temperature5Left;
+
+
+
+//    @Override
+//    public void initialize(URL url, ResourceBundle resourceBundle) {
+//
 //    }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-//        setDaysData();
-    }
 
     public void setDaysData(OpenWeatherAPIController openWeatherAPIController) {
 

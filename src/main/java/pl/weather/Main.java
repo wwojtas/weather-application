@@ -42,7 +42,6 @@ public class Main extends Application {
 //        GeoIP geoIP = new LocationUserData()
 //                .getUserLocation(ConfigMainSettings.CHECK_IP_URL_PATH);
 //        System.out.println(geoIP.getTimeZone());
-//        String query = "http://api.openweathermap.org/geo/1.0/direct?q=Londyn&limit=3&appid=6023e1e73e703b8a2e0035f150fb8a9e";
 //        String response = new Connector().getResponseFromQueryToAPI(query);
 //        System.out.println(response);
 
