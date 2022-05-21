@@ -1,6 +1,7 @@
 package pl.weather.model.auxiliaryMethods;
 
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import pl.weather.controller.OpenWeatherAPIController;
 import pl.weather.model.config.ConfigMainSettings;
@@ -41,6 +42,12 @@ public class StringMethods {
     public static String writeFirstLetterCapitalize(String word) {
         String wordAfter = word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
         return wordAfter;
+    }
+
+    public static String getTextEnteredInTextField(TextField field){
+        String textEnteredInField = field.getText().trim();
+        textEnteredInField = StringMethods.writeFirstLetterCapitalize(textEnteredInField);
+        return textEnteredInField;
     }
 
     public void setPanel(OpenWeatherAPIController openWeatherAPIController,

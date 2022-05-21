@@ -123,9 +123,9 @@
       <Line endX="100.0" layoutX="194.0" layoutY="362.0" startX="-100.0" />
       <Line endX="100.0" layoutX="605.0" layoutY="362.0" startX="-100.0" />
 
-      <VBox fx:id="fiveDaysLeft" layoutY="344.0" prefHeight="255.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="394.0">
+      <VBox  layoutY="344.0" prefHeight="255.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="394.0">
          <children>
-            <fx:include source="FiveDaysLeft.fxml" />
+            <fx:include source="FiveDaysLeft.fxml"  fx:id="fiveDaysLeft"/>
          </children>
       </VBox>
       <VBox fx:id="fiveDaysRight" layoutX="405.0" layoutY="344.0" prefHeight="255.0" prefWidth="395.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">

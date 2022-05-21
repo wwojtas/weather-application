@@ -1,19 +1,13 @@
 package pl.weather.controller;
 
-import pl.weather.WeatherManager;
-import pl.weather.model.GeoIP;
-import pl.weather.model.LocationUserData;
-import pl.weather.model.config.ConfigMainSettings;
 import pl.weather.view.ViewFactory;
 
 public abstract class BaseController {
 
-    private WeatherManager weatherManager;
     protected ViewFactory viewFactory;
     private String fxmlName;
 
-    public BaseController(WeatherManager weatherManager, ViewFactory viewFactory, String fxmlName) {
-        this.weatherManager = weatherManager;
+    public BaseController( ViewFactory viewFactory, String fxmlName) {
         this.viewFactory = viewFactory;
         this.fxmlName = fxmlName;
     }

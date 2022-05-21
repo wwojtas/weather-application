@@ -1,14 +1,10 @@
 package pl.weather.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import pl.weather.model.auxiliaryMethods.DateAndTimeMethods;
 import pl.weather.model.auxiliaryMethods.StringMethods;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 
 public class FiveDaysLeftController {
@@ -57,13 +53,6 @@ public class FiveDaysLeftController {
 
     @FXML
     Label temperature5Left;
-
-
-
-//    @Override
-//    public void initialize(URL url, ResourceBundle resourceBundle) {
-//
-//    }
 
 
     public void setDaysData(OpenWeatherAPIController openWeatherAPIController) {

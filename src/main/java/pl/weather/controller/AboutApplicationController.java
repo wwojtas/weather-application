@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import pl.weather.WeatherManager;
 import pl.weather.view.ViewFactory;
 
 public class AboutApplicationController extends BaseController {
@@ -15,8 +14,8 @@ public class AboutApplicationController extends BaseController {
     @FXML
     private Button okAboutButton;
 
-    public AboutApplicationController(WeatherManager weatherManager, ViewFactory viewFactory, String fxmlName) {
-        super(weatherManager, viewFactory, fxmlName);
+    public AboutApplicationController(ViewFactory viewFactory, String fxmlName) {
+        super( viewFactory, fxmlName);
     }
 
     @FXML

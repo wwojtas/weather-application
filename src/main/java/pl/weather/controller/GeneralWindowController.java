@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import pl.weather.WeatherManager;
+import javafx.stage.Stage;
 import pl.weather.model.GeoIP;
 import pl.weather.model.LocationUserData;
 import pl.weather.model.auxiliaryMethods.DateAndTimeMethods;
@@ -22,7 +22,13 @@ import java.util.ResourceBundle;
 public class GeneralWindowController extends BaseController implements Initializable {
 
     @FXML
-    FiveDaysLeftController fiveDaysLeftController;
+    private FiveDaysLeftController fiveDaysLeftController;
+
+    @FXML
+    private VBox fiveDaysLeft;
+
+    @FXML
+    private VBox fiveDaysRight;
 
     @FXML
     private Label currentDayLabel;
@@ -67,12 +73,6 @@ public class GeneralWindowController extends BaseController implements Initializ
     private Label rightHumidityLabel;
 
     @FXML
-    private VBox fiveDaysLeft;
-
-    @FXML
-    private VBox fiveDaysRight;
-
-    @FXML
     private TextField rightLocationField;
 
     @FXML
@@ -85,8 +85,8 @@ public class GeneralWindowController extends BaseController implements Initializ
     private Label rightTimeLabel;
 
 
-    public GeneralWindowController(WeatherManager weatherManager, ViewFactory viewFactory, String fxmlName) {
-        super(weatherManager, viewFactory, fxmlName);
+    public GeneralWindowController(ViewFactory viewFactory, String fxmlName) {
+        super(viewFactory, fxmlName);
     }
 
     @FXML
@@ -101,10 +101,10 @@ public class GeneralWindowController extends BaseController implements Initializ
     }
 
     @FXML
-    public void updateWeather(MouseEvent event) {
+    public void updateWeather() {
         if (fieldIsBlank(leftLocationField)) {
             OpenWeatherGeocodingAPIController geocodingController =
-                    new OpenWeatherGeocodingAPIController(getCityEnteredInField(leftLocationField));
+                    new OpenWeatherGeocodingAPIController(StringMethods.getTextEnteredInTextField(leftLocationField));
             OpenWeatherAPIController openWeatherAPIController =
                     new OpenWeatherAPIController(geocodingController.getLatitude(), geocodingController.getLongitude());
             new StringMethods().setPanel(
@@ -119,18 +119,14 @@ public class GeneralWindowController extends BaseController implements Initializ
                     leftImageView
             );
             fiveDaysLeftController.setDaysData(openWeatherAPIController);
-        }
-    }
 
-    private String getCityEnteredInField(TextField field) {
-        String cityEnteredInField = field.getText().trim();
-        cityEnteredInField = StringMethods.writeFirstLetterCapitalize(cityEnteredInField);
-        return cityEnteredInField;
+        }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        updatePromptTextInFields();
+        fieldIsBlank(leftLocationField);
+        fieldIsBlank(rightLocationField);
         getDefaultWeatherInformation();
     }
 
@@ -153,12 +149,9 @@ public class GeneralWindowController extends BaseController implements Initializ
                 leftHumidityLabel,
                 leftImageView
         );
+        fiveDaysLeftController.setDaysData(defaultWeatherController);
 
-    }
 
-    private void updatePromptTextInFields() {
-        fieldIsBlank(leftLocationField);
-        fieldIsBlank(rightLocationField);
     }
 
     private boolean fieldIsBlank(TextField field) {
