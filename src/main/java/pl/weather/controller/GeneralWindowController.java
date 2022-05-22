@@ -6,9 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import pl.weather.model.GeoIP;
 import pl.weather.model.LocationUserData;
 import pl.weather.model.auxiliaryMethods.DateAndTimeMethods;
@@ -25,10 +22,13 @@ public class GeneralWindowController extends BaseController implements Initializ
     private FiveDaysLeftController fiveDaysLeftController;
 
     @FXML
-    private VBox fiveDaysLeft;
+    private FiveDaysRightController fiveDaysRightController;
 
-    @FXML
-    private VBox fiveDaysRight;
+//    @FXML
+//    private VBox fiveDaysLeft;
+//
+//    @FXML
+//    private VBox fiveDaysRight;
 
     @FXML
     private Label currentDayLabel;
@@ -102,11 +102,10 @@ public class GeneralWindowController extends BaseController implements Initializ
 
     @FXML
     public void updateWeather() {
-        if (fieldIsBlank(leftLocationField)) {
-            OpenWeatherGeocodingAPIController geocodingController =
-                    new OpenWeatherGeocodingAPIController(StringMethods.getTextEnteredInTextField(leftLocationField));
+        if ( fieldIsBlank(leftLocationField) ) {
+            OpenWeatherGeocodingAPIController geocodingController = getOpenWeatherGeocodingAPIController(leftLocationField);
             OpenWeatherAPIController openWeatherAPIController =
-                    new OpenWeatherAPIController(geocodingController.getLatitude(), geocodingController.getLongitude());
+                    getOpenWeatherAPIController(geocodingController.getLatitude(), geocodingController.getLongitude());
             new StringMethods().setPanel(
                     openWeatherAPIController,
                     geocodingController.getCity(),
@@ -118,8 +117,29 @@ public class GeneralWindowController extends BaseController implements Initializ
                     leftHumidityLabel,
                     leftImageView
             );
-            fiveDaysLeftController.setDaysData(openWeatherAPIController);
+            fiveDaysLeftController.setFiveDaysData(openWeatherAPIController);
+        } else {
+            getDefaultWeatherInformation();
+        }
 
+        if( fieldIsBlank(rightLocationField) ){
+            OpenWeatherGeocodingAPIController geocodingController = getOpenWeatherGeocodingAPIController(rightLocationField);
+            OpenWeatherAPIController openWeatherAPIController =
+                    getOpenWeatherAPIController(geocodingController.getLatitude(), geocodingController.getLongitude());
+            new StringMethods().setPanel(
+                    openWeatherAPIController,
+                    geocodingController.getCity(),
+                    geocodingController.getCountry(),
+                    rightTimeLabel,
+                    rightCityLabel,
+                    rightTemperatureLabel,
+                    rightPressureLabel,
+                    rightHumidityLabel,
+                    rightImageView
+            );
+            fiveDaysRightController.setFiveDaysData(openWeatherAPIController);
+        } else {
+            getDefaultWeatherInformation();
         }
     }
 
@@ -133,10 +153,7 @@ public class GeneralWindowController extends BaseController implements Initializ
     private void getDefaultWeatherInformation() {
         GeoIP geoipLocation = new LocationUserData().getUserLocation(ConfigMainSettings.CHECK_IP_URL_PATH);
         OpenWeatherAPIController defaultWeatherController =
-                new OpenWeatherAPIController(
-                        geoipLocation.getLatitude(),
-                        geoipLocation.getLongitude()
-                );
+                getOpenWeatherAPIController(geoipLocation.getLatitude(), geoipLocation.getLongitude());
         DateAndTimeMethods.setTextDay(currentDayLabel, defaultWeatherController.getTimezone(), 0);
         new StringMethods().setPanel(
                 defaultWeatherController,
@@ -149,9 +166,19 @@ public class GeneralWindowController extends BaseController implements Initializ
                 leftHumidityLabel,
                 leftImageView
         );
-        fiveDaysLeftController.setDaysData(defaultWeatherController);
+        fiveDaysLeftController.setFiveDaysData(defaultWeatherController);
+    }
 
+    private OpenWeatherAPIController getOpenWeatherAPIController(String latitude, String longitude) {
+        OpenWeatherAPIController openWeatherAPIController =
+                new OpenWeatherAPIController(latitude, longitude);
+        return openWeatherAPIController;
+    }
 
+    private OpenWeatherGeocodingAPIController getOpenWeatherGeocodingAPIController(TextField textField) {
+        OpenWeatherGeocodingAPIController geocodingController =
+                new OpenWeatherGeocodingAPIController(StringMethods.getTextEnteredInTextField(textField));
+        return geocodingController;
     }
 
     private boolean fieldIsBlank(TextField field) {

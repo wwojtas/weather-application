@@ -7,12 +7,13 @@ import javafx.scene.image.ImageView;
 import pl.weather.model.GeoIP;
 import pl.weather.model.LocationUserData;
 import pl.weather.model.auxiliaryMethods.DateAndTimeMethods;
+import pl.weather.model.auxiliaryMethods.StringMethods;
 import pl.weather.model.config.ConfigMainSettings;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FiveDaysRightController implements Initializable {
+public class FiveDaysRightController  {
 
     @FXML
     private Label day1Right;
@@ -60,20 +61,31 @@ public class FiveDaysRightController implements Initializable {
     private Label temperature5Right;
 
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        setDays();
-    }
+    public void setFiveDaysData(OpenWeatherAPIController openWeatherAPIController) {
 
+        String timeZone = openWeatherAPIController.getTimezone();
 
-    public void setDays() {
-        GeoIP geoIP = new LocationUserData()
-                .getUserLocation(ConfigMainSettings.CHECK_IP_URL_PATH);
-        String timeZone = geoIP.getTimeZone();
         DateAndTimeMethods.setTextNextDay(day1Right, timeZone, 1);
         DateAndTimeMethods.setTextNextDay(day2Right, timeZone, 2);
         DateAndTimeMethods.setTextNextDay(day3Right, timeZone, 3);
         DateAndTimeMethods.setTextNextDay(day4Right, timeZone, 4);
         DateAndTimeMethods.setTextNextDay(day5Right, timeZone, 5);
+
+        icon1weatherRight.setImage(openWeatherAPIController.getNextDayIcon(0));
+        icon2weatherRight.setImage(openWeatherAPIController.getNextDayIcon(1));
+        icon3weatherRight.setImage(openWeatherAPIController.getNextDayIcon(2));
+        icon4weatherRight.setImage(openWeatherAPIController.getNextDayIcon(3));
+        icon5weatherRight.setImage(openWeatherAPIController.getNextDayIcon(4));
+
+        temperature1Right.setText(openWeatherAPIController.getDailyTemperatureNextDay(0)
+                + " / " + openWeatherAPIController.getNightTemperatureNextDay(0) + StringMethods.addTempUnit());
+        temperature2Right.setText(openWeatherAPIController.getDailyTemperatureNextDay(1)
+                + " / " + openWeatherAPIController.getNightTemperatureNextDay(1) + StringMethods.addTempUnit());
+        temperature3Right.setText(openWeatherAPIController.getDailyTemperatureNextDay(2)
+                + " / " + openWeatherAPIController.getNightTemperatureNextDay(2) + StringMethods.addTempUnit());
+        temperature4Right.setText(openWeatherAPIController.getDailyTemperatureNextDay(3)
+                + " / " + openWeatherAPIController.getNightTemperatureNextDay(3) + StringMethods.addTempUnit());
+        temperature5Right.setText(openWeatherAPIController.getDailyTemperatureNextDay(4)
+                + " / " + openWeatherAPIController.getNightTemperatureNextDay(4) + StringMethods.addTempUnit());
     }
 }

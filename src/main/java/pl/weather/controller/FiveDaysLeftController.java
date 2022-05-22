@@ -55,7 +55,7 @@ public class FiveDaysLeftController {
     Label temperature5Left;
 
 
-    public void setDaysData(OpenWeatherAPIController openWeatherAPIController) {
+    public void setFiveDaysData(OpenWeatherAPIController openWeatherAPIController) {
 
         String timeZone = openWeatherAPIController.getTimezone();
 
