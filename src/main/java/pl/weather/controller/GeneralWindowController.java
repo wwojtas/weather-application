@@ -24,14 +24,8 @@ public class GeneralWindowController extends BaseController implements Initializ
     @FXML
     private FiveDaysRightController fiveDaysRightController;
 
-//    @FXML
-//    private VBox fiveDaysLeft;
-//
-//    @FXML
-//    private VBox fiveDaysRight;
-
     @FXML
-    private Label currentDayLabel;
+    private Label rightCurrentDayLabel;
 
     @FXML
     private Button aboutAppButton;
@@ -56,6 +50,9 @@ public class GeneralWindowController extends BaseController implements Initializ
 
     @FXML
     private TextField leftLocationField;
+
+    @FXML
+    private Label leftCurrentDayLabel;
 
     @FXML
     private Label leftPressureLabel;
@@ -89,6 +86,14 @@ public class GeneralWindowController extends BaseController implements Initializ
         super(viewFactory, fxmlName);
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        fieldIsBlank(leftLocationField);
+        fieldIsBlank(rightLocationField);
+        setDefaultWeatherDataInLeftPanel();
+        setDefaultWeatherDataInRightPanel();
+    }
+
     @FXML
     public void closeApplication() {
         javafx.application.Platform.exit();
@@ -105,7 +110,8 @@ public class GeneralWindowController extends BaseController implements Initializ
         if ( fieldIsBlank(leftLocationField) ) {
             OpenWeatherGeocodingAPIController geocodingController = getOpenWeatherGeocodingAPIController(leftLocationField);
             OpenWeatherAPIController openWeatherAPIController =
-                    getOpenWeatherAPIController(geocodingController.getLatitude(), geocodingController.getLongitude());
+                    new OpenWeatherAPIController(geocodingController.getLatitude(), geocodingController.getLongitude());
+            DateAndTimeMethods.setTextDay(leftCurrentDayLabel, openWeatherAPIController.getTimezone(), 0);
             new StringMethods().setPanel(
                     openWeatherAPIController,
                     geocodingController.getCity(),
@@ -119,13 +125,14 @@ public class GeneralWindowController extends BaseController implements Initializ
             );
             fiveDaysLeftController.setFiveDaysData(openWeatherAPIController);
         } else {
-            getDefaultWeatherInformation();
+            setDefaultWeatherDataInLeftPanel();
         }
 
         if( fieldIsBlank(rightLocationField) ){
             OpenWeatherGeocodingAPIController geocodingController = getOpenWeatherGeocodingAPIController(rightLocationField);
             OpenWeatherAPIController openWeatherAPIController =
-                    getOpenWeatherAPIController(geocodingController.getLatitude(), geocodingController.getLongitude());
+                    new OpenWeatherAPIController(geocodingController.getLatitude(), geocodingController.getLongitude());
+            DateAndTimeMethods.setTextDay(rightCurrentDayLabel, openWeatherAPIController.getTimezone(), 0);
             new StringMethods().setPanel(
                     openWeatherAPIController,
                     geocodingController.getCity(),
@@ -139,26 +146,18 @@ public class GeneralWindowController extends BaseController implements Initializ
             );
             fiveDaysRightController.setFiveDaysData(openWeatherAPIController);
         } else {
-            getDefaultWeatherInformation();
+            setDefaultWeatherDataInRightPanel();
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        fieldIsBlank(leftLocationField);
-        fieldIsBlank(rightLocationField);
-        getDefaultWeatherInformation();
-    }
-
-    private void getDefaultWeatherInformation() {
-        GeoIP geoipLocation = new LocationUserData().getUserLocation(ConfigMainSettings.CHECK_IP_URL_PATH);
+    private void setDefaultWeatherDataInLeftPanel() {
         OpenWeatherAPIController defaultWeatherController =
-                getOpenWeatherAPIController(geoipLocation.getLatitude(), geoipLocation.getLongitude());
-        DateAndTimeMethods.setTextDay(currentDayLabel, defaultWeatherController.getTimezone(), 0);
+                new OpenWeatherAPIController(getGeoIP().getLatitude(), getGeoIP().getLongitude());
+        DateAndTimeMethods.setTextDay(leftCurrentDayLabel, defaultWeatherController.getTimezone(), 0);
         new StringMethods().setPanel(
                 defaultWeatherController,
-                geoipLocation.getCity(),
-                geoipLocation.getCountry(),
+                getGeoIP().getCity(),
+                getGeoIP().getCountry(),
                 leftTimeLabel,
                 leftCityLabel,
                 leftTemperatureLabel,
@@ -169,10 +168,27 @@ public class GeneralWindowController extends BaseController implements Initializ
         fiveDaysLeftController.setFiveDaysData(defaultWeatherController);
     }
 
-    private OpenWeatherAPIController getOpenWeatherAPIController(String latitude, String longitude) {
-        OpenWeatherAPIController openWeatherAPIController =
-                new OpenWeatherAPIController(latitude, longitude);
-        return openWeatherAPIController;
+    private void setDefaultWeatherDataInRightPanel() {
+        OpenWeatherAPIController defaultWeatherController =
+                new OpenWeatherAPIController(getGeoIP().getLatitude(), getGeoIP().getLongitude());
+        DateAndTimeMethods.setTextDay(rightCurrentDayLabel, defaultWeatherController.getTimezone(), 0);
+        new StringMethods().setPanel(
+                defaultWeatherController,
+                getGeoIP().getCity(),
+                getGeoIP().getCountry(),
+                rightTimeLabel,
+                rightCityLabel,
+                rightTemperatureLabel,
+                rightPressureLabel,
+                rightHumidityLabel,
+                rightImageView
+        );
+        fiveDaysRightController.setFiveDaysData(defaultWeatherController);
+    }
+
+    private GeoIP getGeoIP() {
+        GeoIP geoipLocation = new LocationUserData().getUserLocation(ConfigMainSettings.CHECK_IP_URL_PATH);
+        return geoipLocation;
     }
 
     private OpenWeatherGeocodingAPIController getOpenWeatherGeocodingAPIController(TextField textField) {

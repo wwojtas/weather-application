@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import javafx.scene.image.Image;
 import pl.weather.model.Connector;
 import pl.weather.model.config.ConfigAPIOpenWeather;
+import pl.weather.model.config.ConfigApiKey;
 import pl.weather.model.weather.WeatherOneCall;
 
 import java.net.MalformedURLException;
@@ -39,7 +40,7 @@ public class OpenWeatherAPIController  {
                 + ConfigAPIOpenWeather.UNITS_PARAMETER
                 + ConfigAPIOpenWeather.LANGUAGE_CODE
                 + ConfigAPIOpenWeather.BEFORE_API_KEY
-                + ConfigAPIOpenWeather.API_KEY;
+                + ConfigApiKey.OW_API_KEY;
         String response = new Connector().getResponseFromQueryToAPI(queryWeather);
         WeatherOneCall weatherOneCall = gson.fromJson(response, WeatherOneCall.class);
         return weatherOneCall;

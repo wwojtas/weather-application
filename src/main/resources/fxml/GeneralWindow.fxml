@@ -123,18 +123,18 @@
       <Line endX="100.0" layoutX="194.0" layoutY="362.0" startX="-100.0" />
       <Line endX="100.0" layoutX="605.0" layoutY="362.0" startX="-100.0" />
 
-      <VBox  layoutY="344.0" prefHeight="255.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="394.0">
+      <VBox layoutY="344.0" prefHeight="255.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="394.0">
          <children>
-            <fx:include source="FiveDaysLeft.fxml"  fx:id="fiveDaysLeft"/>
+            <fx:include fx:id="fiveDaysLeft" source="FiveDaysLeft.fxml" />
          </children>
       </VBox>
       <VBox layoutX="405.0" layoutY="344.0" prefHeight="255.0" prefWidth="395.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <fx:include source="FiveDaysRight.fxml" fx:id="fiveDaysRight"/>
+            <fx:include fx:id="fiveDaysRight" source="FiveDaysRight.fxml" />
          </children>
       </VBox>
 
-      <Label fx:id="currentDayLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="272.0" layoutY="32.0" prefHeight="35.0" prefWidth="262.0" text="niedz. 01.02.2022" textAlignment="CENTER" AnchorPane.leftAnchor="272.0" AnchorPane.rightAnchor="272.0">
+      <Label fx:id="leftCurrentDayLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="66.0" layoutY="32.0" prefHeight="35.0" prefWidth="262.0" textAlignment="CENTER" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="478.0">
          <font>
             <Font size="24.0" />
          </font>
@@ -144,10 +144,15 @@
             <Font size="13.0" />
          </font>
       </Button>
-      <Button fx:id="updateWeatherButton" layoutX="317.0" layoutY="2.0" mnemonicParsing="false" onAction="#updateWeather" text="      Aktualizuj pogodę      ">
+      <Button fx:id="updateWeatherButton" layoutX="317.0" layoutY="3.0" mnemonicParsing="false" onAction="#updateWeather" text="      Aktualizuj pogodę      ">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
+      <Label fx:id="rightCurrentDayLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="471.0" layoutY="32.0" prefHeight="35.0" prefWidth="262.0" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

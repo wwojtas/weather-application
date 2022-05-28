@@ -1,6 +1,6 @@
 out/
 target/
-config/
+ConfigApiKey.java
 !.mvn/wrapper/maven-wrapper.jar
 
 ### IntelliJ IDEA ###

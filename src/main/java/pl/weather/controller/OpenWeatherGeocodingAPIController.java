@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import pl.weather.model.Connector;
 import pl.weather.model.config.ConfigAPIOpenWeather;
+import pl.weather.model.config.ConfigApiKey;
 import pl.weather.model.geocoding.Geocoding;
 
 import java.lang.reflect.Type;
@@ -29,7 +30,7 @@ public class OpenWeatherGeocodingAPIController {
                 + ConfigAPIOpenWeather.LOCAL_NAMES
                 + ConfigAPIOpenWeather.LIMIT_OF_LOCATIONS
                 + ConfigAPIOpenWeather.BEFORE_API_KEY
-                + ConfigAPIOpenWeather.API_KEY;
+                + ConfigApiKey.OW_API_KEY;
         String response = new Connector().getResponseFromQueryToAPI(queryLocation);
         Type collectionType = new TypeToken<ArrayList<Geocoding>>(){}.getType();
         ArrayList<Geocoding> geocoding = gson.fromJson(response, collectionType);

@@ -44,7 +44,7 @@ public class StringMethods {
         return wordAfter;
     }
 
-    public static String getTextEnteredInTextField(TextField field){
+    public static String getTextEnteredInTextField(TextField field) {
         String textEnteredInField = field.getText().trim();
         textEnteredInField = StringMethods.writeFirstLetterCapitalize(textEnteredInField);
         return textEnteredInField;
@@ -59,7 +59,7 @@ public class StringMethods {
                          Label pressureLabel,
                          Label humidityLabel,
                          ImageView imageView) {
-        DateAndTimeMethods.updateClockNow(timeLabel, openWeatherAPIController.getTimezone());
+        DateAndTimeMethods.updateClock(timeLabel, openWeatherAPIController.getTimezone());
         cityLabel.setText(city + ConfigMainSettings.SEPARATOR + country);
         temperatureLabel.setText(openWeatherAPIController.getCurrentTemperature() + StringMethods.addTempUnit());
         pressureLabel.setText(openWeatherAPIController.getCurrentPressure() + StringMethods.addPressureUnit());
