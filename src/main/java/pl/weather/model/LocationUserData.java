@@ -9,11 +9,11 @@ import java.net.InetAddress;
 public class LocationUserData {
 
     public GeoIP getUserLocation(String userIpAdress)  {
-        String ipAddress = new InternetConnection().getIpAddress(userIpAdress);
+        String ipAddress = new ConnectionToInternet().getIpAddress(userIpAdress);
         CityResponse cityResponse = null;
         try {
             InetAddress inetAddress = InetAddress.getByName(ipAddress);
-            cityResponse = new DatabaseConnection().getDatabaseReader().city(inetAddress);
+            cityResponse = new ConnectionToDatabase().getDatabaseReader().city(inetAddress);
         } catch (IOException | GeoIp2Exception e) {
             e.printStackTrace();
         }

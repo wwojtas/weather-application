@@ -7,26 +7,26 @@ import org.json.simple.parser.ParseException;
 
 public class JSONUseful {
 
-    public static JSONArray parseStringBuilderToJSONArray(StringBuilder stringBuilder){
-
-        JSONParser parse = new JSONParser();
-        try {
-            return (JSONArray) parse.parse(String.valueOf(stringBuilder));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public static JSONObject parseStringBuilderToJSONObject(StringBuilder stringBuilder){
-
-        JSONParser parse = new JSONParser();
-        try {
-            return (JSONObject) parse.parse(String.valueOf(stringBuilder));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+//    public static JSONArray parseStringBuilderToJSONArray(StringBuilder stringBuilder){
+//
+//        JSONParser parse = new JSONParser();
+//        try {
+//            return (JSONArray) parse.parse(String.valueOf(stringBuilder));
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
+//
+//    public static JSONObject parseStringBuilderToJSONObject(StringBuilder stringBuilder){
+//
+//        JSONParser parse = new JSONParser();
+//        try {
+//            return (JSONObject) parse.parse(String.valueOf(stringBuilder));
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 
 }

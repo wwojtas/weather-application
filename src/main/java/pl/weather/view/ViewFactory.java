@@ -10,8 +10,6 @@ import java.io.IOException;
 
 public class ViewFactory {
 
-
-
     public ViewFactory() {
 
     }
@@ -33,12 +31,6 @@ public class ViewFactory {
                 "/fxml/ErrorApplication.fxml");
         initializeStage(controller);
     }
-//
-//    public void show5days(){
-//        BaseController controller = new FiveDaysLeftController(this,
-//                "fxml/FiveDaysLeft.fxml");
-//        initializeStage(controller);
-//    }
 
     private void initializeStage(BaseController controller){
         FXMLLoader loader = new FXMLLoader(getClass().getResource(controller.getFxmlName()));

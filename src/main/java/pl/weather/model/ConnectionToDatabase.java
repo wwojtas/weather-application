@@ -6,9 +6,9 @@ import pl.weather.model.config.ConfigMainSettings;
 import java.io.File;
 import java.io.IOException;
 
-public class DatabaseConnection {
+public class ConnectionToDatabase {
 
-    protected DatabaseReader getDatabaseReader(){
+    DatabaseReader getDatabaseReader(){
         ClassLoader classLoader = getClass().getClassLoader();
         File databaseFile = new File(classLoader.getResource(ConfigMainSettings.GEOLITE2_DATABASE_PATH).getFile());
         try {
