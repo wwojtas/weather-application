@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 
 public class ErrorApplicationController extends BaseController implements Initializable {
 
-    private String errorMessage;
+    private final String errorMessage;
 
     @FXML
     private Label errorLabel;

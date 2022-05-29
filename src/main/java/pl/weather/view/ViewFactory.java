@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 import pl.weather.controller.*;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class ViewFactory {
 
@@ -34,7 +35,7 @@ public class ViewFactory {
     private void initializeStage(BaseController controller){
         FXMLLoader loader = new FXMLLoader(getClass().getResource(controller.getFxmlName()));
         loader.setController(controller);
-        Parent parent = null;
+        Parent parent;
         try {
             parent = loader.load();
         } catch (IOException e) {
@@ -42,7 +43,8 @@ public class ViewFactory {
             return;
         }
         Scene scene = new Scene(parent);
-        scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
+//        scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/style.css")).toExternalForm());
         Stage stage = new Stage();
         stage.setResizable(false);
         stage.setScene(scene);

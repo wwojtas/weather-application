@@ -14,8 +14,8 @@ public class OpenWeatherAPIController  {
 
     Gson gson = new Gson();
 
-    private String latitude;
-    private String longitude;
+    private final String latitude;
+    private final String longitude;
 
     public OpenWeatherAPIController(String latitude, String longitude) {
         this.latitude = latitude;
@@ -73,14 +73,9 @@ public class OpenWeatherAPIController  {
         return queryToApi;
     }
 
-    private Image getImage(String imageIdCode) {
+    private Image getImage(String imageIdCode) throws MalformedURLException {
         String queryToApi = getQueryToApiIcons(imageIdCode);
-        URL url = null;
-        try {
-            url = new URL(queryToApi);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        URL url = new URL(queryToApi);
         return new Image(String.valueOf(url));
     }
 

@@ -15,7 +15,7 @@ public class OpenWeatherGeocodingAPIController {
 
     Gson gson = new Gson();
 
-    private String cityInput;
+    private final String cityInput;
 
     public OpenWeatherGeocodingAPIController(String cityInput) {
         this.cityInput = cityInput;

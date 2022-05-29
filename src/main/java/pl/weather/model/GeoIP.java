@@ -2,12 +2,12 @@ package pl.weather.model;
 
 public class GeoIP {
 
-    private String ipAddress;
-    private String city;
-    private String country;
-    private String latitude;
-    private String longitude;
-    private String timeZone;
+    private final String ipAddress;
+    private final String city;
+    private final String country;
+    private final String latitude;
+    private final String longitude;
+    private final String timeZone;
 
     public GeoIP(String ipAddress, String city, String country, String latitude, String longitude, String timeZone) {
         this.ipAddress = ipAddress;

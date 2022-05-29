@@ -23,7 +23,7 @@ public class ConfigMainSettings {
     public static final String ABOUT_APPLICATION =
             "Aplikacja wyświetla aktualne warunki atmosferyczne:\n" +
                     "lokalizację i kod kraju, aktualny czas, \n" +
-                    "temperaturę, ciśnienie i wilgotność powietrza, zachmurzenie \n" +
+                    "temperaturę, ciśnienie i wilgotność powietrza, zachmurzenie. \n" +
                     "Aplikacja wyświetla również prognozę na 5 najbliższych dni.\n" +
                     "Domyślnie wyświetlane są warunki pogodowe dla pozycji użytkownika.\n" +
                     "Po wpisaniu w pole wyszukiwania i wybraniu opcji \"Aktualizuj pogodę\"\n " +

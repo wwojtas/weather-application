@@ -9,6 +9,7 @@ import pl.weather.model.config.ConfigMainSettings;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class StringMethods {
@@ -21,7 +22,7 @@ public class StringMethods {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        while (scanner.hasNext()) {
+        while (Objects.requireNonNull(scanner).hasNext()) {
             builder.append(scanner.nextLine());
         }
         scanner.close();

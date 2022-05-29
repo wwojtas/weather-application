@@ -22,7 +22,7 @@ public class ConnectionToInternet {
         }
     }
 
-     boolean isHttpURLConnection(URL url){
+     boolean isHttpURLConnection(URL url) {
         try {
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
@@ -38,7 +38,7 @@ public class ConnectionToInternet {
         }
     }
 
-    public boolean checkInternetConnection() {
+    public boolean checkInternetConnection(){
         try {
             URL url = new URL(ConfigMainSettings.CHECK_IP_URL_PATH);
             URLConnection urlConnection = url.openConnection();
