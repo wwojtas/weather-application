@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import pl.weather.controller.service.OpenWeatherAPIController;
+import pl.weather.controller.service.OpenWeatherGeocodingAPIController;
 import pl.weather.model.GeoIP;
 import pl.weather.model.LocationUserData;
 import pl.weather.model.auxiliaryMethods.DateAndTimeMethods;

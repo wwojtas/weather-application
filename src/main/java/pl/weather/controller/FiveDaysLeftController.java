@@ -3,6 +3,7 @@ package pl.weather.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import pl.weather.controller.service.OpenWeatherAPIController;
 import pl.weather.model.auxiliaryMethods.DateAndTimeMethods;
 import pl.weather.model.auxiliaryMethods.StringMethods;
 

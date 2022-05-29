@@ -3,7 +3,7 @@ package pl.weather.model.auxiliaryMethods;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import pl.weather.controller.OpenWeatherAPIController;
+import pl.weather.controller.service.OpenWeatherAPIController;
 import pl.weather.model.config.ConfigMainSettings;
 
 import java.io.IOException;

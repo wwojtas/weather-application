@@ -19,4 +19,5 @@ module weather {
     opens pl.weather to com.google.gson;
     opens pl.weather.model.weather to com.google.gson, javafx.controls, javafx.fxml;
     opens pl.weather.model.geocoding to  com.google.gson;
+    opens pl.weather.controller.service to javafx.controls, javafx.fxml;
 }

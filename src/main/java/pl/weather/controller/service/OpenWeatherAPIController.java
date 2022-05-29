@@ -1,4 +1,4 @@
-package pl.weather.controller;
+package pl.weather.controller.service;
 
 import com.google.gson.Gson;
 import javafx.scene.image.Image;
