@@ -7,6 +7,7 @@ import pl.weather.controller.service.OpenWeatherAPIController;
 import pl.weather.model.config.ConfigMainSettings;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
@@ -58,7 +59,7 @@ public class StringMethods {
                          Label temperatureLabel,
                          Label pressureLabel,
                          Label humidityLabel,
-                         ImageView imageView) {
+                         ImageView imageView) throws MalformedURLException {
         DateAndTimeMethods.updateClock(timeLabel, openWeatherAPIController.getTimezone());
         cityLabel.setText(city + ConfigMainSettings.SEPARATOR + country);
         temperatureLabel.setText(openWeatherAPIController.getCurrentTemperature() + StringMethods.addTempUnit());

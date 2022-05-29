@@ -7,6 +7,8 @@ import pl.weather.controller.service.OpenWeatherAPIController;
 import pl.weather.model.auxiliaryMethods.DateAndTimeMethods;
 import pl.weather.model.auxiliaryMethods.StringMethods;
 
+import java.net.MalformedURLException;
+
 public class FiveDaysRightController  {
 
     @FXML
@@ -55,7 +57,7 @@ public class FiveDaysRightController  {
     private Label temperature5Right;
 
 
-    public void setFiveDaysData(OpenWeatherAPIController openWeatherAPIController) {
+    public void setFiveDaysData(OpenWeatherAPIController openWeatherAPIController) throws MalformedURLException {
 
         String timeZone = openWeatherAPIController.getTimezone();
 

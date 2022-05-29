@@ -30,7 +30,7 @@ public class OpenWeatherAPIController  {
         return longitude;
     }
 
-    private WeatherOneCall getWeatherOneCall(){
+    private WeatherOneCall getWeatherOneCall() throws MalformedURLException {
         String queryWeather = ConfigAPIOpenWeather.OPEN_WEATHER_ONE_CALL_MAIN_QUERY
                 + ConfigAPIOpenWeather.LATITUDE_PREFIX
                 + getLatitude()
@@ -46,22 +46,22 @@ public class OpenWeatherAPIController  {
         return weatherOneCall;
     }
 
-    public String getTimezone(){
+    public String getTimezone() throws MalformedURLException {
         String timezone = getWeatherOneCall().getTimezone();
         return timezone;
     }
 
-    public String getCurrentTemperature(){
+    public String getCurrentTemperature() throws MalformedURLException {
         String temp = String.format("%.0f", getWeatherOneCall().getCurrent().getTemp());
         return temp;
     }
 
-    public String getCurrentPressure(){
+    public String getCurrentPressure() throws MalformedURLException {
         String pressure = String.format("%.0f", getWeatherOneCall().getCurrent().getPressure());
         return pressure;
     }
 
-    public String getCurrentHumidity() {
+    public String getCurrentHumidity() throws MalformedURLException {
         String humidity = String.format("%.0f", getWeatherOneCall().getCurrent().getHumidity());
         return humidity;
     }
@@ -84,29 +84,25 @@ public class OpenWeatherAPIController  {
         return new Image(String.valueOf(url));
     }
 
-    public Image getCurrentDayIcon() {
+    public Image getCurrentDayIcon() throws MalformedURLException {
         String imageIdCode = getWeatherOneCall().getCurrent().getWeather().get(0).getIcon();
         return getImage(imageIdCode);
     }
 
-    public Image getNextDayIcon(int numberOfDay){
+    public Image getNextDayIcon(int numberOfDay) throws MalformedURLException {
         String imageIdCode = getWeatherOneCall().getDaily().get(numberOfDay).getWeather().get(0).getIcon();
         return getImage(imageIdCode);
     }
 
-    public String getNightTemperatureNextDay(int numberOfDay){
+    public String getNightTemperatureNextDay(int numberOfDay) throws MalformedURLException {
         String temp = String.format( "%.0f", getWeatherOneCall().getDaily().get(numberOfDay).getTemp().getNight() );
         return temp;
     }
 
-    public String getDailyTemperatureNextDay(int numberOfDay){
+    public String getDailyTemperatureNextDay(int numberOfDay) throws MalformedURLException {
         String temp = String.format("%.0f", getWeatherOneCall().getDaily().get(numberOfDay).getTemp().getDay());
         return temp;
     }
-
-
-
-
 
 
 }

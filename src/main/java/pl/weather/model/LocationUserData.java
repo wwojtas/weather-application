@@ -8,15 +8,11 @@ import java.net.InetAddress;
 
 public class LocationUserData {
 
-    public GeoIP getUserLocation(String userIpAdress)  {
+    public GeoIP getUserLocationBasedIPAddress(String userIpAdress) throws IOException, GeoIp2Exception {
         String ipAddress = new ConnectionToInternet().getIpAddress(userIpAdress);
-        CityResponse cityResponse = null;
-        try {
-            InetAddress inetAddress = InetAddress.getByName(ipAddress);
-            cityResponse = new ConnectionToDatabase().getDatabaseReader().city(inetAddress);
-        } catch (IOException | GeoIp2Exception e) {
-            e.printStackTrace();
-        }
+        InetAddress inetAddress = InetAddress.getByName(ipAddress);
+        CityResponse cityResponse = new ConnectionToDatabase().getDatabaseReader().city(inetAddress);
+
         String city = cityResponse.getCity().getName();
         String country = cityResponse.getCountry().getIsoCode();
         String latitude = cityResponse.getLocation().getLatitude().toString();

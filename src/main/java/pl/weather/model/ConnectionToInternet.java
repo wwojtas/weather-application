@@ -1,9 +1,7 @@
 package pl.weather.model;
 
 import pl.weather.model.config.ConfigMainSettings;
-import pl.weather.view.ViewFactory;
 
-import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,9 +12,9 @@ import java.net.URLConnection;
 
 public class ConnectionToInternet {
 
-    String getIpAddress(String path) {
+    String getIpAddress(String path) throws MalformedURLException {
+        URL url = new URL(path);
         try {
-            URL url = new URL(path);
             BufferedReader bufferedIP = new BufferedReader(new InputStreamReader(url.openStream()));
             return bufferedIP.readLine();
         } catch (IOException e) {
@@ -51,26 +49,6 @@ public class ConnectionToInternet {
         }
 
     }
-
-
-
-//    public static boolean isHttpsURLConnection(URL url){
-//        try {
-//            HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
-//            httpsURLConnection.setRequestMethod("GET");
-//            httpsURLConnection.connect();
-//            int responseCode = httpsURLConnection.getResponseCode();
-//            if ( responseCode != 200 ) {
-//                throw new RuntimeException("HttpsResponseCode: " + responseCode);
-//            } else {
-//                return true;
-//            }
-//        } catch (IOException e) {
-//            return false;
-//        }
-//    }
-
-
 
 
 

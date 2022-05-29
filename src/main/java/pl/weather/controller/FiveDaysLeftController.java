@@ -7,6 +7,8 @@ import pl.weather.controller.service.OpenWeatherAPIController;
 import pl.weather.model.auxiliaryMethods.DateAndTimeMethods;
 import pl.weather.model.auxiliaryMethods.StringMethods;
 
+import java.net.MalformedURLException;
+
 
 public class FiveDaysLeftController {
 
@@ -56,7 +58,7 @@ public class FiveDaysLeftController {
     Label temperature5Left;
 
 
-    public void setFiveDaysData(OpenWeatherAPIController openWeatherAPIController) {
+    public void setFiveDaysData(OpenWeatherAPIController openWeatherAPIController) throws MalformedURLException {
 
         String timeZone = openWeatherAPIController.getTimezone();
 
@@ -83,7 +85,5 @@ public class FiveDaysLeftController {
         temperature5Left.setText(openWeatherAPIController.getDailyTemperatureNextDay(4)
                 + " / " + openWeatherAPIController.getNightTemperatureNextDay(4) + StringMethods.addTempUnit());
     }
-
-
 
 }

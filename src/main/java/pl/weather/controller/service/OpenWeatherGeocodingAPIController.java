@@ -8,6 +8,7 @@ import pl.weather.model.config.ConfigApiKey;
 import pl.weather.model.geocoding.Geocoding;
 
 import java.lang.reflect.Type;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 public class OpenWeatherGeocodingAPIController {
@@ -24,7 +25,7 @@ public class OpenWeatherGeocodingAPIController {
         return cityInput;
     }
 
-    private ArrayList<Geocoding> getGeocodingFromOpenWeather(){
+    private ArrayList<Geocoding> getGeocodingFromOpenWeather() throws MalformedURLException {
         String queryLocation = ConfigAPIOpenWeather.CITY_API_MAIN_QUERY
                 + getCityInput()
                 + ConfigAPIOpenWeather.LOCAL_NAMES
@@ -37,21 +38,21 @@ public class OpenWeatherGeocodingAPIController {
         return geocoding;
     }
 
-    public String getLongitude(){
+    public String getLongitude() throws MalformedURLException {
         String longitude = String.format("%.8f", getGeocodingFromOpenWeather().get(0).getLon());
         return longitude;
     }
-    public String getLatitude(){
+    public String getLatitude() throws MalformedURLException {
         String latitude = String.format("%.8f", getGeocodingFromOpenWeather().get(0).getLat());
         return latitude;
     }
 
-    public String getCity(){
+    public String getCity() throws MalformedURLException {
         String country = getGeocodingFromOpenWeather().get(0).getLocalNames().getPl();
         return country;
     }
 
-    public String getCountry(){
+    public String getCountry() throws MalformedURLException {
         String city = getGeocodingFromOpenWeather().get(0).getCountry();
         return city;
     }
