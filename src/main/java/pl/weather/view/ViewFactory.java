@@ -11,7 +11,6 @@ import java.io.IOException;
 public class ViewFactory {
 
     public ViewFactory() {
-
     }
 
     public void showGeneralWindow() {
@@ -26,9 +25,9 @@ public class ViewFactory {
         initializeStage(controller);
     }
 
-    public void showErrorApplication(){
+    public void showErrorApplication(String errorMessage){
         BaseController controller = new ErrorApplicationController(this,
-                "/fxml/ErrorApplication.fxml");
+                "/fxml/ErrorApplication.fxml", errorMessage);
         initializeStage(controller);
     }
 

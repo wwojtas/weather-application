@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import pl.weather.model.ConnectionToInternet;
 import pl.weather.model.config.ConfigMainSettings;
+import pl.weather.model.config.ErrorMessages;
 import pl.weather.view.ViewFactory;
 
 import java.time.*;
@@ -24,7 +25,7 @@ public class Main extends Application {
         if(connectionToInternet.checkInternetConnection()){
             viewFactory.showGeneralWindow();
         } else {
-            viewFactory.showErrorApplication();
+            viewFactory.showErrorApplication(ErrorMessages.INTERNET_CONNECTION_ERROR);
         }
 
 
