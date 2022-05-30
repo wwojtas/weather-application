@@ -26,10 +26,6 @@ public class Main extends Application {
             } else {
                 viewFactory.showErrorApplication(ErrorMessages.INTERNET_CONNECTION_ERROR);
             }
-
-
-
-        System.out.println(ZonedDateTime.now(ZoneId.of("Asia/Tokyo")));
     }
 
 }
