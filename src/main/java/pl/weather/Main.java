@@ -6,9 +6,6 @@ import pl.weather.model.ConnectionToInternet;
 import pl.weather.model.config.ErrorMessages;
 import pl.weather.view.ViewFactory;
 
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-
 
 public class Main extends Application {
     public static void main(String[] args) {
