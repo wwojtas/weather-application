@@ -4,7 +4,6 @@ module weather {
     requires javafx.graphics;
     requires geoip2;
     requires maxmind.db;
-//    requires json.simple;
     requires com.google.gson;
     requires com.fasterxml.jackson.annotation;
     requires java.annotation;
