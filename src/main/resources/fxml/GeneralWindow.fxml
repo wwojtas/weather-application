@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="anchorPane" maxHeight="630.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="630.0" prefWidth="800.0" styleClass="anchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="anchorPane" maxHeight="630.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="630.0" prefWidth="800.0" styleClass="anchorPane" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextField fx:id="leftLocationField" layoutX="23.0" layoutY="74.0" prefHeight="32.0" prefWidth="343.0" AnchorPane.bottomAnchor="524.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="434.0" AnchorPane.topAnchor="74.0" />
       <TextField fx:id="rightLocationField" layoutX="434.0" layoutY="74.0" prefHeight="32.0" prefWidth="343.0" AnchorPane.bottomAnchor="524.0" AnchorPane.leftAnchor="434.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="74.0" />
