@@ -15,6 +15,7 @@ public class ConfigAPIOpenWeather {
     public static final String BEFORE_API_KEY = "&appid=";
     public static final String UNITS_PARAMETER = "&units=metric";
     public static final String LANGUAGE_CODE = "&lang=pl";
+    public static final int NUMBER_OF_DAYS = 4;
 
     // openWeather - icon data
     public static final String OPEN_WEATHER_ICON_CALL = "http://openweathermap.org/img/wn/";

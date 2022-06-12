@@ -3,7 +3,7 @@ package pl.weather.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import pl.weather.controller.service.OpenWeatherAPIController;
+import pl.weather.controller.service.OpenWeatherAPIService;
 import pl.weather.model.auxiliaryMethods.DateAndTimeMethods;
 import pl.weather.model.auxiliaryMethods.StringMethods;
 
@@ -58,7 +58,7 @@ public class FiveDaysLeftController {
     Label temperature5Left;
 
 
-    public void setFiveDaysData(OpenWeatherAPIController openWeatherAPIController) throws MalformedURLException {
+    public void setFiveDaysData(OpenWeatherAPIService openWeatherAPIController) throws MalformedURLException {
 
         String timeZone = openWeatherAPIController.getTimezone();
 

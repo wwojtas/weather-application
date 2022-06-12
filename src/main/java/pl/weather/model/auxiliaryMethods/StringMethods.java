@@ -3,7 +3,7 @@ package pl.weather.model.auxiliaryMethods;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import pl.weather.controller.service.OpenWeatherAPIController;
+import pl.weather.controller.service.OpenWeatherAPIService;
 import pl.weather.model.config.ConfigMainSettings;
 
 import java.io.IOException;
@@ -42,17 +42,15 @@ public class StringMethods {
     }
 
     public static String writeFirstLetterCapitalize(String word) {
-        String wordAfter = word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
-        return wordAfter;
+        return word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
     }
 
     public static String getTextEnteredInTextField(TextField field) {
         String textEnteredInField = field.getText().trim();
-        textEnteredInField = StringMethods.writeFirstLetterCapitalize(textEnteredInField);
-        return textEnteredInField;
+        return StringMethods.writeFirstLetterCapitalize(textEnteredInField);
     }
 
-    public void setPanel(OpenWeatherAPIController openWeatherAPIController,
+    public void setPanel(OpenWeatherAPIService openWeatherAPIService,
                          String city,
                          String country,
                          Label timeLabel,
@@ -61,12 +59,12 @@ public class StringMethods {
                          Label pressureLabel,
                          Label humidityLabel,
                          ImageView imageView) throws MalformedURLException {
-        DateAndTimeMethods.updateClock(timeLabel, openWeatherAPIController.getTimezone());
+        DateAndTimeMethods.updateClock(timeLabel, openWeatherAPIService.getTimezone());
         cityLabel.setText(city + ConfigMainSettings.SEPARATOR + country);
-        temperatureLabel.setText(openWeatherAPIController.getCurrentTemperature() + StringMethods.addTempUnit());
-        pressureLabel.setText(openWeatherAPIController.getCurrentPressure() + StringMethods.addPressureUnit());
-        humidityLabel.setText(openWeatherAPIController.getCurrentHumidity() + StringMethods.addHumidityUnit());
-        imageView.setImage(openWeatherAPIController.getCurrentDayIcon());
+        temperatureLabel.setText(openWeatherAPIService.getCurrentTemperature() + StringMethods.addTempUnit());
+        pressureLabel.setText(openWeatherAPIService.getCurrentPressure() + StringMethods.addPressureUnit());
+        humidityLabel.setText(openWeatherAPIService.getCurrentHumidity() + StringMethods.addHumidityUnit());
+        imageView.setImage(openWeatherAPIService.getCurrentDayIcon());
     }
 
 

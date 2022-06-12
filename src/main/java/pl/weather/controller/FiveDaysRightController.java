@@ -3,7 +3,7 @@ package pl.weather.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import pl.weather.controller.service.OpenWeatherAPIController;
+import pl.weather.controller.service.OpenWeatherAPIService;
 import pl.weather.model.auxiliaryMethods.DateAndTimeMethods;
 import pl.weather.model.auxiliaryMethods.StringMethods;
 
@@ -57,9 +57,9 @@ public class FiveDaysRightController  {
     private Label temperature5Right;
 
 
-    public void setFiveDaysData(OpenWeatherAPIController openWeatherAPIController) throws MalformedURLException {
+    public void setFiveDaysData(OpenWeatherAPIService openWeatherAPIService) throws MalformedURLException {
 
-        String timeZone = openWeatherAPIController.getTimezone();
+        String timeZone = openWeatherAPIService.getTimezone();
 
         DateAndTimeMethods.setTextNextDay(day1Right, timeZone, 1);
         DateAndTimeMethods.setTextNextDay(day2Right, timeZone, 2);
@@ -67,21 +67,21 @@ public class FiveDaysRightController  {
         DateAndTimeMethods.setTextNextDay(day4Right, timeZone, 4);
         DateAndTimeMethods.setTextNextDay(day5Right, timeZone, 5);
 
-        icon1weatherRight.setImage(openWeatherAPIController.getNextDayIcon(0));
-        icon2weatherRight.setImage(openWeatherAPIController.getNextDayIcon(1));
-        icon3weatherRight.setImage(openWeatherAPIController.getNextDayIcon(2));
-        icon4weatherRight.setImage(openWeatherAPIController.getNextDayIcon(3));
-        icon5weatherRight.setImage(openWeatherAPIController.getNextDayIcon(4));
+        icon1weatherRight.setImage(openWeatherAPIService.getNextDayIcon(0));
+        icon2weatherRight.setImage(openWeatherAPIService.getNextDayIcon(1));
+        icon3weatherRight.setImage(openWeatherAPIService.getNextDayIcon(2));
+        icon4weatherRight.setImage(openWeatherAPIService.getNextDayIcon(3));
+        icon5weatherRight.setImage(openWeatherAPIService.getNextDayIcon(4));
 
-        temperature1Right.setText(openWeatherAPIController.getDailyTemperatureNextDay(0)
-                + " / " + openWeatherAPIController.getNightTemperatureNextDay(0) + StringMethods.addTempUnit());
-        temperature2Right.setText(openWeatherAPIController.getDailyTemperatureNextDay(1)
-                + " / " + openWeatherAPIController.getNightTemperatureNextDay(1) + StringMethods.addTempUnit());
-        temperature3Right.setText(openWeatherAPIController.getDailyTemperatureNextDay(2)
-                + " / " + openWeatherAPIController.getNightTemperatureNextDay(2) + StringMethods.addTempUnit());
-        temperature4Right.setText(openWeatherAPIController.getDailyTemperatureNextDay(3)
-                + " / " + openWeatherAPIController.getNightTemperatureNextDay(3) + StringMethods.addTempUnit());
-        temperature5Right.setText(openWeatherAPIController.getDailyTemperatureNextDay(4)
-                + " / " + openWeatherAPIController.getNightTemperatureNextDay(4) + StringMethods.addTempUnit());
+        temperature1Right.setText(openWeatherAPIService.getDailyTemperatureNextDay(0)
+                + " / " + openWeatherAPIService.getNightTemperatureNextDay(0) + StringMethods.addTempUnit());
+        temperature2Right.setText(openWeatherAPIService.getDailyTemperatureNextDay(1)
+                + " / " + openWeatherAPIService.getNightTemperatureNextDay(1) + StringMethods.addTempUnit());
+        temperature3Right.setText(openWeatherAPIService.getDailyTemperatureNextDay(2)
+                + " / " + openWeatherAPIService.getNightTemperatureNextDay(2) + StringMethods.addTempUnit());
+        temperature4Right.setText(openWeatherAPIService.getDailyTemperatureNextDay(3)
+                + " / " + openWeatherAPIService.getNightTemperatureNextDay(3) + StringMethods.addTempUnit());
+        temperature5Right.setText(openWeatherAPIService.getDailyTemperatureNextDay(4)
+                + " / " + openWeatherAPIService.getNightTemperatureNextDay(4) + StringMethods.addTempUnit());
     }
 }

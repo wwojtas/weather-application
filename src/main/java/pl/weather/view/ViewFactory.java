@@ -11,24 +11,21 @@ import java.util.Objects;
 
 public class ViewFactory {
 
-    public ViewFactory() {
-    }
-
     public void showGeneralWindow() {
         BaseController controller = new GeneralWindowController(this,
-                "/fxml/GeneralWindow.fxml");
+                "fxml/GeneralWindow.fxml");
         initializeStage(controller);
     }
 
     public void showAboutApplication(){
         BaseController controller = new AboutApplicationController(this,
-                "/fxml/AboutApplication.fxml");
+                "fxml/AboutApplication.fxml");
         initializeStage(controller);
     }
 
     public void showErrorApplication(String errorMessage){
         BaseController controller = new ErrorApplicationController(this,
-                "/fxml/ErrorApplication.fxml", errorMessage);
+                "fxml/ErrorApplication.fxml", errorMessage);
         initializeStage(controller);
     }
 
@@ -43,7 +40,6 @@ public class ViewFactory {
             return;
         }
         Scene scene = new Scene(parent);
-//        scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/style.css")).toExternalForm());
         Stage stage = new Stage();
         stage.setResizable(false);

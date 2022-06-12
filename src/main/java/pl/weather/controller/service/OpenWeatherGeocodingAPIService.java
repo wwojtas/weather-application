@@ -11,13 +11,13 @@ import java.lang.reflect.Type;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 
-public class OpenWeatherGeocodingAPIController {
+public class OpenWeatherGeocodingAPIService {
 
     Gson gson = new Gson();
 
     private final String cityInput;
 
-    public OpenWeatherGeocodingAPIController(String cityInput) {
+    public OpenWeatherGeocodingAPIService(String cityInput) {
         this.cityInput = cityInput;
     }
 

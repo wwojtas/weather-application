@@ -1,5 +1,7 @@
 package pl.weather.model.config;
 
+import com.google.gson.Gson;
+
 public class ConfigMainSettings {
 
     // database
@@ -18,6 +20,11 @@ public class ConfigMainSettings {
     public static final String HUMIDITY_UNIT = " %";
     public static final String TEMPERATURE_UNIT = " \u00B0C";
     public static final String SEPARATOR = ", ";
+
+    // GSON
+    public static Gson createGsonStaticObject(){
+        return new Gson();
+    }
 
     // about application
     public static final String ABOUT_APPLICATION =

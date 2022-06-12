@@ -12,7 +12,7 @@ public class Main extends Application {
         launch(args);
     }
 
-    ConnectionToInternet connectionToInternet = new ConnectionToInternet();
+    private final ConnectionToInternet connectionToInternet = new ConnectionToInternet();
 
     @Override
     public void start(Stage stage) {
