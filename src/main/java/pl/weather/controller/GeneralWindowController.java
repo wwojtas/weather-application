@@ -16,12 +16,12 @@ import pl.weather.model.auxiliaryMethods.DateAndTimeMethods;
 import pl.weather.model.auxiliaryMethods.StringMethods;
 import pl.weather.model.config.ConfigMainSettings;
 import pl.weather.model.config.ErrorMessages;
+import pl.weather.model.weather.WeatherForApp;
 import pl.weather.view.ViewFactory;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class GeneralWindowController extends BaseController implements Initializable {
@@ -115,16 +115,17 @@ public class GeneralWindowController extends BaseController implements Initializ
 
     @FXML
     public void updateWeather() {
-        if ( fieldIsBlank(leftLocationField) ) {
-            OpenWeatherGeocodingAPIService geocodingController = getOpenWeatherGeocodingAPIController(leftLocationField);
+        if (fieldIsBlank(leftLocationField)) {
+            OpenWeatherGeocodingAPIService geocodingAPIService = getOpenWeatherGeocodingAPIService(leftLocationField);
             try {
-                OpenWeatherAPIService openWeatherAPIController =
-                        new OpenWeatherAPIService(geocodingController.getLatitude(), geocodingController.getLongitude());
-                DateAndTimeMethods.setTextDay(leftCurrentDayLabel, openWeatherAPIController.getTimezone(), 0);
+                GeoIP geoIPGeocoding = geocodingAPIService.getGeocodingFromOpenWeather();
+                WeatherForApp weatherForApp = new OpenWeatherAPIService(geoIPGeocoding.getLatitude(), geoIPGeocoding.getLongitude())
+                        .getWeatherForAppObject();
+                DateAndTimeMethods.setTextDay(leftCurrentDayLabel, weatherForApp.getTimezone(), 0);
                 new StringMethods().setPanel(
-                        openWeatherAPIController,
-                        geocodingController.getCity(),
-                        geocodingController.getCountry(),
+                        weatherForApp,
+                        geoIPGeocoding.getCity(),
+                        geoIPGeocoding.getCountry(),
                         leftTimeLabel,
                         leftCityLabel,
                         leftTemperatureLabel,
@@ -132,7 +133,7 @@ public class GeneralWindowController extends BaseController implements Initializ
                         leftHumidityLabel,
                         leftImageView
                 );
-                fiveDaysLeftController.setFiveDaysData(openWeatherAPIController);
+                fiveDaysLeftController.setFiveDaysData(weatherForApp);
             } catch (MalformedURLException e) {
                 viewFactory.showErrorApplication(ErrorMessages.MALFORMED_URL_ADDRESS);
             }
@@ -140,16 +141,17 @@ public class GeneralWindowController extends BaseController implements Initializ
             setDefaultWeatherDataInLeftPanel();
         }
 
-        if( fieldIsBlank(rightLocationField) ){
-            OpenWeatherGeocodingAPIService geocodingController = getOpenWeatherGeocodingAPIController(rightLocationField);
+        if (fieldIsBlank(rightLocationField)) {
+            OpenWeatherGeocodingAPIService geocodingAPIService = getOpenWeatherGeocodingAPIService(rightLocationField);
             try {
-                OpenWeatherAPIService openWeatherAPIController =
-                        new OpenWeatherAPIService(geocodingController.getLatitude(), geocodingController.getLongitude());
-                DateAndTimeMethods.setTextDay(rightCurrentDayLabel, openWeatherAPIController.getTimezone(), 0);
+                GeoIP geoIPGeocoding = geocodingAPIService.getGeocodingFromOpenWeather();
+                WeatherForApp weatherForApp = new OpenWeatherAPIService(geoIPGeocoding.getLatitude(), geoIPGeocoding.getLongitude())
+                        .getWeatherForAppObject();
+                DateAndTimeMethods.setTextDay(rightCurrentDayLabel, weatherForApp.getTimezone(), 0);
                 new StringMethods().setPanel(
-                        openWeatherAPIController,
-                        geocodingController.getCity(),
-                        geocodingController.getCountry(),
+                        weatherForApp,
+                        geoIPGeocoding.getCity(),
+                        geoIPGeocoding.getCountry(),
                         rightTimeLabel,
                         rightCityLabel,
                         rightTemperatureLabel,
@@ -157,7 +159,7 @@ public class GeneralWindowController extends BaseController implements Initializ
                         rightHumidityLabel,
                         rightImageView
                 );
-                fiveDaysRightController.setFiveDaysData(openWeatherAPIController);
+                fiveDaysRightController.setFiveDaysData(weatherForApp);
             } catch (MalformedURLException e) {
                 viewFactory.showErrorApplication(ErrorMessages.MALFORMED_URL_ADDRESS);
             }
@@ -166,15 +168,15 @@ public class GeneralWindowController extends BaseController implements Initializ
         }
     }
 
-    private void setDefaultWeatherDataInLeftPanel()  {
-        OpenWeatherAPIService defaultWeatherController = null;
+    private void setDefaultWeatherDataInLeftPanel() {
         try {
-            defaultWeatherController = new OpenWeatherAPIService(getGeoIP().getLatitude(), getGeoIP().getLongitude());
-            DateAndTimeMethods.setTextDay(leftCurrentDayLabel, defaultWeatherController.getTimezone(), 0);
+            GeoIP defaultGeoip = getUserLocationByGeoip();
+            WeatherForApp defaultWeatherForApp = new OpenWeatherAPIService(defaultGeoip.getLatitude(), defaultGeoip.getLongitude()).getWeatherForAppObject();
+            DateAndTimeMethods.setTextDay(leftCurrentDayLabel, defaultWeatherForApp.getTimezone(), 0);
             new StringMethods().setPanel(
-                    defaultWeatherController,
-                    getGeoIP().getCity(),
-                    getGeoIP().getCountry(),
+                    defaultWeatherForApp,
+                    defaultGeoip.getCity(),
+                    defaultGeoip.getCountry(),
                     leftTimeLabel,
                     leftCityLabel,
                     leftTemperatureLabel,
@@ -182,27 +184,25 @@ public class GeneralWindowController extends BaseController implements Initializ
                     leftHumidityLabel,
                     leftImageView
             );
+            fiveDaysLeftController.setFiveDaysData(defaultWeatherForApp);
+        } catch (MalformedURLException e) {
+            viewFactory.showErrorApplication(ErrorMessages.MALFORMED_URL_ADDRESS);
         } catch (IOException e) {
             viewFactory.showErrorApplication(ErrorMessages.INTERNET_CONNECTION_ERROR);
         } catch (GeoIp2Exception e) {
             viewFactory.showErrorApplication(ErrorMessages.USER_LOCATION_OR_DATABASE_CONNECTION_ERROR);
         }
-        try {
-            fiveDaysLeftController.setFiveDaysData(Objects.requireNonNull(defaultWeatherController));
-        } catch (MalformedURLException e) {
-            viewFactory.showErrorApplication(ErrorMessages.MALFORMED_URL_ADDRESS);
-        }
     }
 
-    private void setDefaultWeatherDataInRightPanel(){
-        OpenWeatherAPIService defaultWeatherController = null;
+    private void setDefaultWeatherDataInRightPanel() {
         try {
-            defaultWeatherController = new OpenWeatherAPIService(getGeoIP().getLatitude(), getGeoIP().getLongitude());
-            DateAndTimeMethods.setTextDay(rightCurrentDayLabel, defaultWeatherController.getTimezone(), 0);
+            GeoIP defaultGeoip = getUserLocationByGeoip();
+            WeatherForApp defaultWeatherForApp = new OpenWeatherAPIService(defaultGeoip.getLatitude(), defaultGeoip.getLongitude()).getWeatherForAppObject();
+            DateAndTimeMethods.setTextDay(rightCurrentDayLabel, defaultWeatherForApp.getTimezone(), 0);
             new StringMethods().setPanel(
-                    defaultWeatherController,
-                    getGeoIP().getCity(),
-                    getGeoIP().getCountry(),
+                    defaultWeatherForApp,
+                    defaultGeoip.getCity(),
+                    defaultGeoip.getCountry(),
                     rightTimeLabel,
                     rightCityLabel,
                     rightTemperatureLabel,
@@ -210,23 +210,21 @@ public class GeneralWindowController extends BaseController implements Initializ
                     rightHumidityLabel,
                     rightImageView
             );
+            fiveDaysRightController.setFiveDaysData(defaultWeatherForApp);
+        } catch (MalformedURLException e) {
+            viewFactory.showErrorApplication(ErrorMessages.MALFORMED_URL_ADDRESS);
         } catch (IOException e) {
             viewFactory.showErrorApplication(ErrorMessages.INTERNET_CONNECTION_ERROR);
         } catch (GeoIp2Exception e) {
             viewFactory.showErrorApplication(ErrorMessages.USER_LOCATION_OR_DATABASE_CONNECTION_ERROR);
         }
-        try {
-            fiveDaysRightController.setFiveDaysData(defaultWeatherController);
-        } catch (MalformedURLException e) {
-            viewFactory.showErrorApplication(ErrorMessages.MALFORMED_URL_ADDRESS);
-        }
     }
 
-    private GeoIP getGeoIP() throws IOException, GeoIp2Exception {
+    private GeoIP getUserLocationByGeoip() throws IOException, GeoIp2Exception {
         return new LocationUserData().getUserLocationBasedIPAddress(ConfigMainSettings.CHECK_IP_URL_PATH);
     }
 
-    private OpenWeatherGeocodingAPIService getOpenWeatherGeocodingAPIController(TextField textField) {
+    private OpenWeatherGeocodingAPIService getOpenWeatherGeocodingAPIService(TextField textField) {
         return new OpenWeatherGeocodingAPIService(StringMethods.getTextEnteredInTextField(textField));
     }
 

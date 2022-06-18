@@ -3,9 +3,10 @@ package pl.weather.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import pl.weather.controller.service.OpenWeatherAPIService;
+import pl.weather.controller.service.OpenWeatherFiveDaysFieldService;
 import pl.weather.model.auxiliaryMethods.DateAndTimeMethods;
 import pl.weather.model.auxiliaryMethods.StringMethods;
+import pl.weather.model.weather.WeatherForApp;
 
 import java.net.MalformedURLException;
 
@@ -58,9 +59,10 @@ public class FiveDaysLeftController {
     Label temperature5Left;
 
 
-    public void setFiveDaysData(OpenWeatherAPIService openWeatherAPIController) throws MalformedURLException {
+    public void setFiveDaysData(WeatherForApp weatherForApp) throws MalformedURLException {
 
-        String timeZone = openWeatherAPIController.getTimezone();
+        String timeZone = weatherForApp.getTimezone();
+        OpenWeatherFiveDaysFieldService fiveDaysFieldService = new OpenWeatherFiveDaysFieldService();
 
         DateAndTimeMethods.setTextNextDay(day1Left, timeZone, 1);
         DateAndTimeMethods.setTextNextDay(day2Left, timeZone, 2);
@@ -68,22 +70,22 @@ public class FiveDaysLeftController {
         DateAndTimeMethods.setTextNextDay(day4Left, timeZone, 4);
         DateAndTimeMethods.setTextNextDay(day5Left, timeZone, 5);
 
-        icon1weatherLeft.setImage(openWeatherAPIController.getNextDayIcon(0));
-        icon2weatherLeft.setImage(openWeatherAPIController.getNextDayIcon(1));
-        icon3weatherLeft.setImage(openWeatherAPIController.getNextDayIcon(2));
-        icon4weatherLeft.setImage(openWeatherAPIController.getNextDayIcon(3));
-        icon5weatherLeft.setImage(openWeatherAPIController.getNextDayIcon(4));
+        icon1weatherLeft.setImage(fiveDaysFieldService.getNextDayIcon(weatherForApp, 0));
+        icon2weatherLeft.setImage(fiveDaysFieldService.getNextDayIcon(weatherForApp, 1));
+        icon3weatherLeft.setImage(fiveDaysFieldService.getNextDayIcon(weatherForApp, 2));
+        icon4weatherLeft.setImage(fiveDaysFieldService.getNextDayIcon(weatherForApp, 3));
+        icon5weatherLeft.setImage(fiveDaysFieldService.getNextDayIcon(weatherForApp, 4));
 
-        temperature1Left.setText(openWeatherAPIController.getDailyTemperatureNextDay(0)
-                + " / " + openWeatherAPIController.getNightTemperatureNextDay(0) + StringMethods.addTempUnit());
-        temperature2Left.setText(openWeatherAPIController.getDailyTemperatureNextDay(1)
-                + " / " + openWeatherAPIController.getNightTemperatureNextDay(1) + StringMethods.addTempUnit());
-        temperature3Left.setText(openWeatherAPIController.getDailyTemperatureNextDay(2)
-                + " / " + openWeatherAPIController.getNightTemperatureNextDay(2) + StringMethods.addTempUnit());
-        temperature4Left.setText(openWeatherAPIController.getDailyTemperatureNextDay(3)
-                + " / " + openWeatherAPIController.getNightTemperatureNextDay(3) + StringMethods.addTempUnit());
-        temperature5Left.setText(openWeatherAPIController.getDailyTemperatureNextDay(4)
-                + " / " + openWeatherAPIController.getNightTemperatureNextDay(4) + StringMethods.addTempUnit());
+        temperature1Left.setText(fiveDaysFieldService.getDailyTemperatureNextDay(weatherForApp, 0)
+                + " / " + fiveDaysFieldService.getNightTemperatureNextDay(weatherForApp, 0) + StringMethods.addTempUnit());
+        temperature2Left.setText(fiveDaysFieldService.getDailyTemperatureNextDay(weatherForApp, 1)
+                + " / " + fiveDaysFieldService.getNightTemperatureNextDay(weatherForApp, 1) + StringMethods.addTempUnit());
+        temperature3Left.setText(fiveDaysFieldService.getDailyTemperatureNextDay(weatherForApp, 2)
+                + " / " + fiveDaysFieldService.getNightTemperatureNextDay(weatherForApp, 2) + StringMethods.addTempUnit());
+        temperature4Left.setText(fiveDaysFieldService.getDailyTemperatureNextDay(weatherForApp, 3)
+                + " / " + fiveDaysFieldService.getNightTemperatureNextDay(weatherForApp, 3) + StringMethods.addTempUnit());
+        temperature5Left.setText(fiveDaysFieldService.getDailyTemperatureNextDay(weatherForApp, 4)
+                + " / " + fiveDaysFieldService.getNightTemperatureNextDay(weatherForApp, 4) + StringMethods.addTempUnit());
     }
 
 }

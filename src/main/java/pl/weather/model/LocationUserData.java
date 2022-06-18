@@ -17,9 +17,9 @@ public class LocationUserData {
         String country = cityResponse.getCountry().getIsoCode();
         String latitude = cityResponse.getLocation().getLatitude().toString();
         String longitude = cityResponse.getLocation().getLongitude().toString();
-        String timeZone = cityResponse.getLocation().getTimeZone();
+//        String timeZone = cityResponse.getLocation().getTimeZone();
 
-        return new GeoIP(ipAddress, city, country, latitude, longitude, timeZone);
+        return new GeoIP( /*ipAddress,*/ city, country, latitude, longitude /*, timeZone*/);
     }
 
 

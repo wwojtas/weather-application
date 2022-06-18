@@ -1,5 +1,7 @@
 package pl.weather.model.config;
 
+import javafx.scene.image.Image;
+
 public class ConfigAPIOpenWeather {
 
     //  openWeather - GEOCODING LOCATION
@@ -20,7 +22,11 @@ public class ConfigAPIOpenWeather {
     // openWeather - icon data
     public static final String OPEN_WEATHER_ICON_CALL = "http://openweathermap.org/img/wn/";
     public static final String ICON_CALL_LAST_PARAMETER = "@2x.png";
-
-
+    public static Image getWeatherImage(String imageIdCode) {
+        String queryToApi = ConfigAPIOpenWeather.OPEN_WEATHER_ICON_CALL
+                + imageIdCode
+                + ConfigAPIOpenWeather.ICON_CALL_LAST_PARAMETER;
+        return new Image(queryToApi);
+    }
 
 }
