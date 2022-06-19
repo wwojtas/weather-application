@@ -1,6 +1,6 @@
 package pl.weather.model;
 
-import pl.weather.model.auxiliaryMethods.AnotherUtils;
+import pl.weather.model.auxiliary.AnotherUtils;
 
 import java.net.MalformedURLException;
 import java.net.URL;

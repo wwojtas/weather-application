@@ -1,4 +1,4 @@
-package pl.weather.model.auxiliaryMethods;
+package pl.weather.model.auxiliary;
 
 import pl.weather.model.config.ConfigMainSettings;
 

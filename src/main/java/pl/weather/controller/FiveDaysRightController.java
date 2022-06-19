@@ -4,8 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import pl.weather.controller.service.OpenWeatherFiveDaysFieldService;
-import pl.weather.model.auxiliaryMethods.DateAndTimeUtils;
-import pl.weather.model.auxiliaryMethods.AnotherUtils;
+import pl.weather.model.auxiliary.DateAndTimeUtils;
+import pl.weather.model.auxiliary.AnotherUtils;
 import pl.weather.model.weather.WeatherForApp;
 
 import java.net.MalformedURLException;
