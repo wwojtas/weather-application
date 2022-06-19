@@ -8,18 +8,16 @@ import java.net.InetAddress;
 
 public class LocationUserData {
 
-    public GeoIP getUserLocationBasedIPAddress(String userIpAdress) throws IOException, GeoIp2Exception {
-        String ipAddress = new ConnectionToInternet().getIpAddress(userIpAdress);
+    public GeoIP getUserLocationBasedIPAddress(String userIpAddress) throws IOException, GeoIp2Exception {
+        String ipAddress = new ConnectionToInternet().getIpAddress(userIpAddress);
         InetAddress inetAddress = InetAddress.getByName(ipAddress);
         CityResponse cityResponse = new ConnectionToDatabase().getDatabaseReader().city(inetAddress);
-
         String city = cityResponse.getCity().getName();
         String country = cityResponse.getCountry().getIsoCode();
         String latitude = cityResponse.getLocation().getLatitude().toString();
         String longitude = cityResponse.getLocation().getLongitude().toString();
-//        String timeZone = cityResponse.getLocation().getTimeZone();
 
-        return new GeoIP( /*ipAddress,*/ city, country, latitude, longitude /*, timeZone*/);
+        return new GeoIP(city, country, latitude, longitude);
     }
 
 

@@ -12,8 +12,8 @@ import pl.weather.controller.service.OpenWeatherAPIService;
 import pl.weather.controller.service.OpenWeatherGeocodingAPIService;
 import pl.weather.model.GeoIP;
 import pl.weather.model.LocationUserData;
-import pl.weather.model.auxiliaryMethods.DateAndTimeMethods;
-import pl.weather.model.auxiliaryMethods.StringMethods;
+import pl.weather.model.auxiliaryMethods.DateAndTimeUtils;
+import pl.weather.model.auxiliaryMethods.AnotherUtils;
 import pl.weather.model.config.ConfigMainSettings;
 import pl.weather.model.config.ErrorMessages;
 import pl.weather.model.weather.WeatherForApp;
@@ -121,8 +121,8 @@ public class GeneralWindowController extends BaseController implements Initializ
                 GeoIP geoIPGeocoding = geocodingAPIService.getGeocodingFromOpenWeather();
                 WeatherForApp weatherForApp = new OpenWeatherAPIService(geoIPGeocoding.getLatitude(), geoIPGeocoding.getLongitude())
                         .getWeatherForAppObject();
-                DateAndTimeMethods.setTextDay(leftCurrentDayLabel, weatherForApp.getTimezone(), 0);
-                new StringMethods().setPanel(
+                leftCurrentDayLabel.setText(DateAndTimeUtils.getDayTextContent(weatherForApp.getTimezone(), 0));
+                AnotherUtils.setPanel(
                         weatherForApp,
                         geoIPGeocoding.getCity(),
                         geoIPGeocoding.getCountry(),
@@ -147,8 +147,8 @@ public class GeneralWindowController extends BaseController implements Initializ
                 GeoIP geoIPGeocoding = geocodingAPIService.getGeocodingFromOpenWeather();
                 WeatherForApp weatherForApp = new OpenWeatherAPIService(geoIPGeocoding.getLatitude(), geoIPGeocoding.getLongitude())
                         .getWeatherForAppObject();
-                DateAndTimeMethods.setTextDay(rightCurrentDayLabel, weatherForApp.getTimezone(), 0);
-                new StringMethods().setPanel(
+                rightCurrentDayLabel.setText(DateAndTimeUtils.getDayTextContent(weatherForApp.getTimezone(), 0));
+                AnotherUtils.setPanel(
                         weatherForApp,
                         geoIPGeocoding.getCity(),
                         geoIPGeocoding.getCountry(),
@@ -172,8 +172,8 @@ public class GeneralWindowController extends BaseController implements Initializ
         try {
             GeoIP defaultGeoip = getUserLocationByGeoip();
             WeatherForApp defaultWeatherForApp = new OpenWeatherAPIService(defaultGeoip.getLatitude(), defaultGeoip.getLongitude()).getWeatherForAppObject();
-            DateAndTimeMethods.setTextDay(leftCurrentDayLabel, defaultWeatherForApp.getTimezone(), 0);
-            new StringMethods().setPanel(
+            leftCurrentDayLabel.setText(DateAndTimeUtils.getDayTextContent(defaultWeatherForApp.getTimezone(), 0));
+            AnotherUtils.setPanel(
                     defaultWeatherForApp,
                     defaultGeoip.getCity(),
                     defaultGeoip.getCountry(),
@@ -198,8 +198,8 @@ public class GeneralWindowController extends BaseController implements Initializ
         try {
             GeoIP defaultGeoip = getUserLocationByGeoip();
             WeatherForApp defaultWeatherForApp = new OpenWeatherAPIService(defaultGeoip.getLatitude(), defaultGeoip.getLongitude()).getWeatherForAppObject();
-            DateAndTimeMethods.setTextDay(rightCurrentDayLabel, defaultWeatherForApp.getTimezone(), 0);
-            new StringMethods().setPanel(
+            rightCurrentDayLabel.setText(DateAndTimeUtils.getDayTextContent(defaultWeatherForApp.getTimezone(), 0));
+            AnotherUtils.setPanel(
                     defaultWeatherForApp,
                     defaultGeoip.getCity(),
                     defaultGeoip.getCountry(),
@@ -221,11 +221,11 @@ public class GeneralWindowController extends BaseController implements Initializ
     }
 
     private GeoIP getUserLocationByGeoip() throws IOException, GeoIp2Exception {
-        return new LocationUserData().getUserLocationBasedIPAddress(ConfigMainSettings.CHECK_IP_URL_PATH);
+        return new LocationUserData().getUserLocationBasedIPAddress(ConfigMainSettings.CHECK_IP_URL_PATH_MAIN);
     }
 
     private OpenWeatherGeocodingAPIService getOpenWeatherGeocodingAPIService(TextField textField) {
-        return new OpenWeatherGeocodingAPIService(StringMethods.getTextEnteredInTextField(textField));
+        return new OpenWeatherGeocodingAPIService(AnotherUtils.getTextEnteredInTextField(textField));
     }
 
     private boolean fieldIsBlank(TextField field) {

@@ -22,6 +22,4 @@ public class OpenWeatherFiveDaysFieldService {
         return weatherForApp.getNightTemperatureNextDay().get(numberOfDay);
     }
 
-
-
 }

@@ -1,6 +1,5 @@
 package pl.weather.model.auxiliaryMethods;
 
-import javafx.scene.control.Label;
 import pl.weather.model.config.ConfigMainSettings;
 
 import java.time.LocalDateTime;
@@ -8,12 +7,13 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
-public class DateAndTimeMethods {
+public class DateAndTimeUtils {
 
-    public static void updateClock(Label label, String timezone) {
+
+    public static String updateClock(String timezone) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern(ConfigMainSettings.CURRENT_TIME_PATTERN);
         LocalTime localTime = LocalTime.now(ZoneId.of(timezone));
-        label.setText(localTime.format(dtf));
+        return localTime.format(dtf);
     }
 
     private static DateTimeFormatter setDateFormat() {
@@ -24,16 +24,14 @@ public class DateAndTimeMethods {
         return DateTimeFormatter.ofPattern(ConfigMainSettings.NEXT_DATE_PATTERN);
     }
 
-    public static void setTextDay(Label label, String timezone, long value) {
+    public static String getDayTextContent(String timezone, long value) {
         LocalDateTime localDateTime = LocalDateTime.now(ZoneId.of(timezone));
-        String text = localDateTime.plusDays(value).format(setDateFormat());
-        label.setText(text);
+        return localDateTime.plusDays(value).format(setDateFormat());
     }
 
-    public static void setTextNextDay(Label label, String timezone, long value) {
+    public static String getNextDayTextContent(String timezone, long value) {
         LocalDateTime localDateTime = LocalDateTime.now(ZoneId.of(timezone));
-        String text = localDateTime.plusDays(value).format(setNextDateFormat());
-        label.setText(text);
+        return localDateTime.plusDays(value).format(setNextDateFormat());
     }
 
 

@@ -9,4 +9,8 @@ public class ErrorMessages {
     public static final String USER_LOCATION_OR_DATABASE_CONNECTION_ERROR =
             "Błąd połączenia z bazą danych\n" +
             " lub lokalizacji użytkownika";
+
+    public static final String UNDEFINED_ERROR_READING_STREAM =
+            "Błąd przy próbie odczytu strumienia\n" +
+            "Spróbuj ponownie";
 }

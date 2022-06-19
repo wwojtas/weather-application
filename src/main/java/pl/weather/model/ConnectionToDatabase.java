@@ -3,20 +3,18 @@ package pl.weather.model;
 import com.maxmind.geoip2.DatabaseReader;
 import pl.weather.model.config.ConfigMainSettings;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.Objects;
+import java.io.InputStream;
 
 public class ConnectionToDatabase {
 
     DatabaseReader getDatabaseReader(){
         ClassLoader classLoader = getClass().getClassLoader();
-        File databaseFile = new File(Objects.requireNonNull(
-                classLoader.getResource(ConfigMainSettings.GEOLITE2_DATABASE_PATH)).getFile());
+        InputStream inputStream = classLoader.getResourceAsStream(ConfigMainSettings.GEOLITE2_DATABASE_PATH);
         try {
-            return new DatabaseReader.Builder(databaseFile).build();
+            return new DatabaseReader.Builder(inputStream).build();
         } catch (IOException e) {
-           return null;
+            return null;
         }
     }
 

@@ -38,9 +38,9 @@ public class ConnectionToInternet {
         }
     }
 
-    public boolean checkInternetConnection(){
+    public boolean checkInternetConnection(String ipAddress){
         try {
-            URL url = new URL(ConfigMainSettings.CHECK_IP_URL_PATH);
+            URL url = new URL(ipAddress);
             URLConnection urlConnection = url.openConnection();
             urlConnection.connect();
             return true;

@@ -8,7 +8,9 @@ public class ConfigMainSettings {
     public static final String GEOLITE2_DATABASE_PATH = "GeoLite2-City.mmdb";
 
     // check user IP
-    public static final String CHECK_IP_URL_PATH = "https://checkip.amazonaws.com";
+    public static final String CHECK_IP_URL_PATH_MAIN = "https://checkip.amazonaws.com";
+    public static final String CHECK_IP_URL_PATH_SECOND = "https://ipinfo.io/ip";
+
 
     // date and hour
     public static final String CURRENT_DATE_PATTERN = "E dd.MM.yyyy";
@@ -22,7 +24,7 @@ public class ConfigMainSettings {
     public static final String SEPARATOR = ", ";
 
     // GSON
-    public static Gson createGsonStaticObject(){
+    public static final Gson createGsonStaticObject(){
         return new Gson();
     }
 
