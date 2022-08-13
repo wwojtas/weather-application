@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
@@ -88,7 +88,7 @@ class OpenWeatherGeocodingAPIServiceTest {
                 () -> assertNull(geoIP.get(0)),
                 () -> assertNull(geoIP.get(1)),
                 () -> assertNull(geoIP.get(2)),
-                () -> assertNull(geoIP.get(3))
+                () -> assertThat(geoIP.get(3), nullValue())
         );
     }
 
