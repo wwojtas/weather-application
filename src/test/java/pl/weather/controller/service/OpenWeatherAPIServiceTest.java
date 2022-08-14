@@ -1,6 +1,5 @@
 package pl.weather.controller.service;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.weather.model.weather.WeatherForApp;
 
@@ -15,17 +14,37 @@ import static org.mockito.Mockito.mock;
 
 class OpenWeatherAPIServiceTest {
 
-    private WeatherForApp weatherForApp;
+//    private WeatherForApp weatherForApp;
+//
+//    @BeforeEach
+//    void initializeWeatherForAppObject(){
+//        weatherForApp = prepareWeatherDataForTestApp();
+//    }
 
-    @BeforeEach
-    void initializeWeatherForAppObject(){
-        weatherForApp = prepareMockDataWeatherForTestApp();
+    @Test
+    void dataWeatherStubShouldReturnDailyTemperature() throws MalformedURLException {
+
+        //given
+        OpenWeatherDataRepository openWeatherAPIServiceStub = new OpenWeatherAPIServiceStub();
+
+        //when
+        ArrayList<String> dailyTemperature = openWeatherAPIServiceStub.getWeatherData().getDailyTemperatureNextDay();
+        String dailyTemperatureString = dailyTemperature.get(0);
+
+        //then
+        assertThat(dailyTemperature, hasSize(1));
+        assertThat(dailyTemperature, is(not(empty())));
+        assertThat(dailyTemperature, contains("30"));
+        assertThat(dailyTemperatureString, equalTo("30"));
+        assertEquals(dailyTemperatureString, "30");
     }
 
     @Test
     void referenceToTheSameObjectShouldBeEqual(){
 
         //given
+        WeatherForApp weatherForApp = prepareNotEmptyWeatherDataForTestApp();
+
         //when
         WeatherForApp weatherForAppTestSecond = weatherForApp;
 
@@ -37,43 +56,45 @@ class OpenWeatherAPIServiceTest {
     void referenceToTheDifferentObjectShouldBeNotSame() {
 
         //given
+        WeatherForApp weatherForApp = prepareNotEmptyWeatherDataForTestApp();
+
         //when
-        WeatherForApp weatherForAppTestSecond = prepareMockDataWeatherForTestApp();
+        WeatherForApp weatherForAppSecond = prepareNotEmptyWeatherDataForTestApp();
 
         //then
-        assertNotSame(weatherForApp, weatherForAppTestSecond);
+        assertNotSame(weatherForApp, weatherForAppSecond);
     }
 
     @Test
-    void getWeatherForAppObjectMethodShouldReturnTheSameTimezone() throws MalformedURLException {
+    void getWeatherDataMethodShouldReturnTheSameTimezone() throws MalformedURLException {
 
         //given
         OpenWeatherAPIService openWeatherAPIService = mock(OpenWeatherAPIService.class);
-        given(openWeatherAPIService.getWeatherForAppObject()).willReturn(weatherForApp);
+        given(openWeatherAPIService.getWeatherData()).willReturn(prepareNotEmptyWeatherDataForTestApp());
 
         //when
-        String timezoneForTestApp = weatherForApp.getTimezone();
+        String timezoneFromMock = openWeatherAPIService.getWeatherData().getTimezone();
 
         //then
-        assertThat(timezoneForTestApp, equalTo("Europe/Warsaw"));
+        assertThat(timezoneFromMock, equalTo("Europe/Warsaw"));
     }
 
     @Test
-    void allWeatherForAppFieldsShouldBeNotEmpty() throws MalformedURLException {
+    void allWeatherDataShouldBeNotEmpty() throws MalformedURLException {
 
         //given
         OpenWeatherAPIService openWeatherAPIService = mock(OpenWeatherAPIService.class);
-        given(openWeatherAPIService.getWeatherForAppObject()).willReturn(weatherForApp);
+        given(openWeatherAPIService.getWeatherData()).willReturn(prepareNotEmptyWeatherDataForTestApp());
 
         //when
-        String timezone = weatherForApp.getTimezone();
-        String currentTemperature = weatherForApp.getCurrentTemperature();
-        String currentPressure = weatherForApp.getCurrentPressure();
-        String currentHumidity = weatherForApp.getCurrentHumidity();
-        String currentDayIconIdCode = weatherForApp.getCurrentDayIconIdCode();
-        ArrayList<String> nextDayIconIdCode = weatherForApp.getNextDayIconIdCode();
-        ArrayList<String> nightTemperatureNextDay = weatherForApp.getNightTemperatureNextDay();
-        ArrayList<String> dailyTemperatureNextDay = weatherForApp.getDailyTemperatureNextDay();
+        String timezone = openWeatherAPIService.getWeatherData().getTimezone();
+        String currentTemperature = openWeatherAPIService.getWeatherData().getCurrentTemperature();
+        String currentPressure = openWeatherAPIService.getWeatherData().getCurrentPressure();
+        String currentHumidity = openWeatherAPIService.getWeatherData().getCurrentHumidity();
+        String currentDayIconIdCode = openWeatherAPIService.getWeatherData().getCurrentDayIconIdCode();
+        ArrayList<String> nextDayIconIdCode = openWeatherAPIService.getWeatherData().getNextDayIconIdCode();
+        ArrayList<String> nightTemperatureNextDay = openWeatherAPIService.getWeatherData().getNightTemperatureNextDay();
+        ArrayList<String> dailyTemperatureNextDay = openWeatherAPIService.getWeatherData().getDailyTemperatureNextDay();
 
         //then
         assertAll(
@@ -89,12 +110,12 @@ class OpenWeatherAPIServiceTest {
     }
 
     @Test
-    void allWeatherForAppFieldsShouldBeEmpty() throws MalformedURLException {
+    void allWeatherDataShouldBeEmpty() throws MalformedURLException {
 
         //given
         OpenWeatherAPIService openWeatherAPIService = mock(OpenWeatherAPIService.class);
         WeatherForApp weatherForAppForEmptyExample = mock(WeatherForApp.class);
-        given(openWeatherAPIService.getWeatherForAppObject()).willReturn(weatherForAppForEmptyExample);
+        given(openWeatherAPIService.getWeatherData()).willReturn(weatherForAppForEmptyExample);
 
         //when
         String timezone = weatherForAppForEmptyExample.getTimezone();
@@ -119,13 +140,13 @@ class OpenWeatherAPIServiceTest {
         );
     }
 
-    private WeatherForApp prepareMockDataWeatherForTestApp(){
+    private WeatherForApp prepareNotEmptyWeatherDataForTestApp(){
 
-        ArrayList<String> nextDayIconIdCode = new ArrayList<String>();
+        ArrayList<String> nextDayIconIdCode = new ArrayList<>();
         nextDayIconIdCode.add("04d");
-        ArrayList<String> nightTemperatureNextDay = new ArrayList<String>();
+        ArrayList<String> nightTemperatureNextDay = new ArrayList<>();
         nightTemperatureNextDay.add("20");
-        ArrayList<String> dailyTemperatureNextDay = new ArrayList<String>();
+        ArrayList<String> dailyTemperatureNextDay = new ArrayList<>();
         dailyTemperatureNextDay.add("30");
         return new WeatherForApp("Europe/Warsaw",
                 "15",

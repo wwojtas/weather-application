@@ -10,7 +10,7 @@ import pl.weather.model.weather.WeatherOneCall;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 
-public class OpenWeatherAPIService {
+public class OpenWeatherAPIService implements OpenWeatherDataRepository {
 
     private final String latitude;
     private final String longitude;
@@ -28,7 +28,8 @@ public class OpenWeatherAPIService {
         return longitude;
     }
 
-    public WeatherForApp getWeatherForAppObject() throws MalformedURLException {
+    @Override
+    public WeatherForApp getWeatherData() throws MalformedURLException {
         String queryWeather = ConfigAPIOpenWeather.OPEN_WEATHER_ONE_CALL_MAIN_QUERY
                 + ConfigAPIOpenWeather.LATITUDE_PREFIX
                 + getLatitude()
