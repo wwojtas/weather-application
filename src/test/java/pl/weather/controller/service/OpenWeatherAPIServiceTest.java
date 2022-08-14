@@ -14,13 +14,6 @@ import static org.mockito.Mockito.mock;
 
 class OpenWeatherAPIServiceTest {
 
-//    private WeatherForApp weatherForApp;
-//
-//    @BeforeEach
-//    void initializeWeatherForAppObject(){
-//        weatherForApp = prepareWeatherDataForTestApp();
-//    }
-
     @Test
     void dataWeatherStubShouldReturnDailyTemperature() throws MalformedURLException {
 
