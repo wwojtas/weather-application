@@ -16,18 +16,19 @@ import static org.mockito.Mockito.mock;
 
 class OpenWeatherGeocodingAPIServiceTest {
 
-    private GeoIP geoIP;
-
-    @BeforeEach
-    void initializeGeoIPObject(){
-        geoIP = prepareGeoIPObject();
-    }
+//    private GeoIP geoIP;
+//
+//    @BeforeEach
+//    void initializeGeoIPObject(){
+//        geoIP = prepareGeoIPObject();
+//    }
 
 
     @Test
     void referenceToTheSameObjectShouldBeEqual() {
 
         //given
+        GeoIP geoIP = prepareGeoIPObject();
         //when
         GeoIP geoIPSecond = geoIP;
 
@@ -39,6 +40,8 @@ class OpenWeatherGeocodingAPIServiceTest {
     void referenceToTheDifferentObjectShouldBeNotSame(){
 
         //given
+        GeoIP geoIP = prepareGeoIPObject();
+
         //when
         GeoIP geoIPSecond = prepareGeoIPObject();
 
@@ -50,14 +53,15 @@ class OpenWeatherGeocodingAPIServiceTest {
     void allGeoIPFieldsShouldBeNotEmpty() throws MalformedURLException {
 
         //given
+        GeoIP geoIP = prepareGeoIPObject();
         OpenWeatherGeocodingAPIService openWeatherGeocodingAPIService = mock(OpenWeatherGeocodingAPIService.class);
         given(openWeatherGeocodingAPIService.getGeocodingFromOpenWeather()).willReturn(geoIP);
 
         //when
-        String city = geoIP.getCity();
-        String country = geoIP.getCountry();
-        String latitude = geoIP.getLatitude();
-        String longitude = geoIP.getLongitude();
+        String city = openWeatherGeocodingAPIService.getGeocodingFromOpenWeather().getCity();
+        String country = openWeatherGeocodingAPIService.getGeocodingFromOpenWeather().getCountry();
+        String latitude = openWeatherGeocodingAPIService.getGeocodingFromOpenWeather().getLatitude();
+        String longitude = openWeatherGeocodingAPIService.getGeocodingFromOpenWeather().getLongitude();
 
         //then
         assertAll(
@@ -78,10 +82,10 @@ class OpenWeatherGeocodingAPIServiceTest {
 
         //when
         List<String> geoIP = new ArrayList<>();
-        geoIP.add(geoIPForEmptyExample.getCity());
-        geoIP.add(geoIPForEmptyExample.getCountry());
-        geoIP.add(geoIPForEmptyExample.getLatitude());
-        geoIP.add(geoIPForEmptyExample.getLongitude());
+        geoIP.add(openWeatherGeocodingAPIService.getGeocodingFromOpenWeather().getCity());
+        geoIP.add(openWeatherGeocodingAPIService.getGeocodingFromOpenWeather().getCountry());
+        geoIP.add(openWeatherGeocodingAPIService.getGeocodingFromOpenWeather().getLatitude());
+        geoIP.add(openWeatherGeocodingAPIService.getGeocodingFromOpenWeather().getLongitude());
 
         //then
         assertAll(

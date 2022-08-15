@@ -23,10 +23,10 @@ class OpenWeatherFiveDaysFieldServiceTest {
     private WeatherForApp weatherForApp;
     private final int numberOfDay = 0;
 
-    @BeforeEach
-    void initializeWeatherForApp(){
-        weatherForApp = prepareMockDataWeatherForTestApp();
-    }
+//    @BeforeEach
+//    void initializeWeatherForApp(){
+//        weatherForApp = prepareMockDataWeatherForTestApp();
+//    }
 
     @Test
     void getDailyTemperatureNextDayShouldBeNotEmpty() {

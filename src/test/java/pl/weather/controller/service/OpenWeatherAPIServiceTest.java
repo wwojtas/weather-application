@@ -73,7 +73,7 @@ class OpenWeatherAPIServiceTest {
     }
 
     @Test
-    void allWeatherDataShouldBeNotEmpty() throws MalformedURLException {
+    void allWeatherDataFieldsShouldBeNotEmpty() throws MalformedURLException {
 
         //given
         OpenWeatherAPIService openWeatherAPIService = mock(OpenWeatherAPIService.class);
@@ -103,7 +103,7 @@ class OpenWeatherAPIServiceTest {
     }
 
     @Test
-    void allWeatherDataShouldBeEmpty() throws MalformedURLException {
+    void allWeatherDataFieldsShouldBeEmpty() throws MalformedURLException {
 
         //given
         OpenWeatherAPIService openWeatherAPIService = mock(OpenWeatherAPIService.class);
