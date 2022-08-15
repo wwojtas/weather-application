@@ -1,10 +1,14 @@
 package pl.weather.controller.service;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import pl.weather.model.weather.WeatherForApp;
 
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -33,7 +37,7 @@ class OpenWeatherAPIServiceTest {
     }
 
     @Test
-    void referenceToTheSameObjectShouldBeEqual(){
+    void referenceToTheSameObjectShouldBeEqual() {
 
         //given
         WeatherForApp weatherForApp = prepareNotEmptyWeatherDataForTestApp();
@@ -73,6 +77,24 @@ class OpenWeatherAPIServiceTest {
     }
 
     @Test
+    public void dailyTemperatureNextDayShouldHaveNextDataFromList() throws MalformedURLException {
+
+        //given
+        OpenWeatherAPIService openWeatherAPIService = mock(OpenWeatherAPIService.class);
+        given(openWeatherAPIService.getWeatherData()).willReturn(prepareNotEmptyWeatherDataForTestApp());
+
+        //when
+        ArrayList<String> dailyTemperatureNextDay = openWeatherAPIService.getWeatherData().getDailyTemperatureNextDay();
+        int dailyTemperatureListSize = prepareNotEmptyWeatherDataForTestApp().getDailyTemperatureNextDay().size();
+
+        //then
+        assertThat(dailyTemperatureNextDay.size(), is(3));
+        for (int i = 0; i < dailyTemperatureListSize; i++) {
+            assertThat(dailyTemperatureNextDay.get(i), equalTo(i + 3 + "0"));
+        }
+    }
+
+    @Test
     void allWeatherDataFieldsShouldBeNotEmpty() throws MalformedURLException {
 
         //given
@@ -91,14 +113,14 @@ class OpenWeatherAPIServiceTest {
 
         //then
         assertAll(
-                ()-> assertThat(timezone, equalTo("Europe/Warsaw")),
-                ()-> assertThat(currentTemperature, containsString("15")),
-                ()-> assertThat(currentPressure, containsString("1012")),
-                ()-> assertThat(currentHumidity, containsString("50")),
-                ()-> assertThat(currentDayIconIdCode, equalTo("10d")),
-                ()-> assertThat(nextDayIconIdCode.get(0), equalTo("04d")),
-                ()-> assertThat(nightTemperatureNextDay.get(0), equalTo("20")),
-                ()-> assertThat(dailyTemperatureNextDay.get(0), equalTo("30"))
+                () -> assertThat(timezone, equalTo("Europe/Warsaw")),
+                () -> assertThat(currentTemperature, containsString("15")),
+                () -> assertThat(currentPressure, containsString("1012")),
+                () -> assertThat(currentHumidity, containsString("50")),
+                () -> assertThat(currentDayIconIdCode, equalTo("10d")),
+                () -> assertThat(nextDayIconIdCode.get(0), equalTo("04d")),
+                () -> assertThat(nightTemperatureNextDay.get(0), equalTo("20")),
+                () -> assertThat(dailyTemperatureNextDay.get(0), equalTo("30"))
         );
     }
 
@@ -122,18 +144,18 @@ class OpenWeatherAPIServiceTest {
 
         //then
         assertAll(
-                ()-> assertNull(timezone),
-                ()-> assertNull(currentTemperature),
-                ()-> assertNull(currentPressure),
-                ()-> assertNull(currentHumidity),
-                ()-> assertNull(currentDayIconIdCode),
-                ()-> assertThat(nextDayIconIdCode, empty()),
-                ()-> assertThat(nightTemperatureNextDay, empty()),
-                ()-> assertThat(dailyTemperatureNextDay, empty())
+                () -> assertNull(timezone),
+                () -> assertNull(currentTemperature),
+                () -> assertNull(currentPressure),
+                () -> assertNull(currentHumidity),
+                () -> assertNull(currentDayIconIdCode),
+                () -> assertThat(nextDayIconIdCode, empty()),
+                () -> assertThat(nightTemperatureNextDay, empty()),
+                () -> assertThat(dailyTemperatureNextDay, empty())
         );
     }
 
-    private WeatherForApp prepareNotEmptyWeatherDataForTestApp(){
+    private WeatherForApp prepareNotEmptyWeatherDataForTestApp() {
 
         ArrayList<String> nextDayIconIdCode = new ArrayList<>();
         nextDayIconIdCode.add("04d");
@@ -141,6 +163,8 @@ class OpenWeatherAPIServiceTest {
         nightTemperatureNextDay.add("20");
         ArrayList<String> dailyTemperatureNextDay = new ArrayList<>();
         dailyTemperatureNextDay.add("30");
+        dailyTemperatureNextDay.add("40");
+        dailyTemperatureNextDay.add("50");
         return new WeatherForApp("Europe/Warsaw",
                 "15",
                 "1012",
@@ -149,6 +173,6 @@ class OpenWeatherAPIServiceTest {
                 nextDayIconIdCode,
                 nightTemperatureNextDay,
                 dailyTemperatureNextDay
-                );
+        );
     }
 }
