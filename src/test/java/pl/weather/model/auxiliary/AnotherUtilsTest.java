@@ -12,6 +12,7 @@ class AnotherUtilsTest {
 
     @Test
     void shouldReturnAddedTemperatureUnit() {
+        
         // given
         //when
         String actualTempUnitFromApp = ConfigMainSettings.TEMPERATURE_UNIT;
@@ -36,6 +37,7 @@ class AnotherUtilsTest {
 
     @Test
     void shouldReturnAddedPressureUnit() {
+
         // given
         //when
         String actualPressureUnit = ConfigMainSettings.PRESSURE_UNIT;
@@ -60,6 +62,7 @@ class AnotherUtilsTest {
 
     @Test
     void shouldReturnAddedHumidityUnit() {
+
         // given
         //when
         String actualHumidityUnit = ConfigMainSettings.HUMIDITY_UNIT;

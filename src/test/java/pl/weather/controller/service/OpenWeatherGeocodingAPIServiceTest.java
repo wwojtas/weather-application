@@ -16,14 +16,6 @@ import static org.mockito.Mockito.mock;
 
 class OpenWeatherGeocodingAPIServiceTest {
 
-//    private GeoIP geoIP;
-//
-//    @BeforeEach
-//    void initializeGeoIPObject(){
-//        geoIP = prepareGeoIPObject();
-//    }
-
-
     @Test
     void referenceToTheSameObjectShouldBeEqual() {
 
