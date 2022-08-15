@@ -111,14 +111,14 @@ class OpenWeatherAPIServiceTest {
         given(openWeatherAPIService.getWeatherData()).willReturn(weatherForAppForEmptyExample);
 
         //when
-        String timezone = weatherForAppForEmptyExample.getTimezone();
-        String currentTemperature = weatherForAppForEmptyExample.getCurrentTemperature();
-        String currentPressure = weatherForAppForEmptyExample.getCurrentPressure();
-        String currentHumidity = weatherForAppForEmptyExample.getCurrentHumidity();
-        String currentDayIconIdCode = weatherForAppForEmptyExample.getCurrentDayIconIdCode();
-        ArrayList<String> nextDayIconIdCode = weatherForAppForEmptyExample.getNextDayIconIdCode();
-        ArrayList<String> nightTemperatureNextDay = weatherForAppForEmptyExample.getNightTemperatureNextDay();
-        ArrayList<String> dailyTemperatureNextDay = weatherForAppForEmptyExample.getDailyTemperatureNextDay();
+        String timezone = openWeatherAPIService.getWeatherData().getTimezone();
+        String currentTemperature = openWeatherAPIService.getWeatherData().getCurrentTemperature();
+        String currentPressure = openWeatherAPIService.getWeatherData().getCurrentPressure();
+        String currentHumidity = openWeatherAPIService.getWeatherData().getCurrentHumidity();
+        String currentDayIconIdCode = openWeatherAPIService.getWeatherData().getCurrentDayIconIdCode();
+        ArrayList<String> nextDayIconIdCode = openWeatherAPIService.getWeatherData().getNextDayIconIdCode();
+        ArrayList<String> nightTemperatureNextDay = openWeatherAPIService.getWeatherData().getNightTemperatureNextDay();
+        ArrayList<String> dailyTemperatureNextDay = openWeatherAPIService.getWeatherData().getDailyTemperatureNextDay();
 
         //then
         assertAll(

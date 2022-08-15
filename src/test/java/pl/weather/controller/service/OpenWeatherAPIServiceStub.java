@@ -2,18 +2,17 @@ package pl.weather.controller.service;
 
 import pl.weather.model.weather.WeatherForApp;
 
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 public class OpenWeatherAPIServiceStub implements OpenWeatherDataRepository {
 
     @Override
-    public WeatherForApp getWeatherData() throws MalformedURLException {
-        ArrayList<String> nextDayIconIdCode = new ArrayList<String>();
+    public WeatherForApp getWeatherData() {
+        ArrayList<String> nextDayIconIdCode = new ArrayList<>();
         nextDayIconIdCode.add("04d");
-        ArrayList<String> nightTemperatureNextDay = new ArrayList<String>();
+        ArrayList<String> nightTemperatureNextDay = new ArrayList<>();
         nightTemperatureNextDay.add("20");
-        ArrayList<String> dailyTemperatureNextDay = new ArrayList<String>();
+        ArrayList<String> dailyTemperatureNextDay = new ArrayList<>();
         dailyTemperatureNextDay.add("30");
         return new WeatherForApp("Europe/Warsaw",
                 "15",
