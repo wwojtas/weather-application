@@ -1,93 +1,100 @@
 package pl.weather.controller.service;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import pl.weather.model.weather.WeatherForApp;
 
 import java.util.ArrayList;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
 
 class OpenWeatherFiveDaysFieldServiceTest {
 
-    private WeatherForApp weatherForApp;
     private final int numberOfDay = 0;
-
-//    @BeforeEach
-//    void initializeWeatherForApp(){
-//        weatherForApp = prepareMockDataWeatherForTestApp();
-//    }
 
     @Test
     void getDailyTemperatureNextDayShouldBeNotEmpty() {
 
         //given
+        WeatherForApp weatherForApp = prepareNotEmptyWeatherDataForTestApp();
+
         OpenWeatherFiveDaysFieldService openWeatherFiveDaysFieldService = mock(OpenWeatherFiveDaysFieldService.class);
         given(openWeatherFiveDaysFieldService.getDailyTemperatureNextDay(weatherForApp, numberOfDay))
                 .willReturn(weatherForApp.getDailyTemperatureNextDay().get(numberOfDay));
 
         //when
-        String dailyTemperature = weatherForApp.getDailyTemperatureNextDay().get(numberOfDay);
+        String dailyTemperature = openWeatherFiveDaysFieldService.getDailyTemperatureNextDay(weatherForApp, numberOfDay);
 
         //then
         assertEquals(dailyTemperature, "30");
-        assertThat(weatherForApp.getDailyTemperatureNextDay(), hasSize(1));
-        assertThat(weatherForApp.getDailyTemperatureNextDay(), contains("30"));
-        assertThat(weatherForApp.getDailyTemperatureNextDay(), hasItem("30"));
+        assertThat(dailyTemperature, containsString("30"));
     }
 
     @Test
     void getDailyTemperatureNextDayShouldReturnEmptyString() {
 
         //given
-        OpenWeatherFiveDaysFieldService openWeatherFiveDaysFieldService = mock(OpenWeatherFiveDaysFieldService.class);
-        WeatherForApp weatherForAppExampleForTest = mock(WeatherForApp.class);
-        System.out.println(weatherForAppExampleForTest.getNightTemperatureNextDay());
+        WeatherForApp weatherForAppForEmptyExample = mock(WeatherForApp.class);
 
-        given(openWeatherFiveDaysFieldService.getDailyTemperatureNextDay(weatherForAppExampleForTest, numberOfDay))
+        OpenWeatherFiveDaysFieldService openWeatherFiveDaysFieldService = mock(OpenWeatherFiveDaysFieldService.class);
+        given(openWeatherFiveDaysFieldService.getDailyTemperatureNextDay(weatherForAppForEmptyExample, numberOfDay))
                 .willReturn("");
 
         //when
-        String dailyTemperature = weatherForAppExampleForTest.getDailyTemperatureNextDay().get(numberOfDay);
+        String dailyTemperature = openWeatherFiveDaysFieldService.getDailyTemperatureNextDay(weatherForAppForEmptyExample, numberOfDay);
 
         //then
         assertEquals(dailyTemperature, "");
-//        assertThat(weatherForApp.getDailyTemperatureNextDay(), hasSize(1));
-//        assertThat(weatherForApp.getDailyTemperatureNextDay(), contains("30"));
-//        assertThat(weatherForApp.getDailyTemperatureNextDay(), hasItem("30"));
+        assertThat(dailyTemperature, containsString(""));
     }
 
     @Test
-    void getNightTemperatureNextDay() {
+    void getNightTemperatureNextDayShouldBeNotEmpty() {
 
         //given
+        WeatherForApp weatherForApp = prepareNotEmptyWeatherDataForTestApp();
+
         OpenWeatherFiveDaysFieldService openWeatherFiveDaysFieldService = mock(OpenWeatherFiveDaysFieldService.class);
         given(openWeatherFiveDaysFieldService.getNightTemperatureNextDay(weatherForApp, numberOfDay))
                 .willReturn(weatherForApp.getNightTemperatureNextDay().get(numberOfDay));
+
         //when
-        String nightTemperature = weatherForApp.getNightTemperatureNextDay().get(numberOfDay);
+        String nightTemperature = openWeatherFiveDaysFieldService.getNightTemperatureNextDay(weatherForApp, numberOfDay);
 
         //then
         assertEquals(nightTemperature, "20");
+        assertThat(nightTemperature, containsString("20"));
     }
 
-    private WeatherForApp prepareMockDataWeatherForTestApp() {
+    @Test
+    void getNightTemperatureNextDayShouldBeEmpty() {
 
-        ArrayList<String> nextDayIconIdCode = new ArrayList<String>();
+        //given
+        WeatherForApp weatherForAppForEmptyExample = mock(WeatherForApp.class);
+
+        OpenWeatherFiveDaysFieldService openWeatherFiveDaysFieldService = mock(OpenWeatherFiveDaysFieldService.class);
+        given(openWeatherFiveDaysFieldService.getNightTemperatureNextDay(weatherForAppForEmptyExample, numberOfDay))
+                .willReturn("");
+
+        //when
+        String nightTemperature = openWeatherFiveDaysFieldService.getNightTemperatureNextDay(weatherForAppForEmptyExample, numberOfDay);
+
+        //then
+        assertEquals(nightTemperature, "");
+        assertThat(nightTemperature, containsString(""));
+    }
+
+    private WeatherForApp prepareNotEmptyWeatherDataForTestApp() {
+
+        ArrayList<String> nextDayIconIdCode = new ArrayList<>();
         nextDayIconIdCode.add("04d");
-        ArrayList<String> nightTemperatureNextDay = new ArrayList<String>();
+        ArrayList<String> nightTemperatureNextDay = new ArrayList<>();
         nightTemperatureNextDay.add("20");
-        ArrayList<String> dailyTemperatureNextDay = new ArrayList<String>();
+        ArrayList<String> dailyTemperatureNextDay = new ArrayList<>();
         dailyTemperatureNextDay.add("30");
         return new WeatherForApp("Europe/Warsaw",
                 "15",
