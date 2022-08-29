@@ -12,7 +12,7 @@ class AnotherUtilsTest {
 
     @Test
     void shouldReturnAddedTemperatureUnit() {
-        
+
         // given
         //when
         String actualTempUnitFromApp = ConfigMainSettings.TEMPERATURE_UNIT;

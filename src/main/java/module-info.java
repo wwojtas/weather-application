@@ -13,6 +13,7 @@ module weather {
     exports pl.weather;
 
     opens pl.weather.view;
+    opens pl.weather.model.auxiliary;
     opens pl.weather.controller to javafx.fxml, javafx.controls;
     opens pl.weather.model to javafx.fxml, javafx.controls, com.google.gson;
     opens pl.weather to com.google.gson;
