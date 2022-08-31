@@ -12,8 +12,9 @@ import pl.weather.controller.service.OpenWeatherAPIService;
 import pl.weather.controller.service.OpenWeatherGeocodingAPIService;
 import pl.weather.model.GeoIP;
 import pl.weather.model.LocationUserData;
-import pl.weather.model.auxiliary.DateAndTimeUtils;
+import pl.weather.model.StandardConnectionToOpenWeather;
 import pl.weather.model.auxiliary.AnotherUtils;
+import pl.weather.model.auxiliary.DateAndTimeUtils;
 import pl.weather.model.config.ConfigMainSettings;
 import pl.weather.model.config.ErrorMessages;
 import pl.weather.model.weather.WeatherForApp;
@@ -23,6 +24,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static javafx.application.Platform.exit;
 
 public class GeneralWindowController extends BaseController implements Initializable {
 
@@ -225,7 +228,7 @@ public class GeneralWindowController extends BaseController implements Initializ
     }
 
     private OpenWeatherGeocodingAPIService getOpenWeatherGeocodingAPIService(TextField textField) {
-        return new OpenWeatherGeocodingAPIService(AnotherUtils.getTextEnteredInTextField(textField));
+        return new OpenWeatherGeocodingAPIService(AnotherUtils.getTextEnteredInTextField(textField), new StandardConnectionToOpenWeather());
     }
 
     private boolean fieldIsBlank(TextField field) {
