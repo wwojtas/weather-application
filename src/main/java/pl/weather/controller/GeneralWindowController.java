@@ -25,8 +25,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static javafx.application.Platform.exit;
-
 public class GeneralWindowController extends BaseController implements Initializable {
 
     @FXML

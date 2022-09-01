@@ -34,7 +34,6 @@ public class OpenWeatherGeocodingAPIService {
                 + ConfigAPIOpenWeather.LIMIT_OF_LOCATIONS
                 + ConfigAPIOpenWeather.BEFORE_API_KEY
                 + ConfigApiKey.OPEN_WEATHER_API_KEY;
-//        String response = new StandardConnectionToOpenWeather().getResponseFromQueryToAPI(queryLocation);
         String response = connectionToOpenWeather.getResponseFromQueryToAPI(queryLocation);
         Type collectionType = new TypeToken<ArrayList<Geocoding>>(){}.getType();
         ArrayList<Geocoding> geocodingArrayList = ConfigMainSettings.createGsonStaticObject().fromJson(response, collectionType);
