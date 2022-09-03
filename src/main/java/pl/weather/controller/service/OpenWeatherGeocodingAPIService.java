@@ -1,8 +1,7 @@
 package pl.weather.controller.service;
 
 import com.google.gson.reflect.TypeToken;
-import pl.weather.model.ConnectionToOpenWeather;
-import pl.weather.model.StandardConnectionToOpenWeather;
+import pl.weather.model.ConnectionToWeatherData;
 import pl.weather.model.GeoIP;
 import pl.weather.model.config.ConfigAPIOpenWeather;
 import pl.weather.model.config.ConfigApiKey;
@@ -16,9 +15,9 @@ import java.util.ArrayList;
 public class OpenWeatherGeocodingAPIService {
 
     private final String cityInput;
-    private final ConnectionToOpenWeather connectionToOpenWeather;
+    private final ConnectionToWeatherData connectionToOpenWeather;
 
-    public OpenWeatherGeocodingAPIService(String cityInput, ConnectionToOpenWeather connectionToOpenWeather) {
+    public OpenWeatherGeocodingAPIService(String cityInput, ConnectionToWeatherData connectionToOpenWeather) {
         this.cityInput = cityInput;
         this.connectionToOpenWeather = connectionToOpenWeather;
     }
@@ -34,7 +33,9 @@ public class OpenWeatherGeocodingAPIService {
                 + ConfigAPIOpenWeather.LIMIT_OF_LOCATIONS
                 + ConfigAPIOpenWeather.BEFORE_API_KEY
                 + ConfigApiKey.OPEN_WEATHER_API_KEY;
+//        System.out.println(queryLocation);
         String response = connectionToOpenWeather.getResponseFromQueryToAPI(queryLocation);
+        System.out.println(response);
         Type collectionType = new TypeToken<ArrayList<Geocoding>>(){}.getType();
         ArrayList<Geocoding> geocodingArrayList = ConfigMainSettings.createGsonStaticObject().fromJson(response, collectionType);
         String city = geocodingArrayList.get(0).getLocalNames().getPl();

@@ -1,0 +1,40 @@
+[
+  {
+    "name": "Lublin",
+    "local_names": {
+      "en": "Lublin",
+      "be": "Люблін",
+      "fa": "لوبلین",
+      "lt": "Liublinas",
+      "zh": "卢布林",
+      "el": "Λούμπλιν",
+      "ru": "Люблин",
+      "uk": "Люблін",
+      "ja": "ルブリン",
+      "he": "לובלין",
+      "mk": "Лублин",
+      "pl": "Lublin"
+    },
+    "lat": 51.25,
+    "lon": 22.57,
+    "country": "PL",
+    "state": "Lublin Voivodeship"
+  },
+  {
+    "name": "Lublin",
+    "lat": 51.25,
+    "lon": 22.57,
+    "country": "PL",
+    "state": "Lublin Voivodeship"
+  },
+  {
+    "name": "Lublin",
+    "local_names": {
+      "pl": "Lublin"
+    },
+    "lat": 51.25,
+    "lon": 22.57,
+    "country": "PL",
+    "state": "Lublin Voivodeship"
+  }
+]

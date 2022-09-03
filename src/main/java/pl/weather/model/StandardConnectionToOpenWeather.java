@@ -5,7 +5,7 @@ import pl.weather.model.auxiliary.AnotherUtils;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class StandardConnectionToOpenWeather implements ConnectionToOpenWeather {
+public class StandardConnectionToOpenWeather implements ConnectionToWeatherData {
 
     @Override
     public String getResponseFromQueryToAPI(String queryToAPI) throws MalformedURLException {
