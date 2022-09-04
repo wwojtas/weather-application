@@ -1,37 +1,50 @@
 package pl.weather.controller.service;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+import pl.weather.model.ConnectionToWeatherData;
 import pl.weather.model.weather.WeatherForApp;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
 
 class OpenWeatherFiveDaysFieldServiceTest {
 
-    private final int numberOfDay = 0;
+    int numberOfDay = 0;
+
 
     @Test
-    void getDailyTemperatureNextDayShouldBeNotEmpty() {
+    void getDailyTemperatureNextDayShouldBeNotEmpty() throws IOException {
 
         //given
-        WeatherForApp weatherForApp = prepareNotEmptyWeatherDataForTestApp();
-
-        OpenWeatherFiveDaysFieldService openWeatherFiveDaysFieldService = mock(OpenWeatherFiveDaysFieldService.class);
-        given(openWeatherFiveDaysFieldService.getDailyTemperatureNextDay(weatherForApp, numberOfDay))
-                .willReturn(weatherForApp.getDailyTemperatureNextDay().get(numberOfDay));
+        OpenWeatherFiveDaysFieldService openWeatherFiveDaysFieldService = new OpenWeatherFiveDaysFieldService();
+        ConnectionToWeatherData connectionToWeatherData = Mockito.mock(ConnectionToWeatherData.class);
+        OpenWeatherAPIService openWeatherAPIService = new OpenWeatherAPIService("51.2506", "22.5701", connectionToWeatherData);
+        given(connectionToWeatherData.getResponseFromQueryToAPI(anyString())).willReturn(prepareWeatherTestData());
 
         //when
-        String dailyTemperature = openWeatherFiveDaysFieldService.getDailyTemperatureNextDay(weatherForApp, numberOfDay);
+        WeatherForApp weatherForAppTest = openWeatherAPIService.getWeatherData();
+        String dailyTemperature = openWeatherFiveDaysFieldService.getDailyTemperatureNextDay(weatherForAppTest, numberOfDay);
+        String nightTemperature = openWeatherFiveDaysFieldService.getNightTemperatureNextDay(weatherForAppTest, numberOfDay);
+
 
         //then
-        assertEquals(dailyTemperature, "30");
-        assertThat(dailyTemperature, containsString("30"));
+
+    }
+
+    private String prepareWeatherTestData() throws IOException {
+        return new String(Files.readAllBytes(Path.of("src/test/resources/openWeatherTestData.json")));
     }
 
     @Test
