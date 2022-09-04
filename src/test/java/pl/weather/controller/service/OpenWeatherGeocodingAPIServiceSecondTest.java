@@ -1,9 +1,10 @@
-package pl.weather.model;
+package pl.weather.controller.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import pl.weather.controller.service.OpenWeatherGeocodingAPIService;
+import pl.weather.model.ConnectionToWeatherData;
+import pl.weather.model.GeoIP;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,20 +14,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
 
-public class ExampleTest {
+public class OpenWeatherGeocodingAPIServiceSecondTest {
 
     private OpenWeatherGeocodingAPIService underTest;
-    private final ConnectionToWeatherData connectionToOpenWeather = Mockito.mock(ConnectionToWeatherData.class);
+    private final ConnectionToWeatherData connectionToWeatherData = Mockito.mock(ConnectionToWeatherData.class);
 
     @BeforeEach
-    void setUp() {
-        underTest = new OpenWeatherGeocodingAPIService("Lublin", connectionToOpenWeather);
+    void setInitialOpenWeatherGeocodingAPIServiceData() {
+        underTest = new OpenWeatherGeocodingAPIService("Lublin", connectionToWeatherData);
     }
     @Test
-    void shouldGetGeoIP() throws IOException {
+    void shouldReturnGeoIPData() throws IOException {
 
         //given
-        given(connectionToOpenWeather.getResponseFromQueryToAPI(anyString())).willReturn(prepareLocationTestData());
+        given(connectionToWeatherData.getResponseFromQueryToAPI(anyString())).willReturn(prepareLocationTestData());
 
         //when
         GeoIP result = underTest.getGeocodingFromOpenWeather();
@@ -39,7 +40,7 @@ public class ExampleTest {
     }
 
     private String prepareLocationTestData() throws IOException {
-        return new String(Files.readAllBytes(Path.of("src/test/resources/localTestData.json")));
+        return new String(Files.readAllBytes(Path.of("src/test/resources/geoIPTestData.json")));
     }
 
 

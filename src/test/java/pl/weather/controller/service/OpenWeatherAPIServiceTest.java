@@ -32,31 +32,6 @@ class OpenWeatherAPIServiceTest {
         assertEquals(dailyTemperatureString, "30");
     }
 
-//    @Test
-//    void referenceToTheSameObjectShouldBeEqual() {
-//
-//        //given
-//        WeatherForApp weatherForApp = prepareNotEmptyWeatherDataForTestApp();
-//
-//        //when
-//        WeatherForApp weatherForAppTestSecond = weatherForApp;
-//
-//        //then
-//        assertSame(weatherForApp, weatherForAppTestSecond);
-//    }
-
-//    @Test
-//    void referenceToTheDifferentObjectShouldBeNotSame() {
-//
-//        //given
-//        WeatherForApp weatherForApp = prepareNotEmptyWeatherDataForTestApp();
-//
-//        //when
-//        WeatherForApp weatherForAppSecond = prepareNotEmptyWeatherDataForTestApp();
-//
-//        //then
-//        assertNotSame(weatherForApp, weatherForAppSecond);
-//    }
 
     @Test
     void getWeatherDataMethodShouldReturnTheSameTimezone() throws MalformedURLException {

@@ -1,6 +1,6 @@
 package pl.weather.controller.service;
 
-import pl.weather.model.StandardConnectionToOpenWeather;
+import pl.weather.model.ConnectionToWeatherData;
 import pl.weather.model.config.ConfigAPIOpenWeather;
 import pl.weather.model.config.ConfigApiKey;
 import pl.weather.model.config.ConfigMainSettings;
@@ -14,10 +14,12 @@ public class OpenWeatherAPIService implements OpenWeatherDataRepository {
 
     private final String latitude;
     private final String longitude;
+    private final ConnectionToWeatherData connectionToWeatherData;
 
-    public OpenWeatherAPIService(String latitude, String longitude) {
+    public OpenWeatherAPIService(String latitude, String longitude, ConnectionToWeatherData connectionToWeatherData) {
         this.latitude = latitude;
         this.longitude = longitude;
+        this.connectionToWeatherData = connectionToWeatherData;
     }
 
     public String getLatitude() {
@@ -40,7 +42,7 @@ public class OpenWeatherAPIService implements OpenWeatherDataRepository {
                 + ConfigAPIOpenWeather.LANGUAGE_CODE
                 + ConfigAPIOpenWeather.BEFORE_API_KEY
                 + ConfigApiKey.OPEN_WEATHER_API_KEY;
-        String response = new StandardConnectionToOpenWeather().getResponseFromQueryToAPI(queryWeather);
+        String response = connectionToWeatherData.getResponseFromQueryToAPI(queryWeather);
         WeatherOneCall weatherOneCallGsonObject = ConfigMainSettings.createGsonStaticObject().fromJson(response, WeatherOneCall.class);
         String timezone = weatherOneCallGsonObject.getTimezone();
         String currentTemperature = String.format("%.0f", weatherOneCallGsonObject.getCurrent().getTemp());
