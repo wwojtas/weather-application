@@ -10,6 +10,8 @@ import pl.weather.model.geocoding.Geocoding;
 
 import java.lang.reflect.Type;
 import java.net.MalformedURLException;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 
 public class OpenWeatherGeocodingAPIService {
@@ -34,6 +36,7 @@ public class OpenWeatherGeocodingAPIService {
                 + ConfigAPIOpenWeather.BEFORE_API_KEY
                 + ConfigApiKey.OPEN_WEATHER_API_KEY;
         String response = connectionToOpenWeather.getResponseFromQueryToAPI(queryLocation);
+//        System.out.println(LocalTime.now(ZoneId.of("Europe/Warsaw")));
         Type collectionType = new TypeToken<ArrayList<Geocoding>>(){}.getType();
         ArrayList<Geocoding> geocodingArrayList = ConfigMainSettings.createGsonStaticObject().fromJson(response, collectionType);
         String city = geocodingArrayList.get(0).getLocalNames().getPl();

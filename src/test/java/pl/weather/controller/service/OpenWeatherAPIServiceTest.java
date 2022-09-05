@@ -1,149 +1,68 @@
 package pl.weather.controller.service;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+import pl.weather.model.ConnectionToWeatherData;
 import pl.weather.model.weather.WeatherForApp;
 
-import java.net.MalformedURLException;
-import java.util.ArrayList;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.mock;
 
 class OpenWeatherAPIServiceTest {
 
-    @Test
-    void dataWeatherStubShouldReturnDailyTemperature() throws MalformedURLException {
+    OpenWeatherAPIService openWeatherAPIService;
+    private final ConnectionToWeatherData connectionToWeatherData = Mockito.mock(ConnectionToWeatherData.class);
 
-        //given
-        OpenWeatherDataRepository openWeatherAPIServiceStub = new OpenWeatherAPIServiceStub();
-
-        //when
-        ArrayList<String> dailyTemperature = openWeatherAPIServiceStub.getWeatherData().getDailyTemperatureNextDay();
-        String dailyTemperatureString = dailyTemperature.get(0);
-
-        //then
-        assertThat(dailyTemperature, hasSize(1));
-        assertThat(dailyTemperature, is(not(empty())));
-        assertThat(dailyTemperature, contains("30"));
-        assertThat(dailyTemperatureString, equalTo("30"));
-        assertEquals(dailyTemperatureString, "30");
-    }
-
-
-    @Test
-    void getWeatherDataMethodShouldReturnTheSameTimezone() throws MalformedURLException {
-
-        //given
-        OpenWeatherAPIService openWeatherAPIService = mock(OpenWeatherAPIService.class);
-        given(openWeatherAPIService.getWeatherData()).willReturn(prepareNotEmptyWeatherDataForTestApp());
-
-        //when
-        String timezoneFromMock = openWeatherAPIService.getWeatherData().getTimezone();
-
-        //then
-        assertThat(timezoneFromMock, equalTo("Europe/Warsaw"));
+    @BeforeEach
+    void setInitialOpenWeatherAPIServiceData() {
+        openWeatherAPIService = new OpenWeatherAPIService("51.2506", "22.5701", connectionToWeatherData);
     }
 
     @Test
-    public void dailyTemperatureNextDayShouldHaveNextDataFromList() throws MalformedURLException {
+    void shouldReturnWeatherData() throws IOException {
 
         //given
-        OpenWeatherAPIService openWeatherAPIService = mock(OpenWeatherAPIService.class);
-        given(openWeatherAPIService.getWeatherData()).willReturn(prepareNotEmptyWeatherDataForTestApp());
+        given(connectionToWeatherData.getResponseFromQueryToAPI(anyString())).willReturn(prepareWeatherTestData());
 
         //when
-        ArrayList<String> dailyTemperatureNextDay = openWeatherAPIService.getWeatherData().getDailyTemperatureNextDay();
-        int dailyTemperatureListSize = prepareNotEmptyWeatherDataForTestApp().getDailyTemperatureNextDay().size();
-
-        //then
-        assertThat(dailyTemperatureNextDay.size(), is(3));
-        for (int i = 0; i < dailyTemperatureListSize; i++) {
-            assertThat(dailyTemperatureNextDay.get(i), equalTo(i + 3 + "0"));
-        }
-    }
-
-    @Test
-    void allWeatherDataFieldsShouldBeNotEmpty() throws MalformedURLException {
-
-        //given
-        OpenWeatherAPIService openWeatherAPIService = mock(OpenWeatherAPIService.class);
-        given(openWeatherAPIService.getWeatherData()).willReturn(prepareNotEmptyWeatherDataForTestApp());
-
-        //when
+        WeatherForApp weatherForAppTest = openWeatherAPIService.getWeatherData();
         String timezone = openWeatherAPIService.getWeatherData().getTimezone();
         String currentTemperature = openWeatherAPIService.getWeatherData().getCurrentTemperature();
         String currentPressure = openWeatherAPIService.getWeatherData().getCurrentPressure();
         String currentHumidity = openWeatherAPIService.getWeatherData().getCurrentHumidity();
         String currentDayIconIdCode = openWeatherAPIService.getWeatherData().getCurrentDayIconIdCode();
-        ArrayList<String> nextDayIconIdCode = openWeatherAPIService.getWeatherData().getNextDayIconIdCode();
-        ArrayList<String> nightTemperatureNextDay = openWeatherAPIService.getWeatherData().getNightTemperatureNextDay();
-        ArrayList<String> dailyTemperatureNextDay = openWeatherAPIService.getWeatherData().getDailyTemperatureNextDay();
+        String nextDayIconIdCode = openWeatherAPIService.getWeatherData().getNextDayIconIdCode().get(0);
+        String nightTemperatureNextDay = openWeatherAPIService.getWeatherData().getNightTemperatureNextDay().get(0);
+        String dailyTemperatureNextDay = openWeatherAPIService.getWeatherData().getDailyTemperatureNextDay().get(0);
 
         //then
         assertAll(
+                () -> assertEquals("Europe/Warsaw", weatherForAppTest.getTimezone()),
+                () -> assertEquals("Europe/Warsaw", timezone),
                 () -> assertThat(timezone, equalTo("Europe/Warsaw")),
-                () -> assertThat(currentTemperature, containsString("15")),
-                () -> assertThat(currentPressure, containsString("1012")),
-                () -> assertThat(currentHumidity, containsString("50")),
-                () -> assertThat(currentDayIconIdCode, equalTo("10d")),
-                () -> assertThat(nextDayIconIdCode.get(0), equalTo("04d")),
-                () -> assertThat(nightTemperatureNextDay.get(0), equalTo("20")),
-                () -> assertThat(dailyTemperatureNextDay.get(0), equalTo("30"))
+                () -> assertEquals("20", currentTemperature),
+                () -> assertThat(currentTemperature, containsString("20")),
+                () -> assertEquals("1019", currentPressure),
+                () -> assertThat(currentPressure, equalTo("1019")),
+                () -> assertEquals("51", currentHumidity),
+                () -> assertEquals("01d", currentDayIconIdCode),
+                () -> assertEquals("02d", nextDayIconIdCode),
+                () -> assertEquals("9", nightTemperatureNextDay),
+                () -> assertEquals("19", dailyTemperatureNextDay)
         );
     }
 
-    @Test
-    void allWeatherDataFieldsShouldBeEmpty() throws MalformedURLException {
 
-        //given
-        OpenWeatherAPIService openWeatherAPIService = mock(OpenWeatherAPIService.class);
-        WeatherForApp weatherForAppForEmptyExample = mock(WeatherForApp.class);
-        given(openWeatherAPIService.getWeatherData()).willReturn(weatherForAppForEmptyExample);
-
-        //when
-        String timezone = openWeatherAPIService.getWeatherData().getTimezone();
-        String currentTemperature = openWeatherAPIService.getWeatherData().getCurrentTemperature();
-        String currentPressure = openWeatherAPIService.getWeatherData().getCurrentPressure();
-        String currentHumidity = openWeatherAPIService.getWeatherData().getCurrentHumidity();
-        String currentDayIconIdCode = openWeatherAPIService.getWeatherData().getCurrentDayIconIdCode();
-        ArrayList<String> nextDayIconIdCode = openWeatherAPIService.getWeatherData().getNextDayIconIdCode();
-        ArrayList<String> nightTemperatureNextDay = openWeatherAPIService.getWeatherData().getNightTemperatureNextDay();
-        ArrayList<String> dailyTemperatureNextDay = openWeatherAPIService.getWeatherData().getDailyTemperatureNextDay();
-
-        //then
-        assertAll(
-                () -> assertNull(timezone),
-                () -> assertNull(currentTemperature),
-                () -> assertNull(currentPressure),
-                () -> assertNull(currentHumidity),
-                () -> assertNull(currentDayIconIdCode),
-                () -> assertThat(nextDayIconIdCode, empty()),
-                () -> assertThat(nightTemperatureNextDay, empty()),
-                () -> assertThat(dailyTemperatureNextDay, empty())
-        );
-    }
-
-    private WeatherForApp prepareNotEmptyWeatherDataForTestApp() {
-
-        ArrayList<String> nextDayIconIdCode = new ArrayList<>();
-        nextDayIconIdCode.add("04d");
-        ArrayList<String> nightTemperatureNextDay = new ArrayList<>();
-        nightTemperatureNextDay.add("20");
-        ArrayList<String> dailyTemperatureNextDay = new ArrayList<>();
-        dailyTemperatureNextDay.add("30");
-        dailyTemperatureNextDay.add("40");
-        dailyTemperatureNextDay.add("50");
-        return new WeatherForApp("Europe/Warsaw",
-                "15",
-                "1012",
-                "50",
-                "10d",
-                nextDayIconIdCode,
-                nightTemperatureNextDay,
-                dailyTemperatureNextDay
-        );
+    private String prepareWeatherTestData() throws IOException {
+        return new String(Files.readAllBytes(Path.of("src/test/resources/openWeatherTestData.json")));
     }
 }

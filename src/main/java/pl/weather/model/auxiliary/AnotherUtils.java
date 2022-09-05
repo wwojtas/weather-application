@@ -47,7 +47,7 @@ public class AnotherUtils {
         return ConfigMainSettings.HUMIDITY_UNIT;
     }
 
-    private static String writeFirstLetterCapitalize(String word) {
+    public static String writeFirstLetterCapitalize(String word) {
         return word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
     }
 

@@ -1,89 +1,64 @@
 package pl.weather.model.auxiliary;
 
 import org.junit.jupiter.api.Test;
-import pl.weather.model.config.ConfigMainSettings;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 class AnotherUtilsTest {
 
     @Test
-    void shouldReturnAddedTemperatureUnit() {
+    void shouldReturnFirstLetterCapitalize() {
 
         // given
+        String testWord = "word";
+
         //when
-        String actualTempUnitFromApp = ConfigMainSettings.TEMPERATURE_UNIT;
-        String expectedTempUnit = " \u00B0C";
+        String testWordAfterFunctionOperation = AnotherUtils.writeFirstLetterCapitalize(testWord);
 
         //then
-        assertEquals(expectedTempUnit, actualTempUnitFromApp); // org.junit
-        assertThat(actualTempUnitFromApp, equalTo(expectedTempUnit)); // org.hamcrest
+        assertEquals("Word", testWordAfterFunctionOperation); // org.junit
+        assertThat(testWordAfterFunctionOperation, equalTo("Word")); // org.hamcrest
     }
 
     @Test
-    void addedTemperatureUnitIsNotTheSameLikeExpectedTempUnit() {
+    void addedTemperatureUnitIsTheSameLikeExpectedTempUnit() {
 
         // given
         //when
-        String notCorrectTempUnit = "is not good temperature Unit";
-        String expectedTempUnit = " \u00B0C";
+        String temperatureUnit = AnotherUtils.addTempUnit();
 
         //then
-        assertNotSame(notCorrectTempUnit, expectedTempUnit);
+        assertSame(" \u00B0C", temperatureUnit);
+        assertThat(temperatureUnit, equalTo(" \u00B0C"));
     }
 
     @Test
-    void shouldReturnAddedPressureUnit() {
+    void addedPressureUnitIsTheSameLikeExpectedPressureUnit() {
 
         // given
         //when
-        String actualPressureUnit = ConfigMainSettings.PRESSURE_UNIT;
-        String expectedPressureUnit = " hPa";
+        String pressureUnit = AnotherUtils.addPressureUnit();
 
         //then
-        assertEquals(expectedPressureUnit, actualPressureUnit); // org.junit
-        assertThat(actualPressureUnit, equalTo(expectedPressureUnit)); // org.hamcrest
+        assertSame(" hPa", pressureUnit);
+        assertThat(pressureUnit, equalTo(" hPa"));
     }
 
     @Test
-    void addedPressureUnitIsNotTheSameLikeExpectedPressureUnit() {
+    void addedHumidityUnitIsTheSameLikeExpectedHumidityUnit() {
 
         // given
         //when
-        String notCorrectPressureUnit = "is not good pressure Unit";
-        String expectedPressureUnit = " hPa";
+        String humidityUnit = AnotherUtils.addHumidityUnit();
 
         //then
-        assertNotSame(notCorrectPressureUnit, expectedPressureUnit);
+        assertSame(" %", humidityUnit);
+        assertThat(humidityUnit, equalTo(" %"));
     }
 
-    @Test
-    void shouldReturnAddedHumidityUnit() {
-
-        // given
-        //when
-        String actualHumidityUnit = ConfigMainSettings.HUMIDITY_UNIT;
-        String expectedHumidityUnit = " %";
-
-        //then
-        assertEquals(expectedHumidityUnit, actualHumidityUnit); // org.junit
-        assertThat(actualHumidityUnit, equalTo(expectedHumidityUnit)); // org.hamcrest
-    }
-
-    @Test
-    void addedHumidityUnitIsNotTheSameLikeExpectedHumidityUnit() {
-
-        // given
-        //when
-        String notCorrectHumidityUnit = "is not good humidity Unit";
-        String expectedHumidityUnit = " %";
-
-        //then
-        assertNotSame(notCorrectHumidityUnit, expectedHumidityUnit);
-    }
 
 
 }
