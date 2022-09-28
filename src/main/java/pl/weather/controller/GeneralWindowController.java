@@ -120,7 +120,7 @@ public class GeneralWindowController extends BaseController implements Initializ
             OpenWeatherGeocodingAPIService geocodingAPIService = getOpenWeatherGeocodingAPIService(leftLocationField);
             try {
                 GeoIP geoIPGeocoding = geocodingAPIService.getGeocodingFromOpenWeather();
-                WeatherForApp weatherForApp = new OpenWeatherAPIService(geoIPGeocoding.getLatitude(), geoIPGeocoding.getLongitude(), new StandardConnectionToOpenWeather())
+                WeatherForApp weatherForApp = new OpenWeatherAPIService(geoIPGeocoding.getLatitude(), geoIPGeocoding.getLongitude())
                         .getWeatherData();
                 leftCurrentDayLabel.setText(DateAndTimeUtils.getDayTextContent(weatherForApp.getTimezone(), 0));
                 AnotherUtils.setPanel(
@@ -146,7 +146,7 @@ public class GeneralWindowController extends BaseController implements Initializ
             OpenWeatherGeocodingAPIService geocodingAPIService = getOpenWeatherGeocodingAPIService(rightLocationField);
             try {
                 GeoIP geoIPGeocoding = geocodingAPIService.getGeocodingFromOpenWeather();
-                WeatherForApp weatherForApp = new OpenWeatherAPIService(geoIPGeocoding.getLatitude(), geoIPGeocoding.getLongitude(), new StandardConnectionToOpenWeather())
+                WeatherForApp weatherForApp = new OpenWeatherAPIService(geoIPGeocoding.getLatitude(), geoIPGeocoding.getLongitude())
                         .getWeatherData();
                 rightCurrentDayLabel.setText(DateAndTimeUtils.getDayTextContent(weatherForApp.getTimezone(), 0));
                 AnotherUtils.setPanel(
@@ -172,7 +172,7 @@ public class GeneralWindowController extends BaseController implements Initializ
     private void setDefaultWeatherDataInLeftPanel() {
         try {
             GeoIP defaultGeoip = getUserLocationByGeoip();
-            WeatherForApp defaultWeatherForApp = new OpenWeatherAPIService(defaultGeoip.getLatitude(), defaultGeoip.getLongitude(), new StandardConnectionToOpenWeather()).getWeatherData();
+            WeatherForApp defaultWeatherForApp = new OpenWeatherAPIService(defaultGeoip.getLatitude(), defaultGeoip.getLongitude()).getWeatherData();
             leftCurrentDayLabel.setText(DateAndTimeUtils.getDayTextContent(defaultWeatherForApp.getTimezone(), 0));
             AnotherUtils.setPanel(
                     defaultWeatherForApp,
@@ -198,7 +198,7 @@ public class GeneralWindowController extends BaseController implements Initializ
     private void setDefaultWeatherDataInRightPanel() {
         try {
             GeoIP defaultGeoip = getUserLocationByGeoip();
-            WeatherForApp defaultWeatherForApp = new OpenWeatherAPIService(defaultGeoip.getLatitude(), defaultGeoip.getLongitude(), new StandardConnectionToOpenWeather()).getWeatherData();
+            WeatherForApp defaultWeatherForApp = new OpenWeatherAPIService(defaultGeoip.getLatitude(), defaultGeoip.getLongitude()).getWeatherData();
             rightCurrentDayLabel.setText(DateAndTimeUtils.getDayTextContent(defaultWeatherForApp.getTimezone(), 0));
             AnotherUtils.setPanel(
                     defaultWeatherForApp,

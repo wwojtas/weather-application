@@ -32,7 +32,7 @@ class OpenWeatherFiveDaysFieldServiceTest {
 
     @BeforeEach
     void setInitialOpenWeatherAPIServiceData() {
-        openWeatherAPIService = new OpenWeatherAPIService("51.2506", "22.5701", connectionToWeatherData);
+        openWeatherAPIService = new OpenWeatherAPIService("51.2506", "22.5701");
     }
 
     @Test
